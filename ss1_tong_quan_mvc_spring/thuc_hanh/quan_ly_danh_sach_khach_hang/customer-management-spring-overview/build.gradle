@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'cg.wbd'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+}
