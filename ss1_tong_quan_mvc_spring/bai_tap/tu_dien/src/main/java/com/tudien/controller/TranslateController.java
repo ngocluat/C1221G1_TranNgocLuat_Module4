@@ -25,7 +25,7 @@ public class TranslateController {
         }else {
             model.addAttribute("result", "Không tìm thấy");
         }
-        return "translate";
+        return "home";
     }
 
 }
