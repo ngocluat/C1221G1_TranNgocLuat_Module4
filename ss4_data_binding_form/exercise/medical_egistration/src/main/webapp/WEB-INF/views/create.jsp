@@ -16,7 +16,7 @@
     Khuyến cáo: Khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể xử lý hình sự
 </p>
 
-<form:form method="post" modelAttribute="list" action="create-information">
+<form:form method="post" modelAttribute="list" action="createinformation">
     <div>
         Họ tên (ghi chữ IN HOA) (*)
         <form:input path="name"/>
@@ -71,7 +71,7 @@
         thông tin 14 ngày qua
         <form:input cssStyle="width: 100px ;height: 50px;" path="information"/>
     </div>
-    <button type="submit"> lưu</button>
+    <input type="submit" value="LƯU" />
 
 </form:form>
 

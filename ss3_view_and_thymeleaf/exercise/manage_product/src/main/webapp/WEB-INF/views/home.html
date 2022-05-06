@@ -1,0 +1,70 @@
+<!DOCTYPE html  >
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{tamplate :: link_boostrap}"></th:block>
+    <th:block th:replace="~{tamplate :: link_icon_boostrap}"></th:block>
+</head>
+<body>
+
+<th:block th:replace="~{tamplate :: Header}">
+
+</th:block>
+<button type="button" class="btn btn-primary btn-lg btn-block">Product</button>
+
+<a th:href="@{/show-create}"><i class="bi bi-plus-square-fill"></i>Thêm Mới Sản Phẩm</a>
+
+
+<div>
+    <form action="" method="get">
+        <label>
+            Tìm Kiếm Sản Phẩm :
+            <input type="text" th:name="nameProductSeach">
+        </label>
+        <button class="btn btn-outline-info" type="submit"> Tìm</button>
+    </form>
+</div>
+<div>
+    <p th:text="${success}"></p>
+</div>
+
+<table class="table table-striped">
+
+    <tr>
+        <th> ID</th>
+        <th> Tên Sản Phẩm</th>
+        <th>Mô Tả</th>
+        <th> Giá</th>
+        <th> Edit</th>
+        <th> Xóa</th>
+    </tr>
+    <tr th:each="item : ${product}">
+        <td th:text="${item.id}"></td>
+        <td>
+
+            <a th:href="@{/{id}/view(id=${item.getId()})}"  >
+                <span th:text="${item.nameProduct}"></span>
+            </a>
+
+        </td>
+        <td th:text="${item.description}"></td>
+        <td th:text="${item.price}"></td>
+        <td>
+            <button class="btn btn-outline-warning"><a th:href="@{/{id}/edit(id=${item.getId()})}" > <i class="bi bi-hammer"></i> </a></button>
+        </td>
+        <td>
+            <button class="btn btn-outline-danger"><a th:href="@{/{id}/delete(id=${item.getId()})}"><i class="bi bi-x-lg"></i></a></button>
+            <button class="btn btn-outline-danger" >
+                <i class="bi bi-x-lg"></i>
+
+            </button>
+        </td>
+    </tr>
+</table>
+<th:block th:replace="~{tamplate :: Footer}">
+
+</th:block>
+</body>
+</html>

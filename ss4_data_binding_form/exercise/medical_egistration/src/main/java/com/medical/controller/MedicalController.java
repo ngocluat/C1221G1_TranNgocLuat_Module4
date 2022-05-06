@@ -21,10 +21,10 @@ public class MedicalController {
     }
 
 
-    @PostMapping("create-information")
+    @PostMapping("/createinformation")
     public String createInformationMedical(Medical medical, Model model) {
         iService.addInformationMedical(medical);
-        return "redirect:/create";
+        return "redirect:/";
     }
 
     @GetMapping("/inforMedical")

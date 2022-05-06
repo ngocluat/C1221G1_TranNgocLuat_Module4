@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="tamplate :: link_boostrap">
+    </th:block>
+</head>
+<body>
+<p th:text="${msg}"></p>
+<a th:href="@{/}">back to home
+</a>
+<form th:action="@{/save-product}" th:object="${product}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <div>
+        <label> Tên SảN Phẩm </label>
+        <input th:field="*{nameProduct}">
+    </div>
+
+    <div>
+        <label> Mô Tả </label>
+        <input th:field="*{description}">
+    </div>
+
+    <div>
+        <label> Giá </label>
+        <input th:field="*{price}">
+    </div>
+
+    <button type="submit"> Thêm Mới</button>
+</form>
+</body>
+</html>
