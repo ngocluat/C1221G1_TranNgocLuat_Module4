@@ -14,4 +14,6 @@ public interface IProductService {
     void update(int id, Product customer);
 
     void remove(int id);
+    List<Product> seachingProduct(String name);
+
 }

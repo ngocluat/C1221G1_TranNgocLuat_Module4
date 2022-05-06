@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -70,15 +70,15 @@ public class ProductController {
         return "/view";
     }
 
-    public String seaching(Product product, Model model, String name ) {
-        List<Product> productList = new ArrayList<>();
-        for (Product sinhVien : productList) {
-            if (sinhVien.getNameProduct().contains(name)) {
-                productList.add(sinhVien);
-            }
+    @PostMapping("/searching")
+    public String seaching(@RequestParam String nameProductSeach, Model model) {
+        List<Product> productListResutl = iProductService.seachingProduct(nameProductSeach);
+        if (productListResutl == null) {
+            model.addAttribute("message", "not found!! ");
+        } else {
+            model.addAttribute("product", productListResutl);
         }
-
-        return "";
+        return "/home";
     }
 
 

@@ -6,27 +6,33 @@
     <th:block th:replace="tamplate :: link_boostrap">
     </th:block>
 </head>
-<body>
+<body class="mx-auto" style="width: 50%;">
 <p th:text="${msg}"></p>
 <a th:href="@{/}">back to home
 </a>
 <form th:action="@{/save-product}" th:object="${product}" method="post">
     <input type="hidden" th:field="*{id}"/>
 
-    <div>
-        <label> Tên SảN Phẩm </label>
-        <input th:field="*{nameProduct}">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form3Example1" class="form-control" th:field="*{nameProduct}" />
+                <label class="form-label" for="form3Example1">Tên Sản Phẩm </label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form3Example2" class="form-control" th:field="*{price}"  />
+                <label class="form-label" for="form3Example2">Giá </label>
+            </div>
+        </div>
     </div>
 
-    <div>
+    <div style="text-align: center">
         <label> Mô Tả </label>
         <input th:field="*{description}">
     </div>
 
-    <div>
-        <label> Giá </label>
-        <input th:field="*{price}">
-    </div>
 
     <button type="submit"> Thêm Mới</button>
 </form>

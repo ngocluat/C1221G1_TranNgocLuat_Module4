@@ -44,23 +44,21 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void remove(int id) {
-        productList.remove(id-1 );
+        productList.remove(id - 1);
     }
 
     public Integer getLasstId() {
         int size = productList.size() - 1;
         return size;
     }
-//    public void timKiemSinhVien() {
-//        List<Product> sinhVienList = new ArrayList<>();
-//        for (Product sinhVien : sinhVienList) {
-//            if (sinhVien.getNameProduct().contains(tenSinhVien)) {
-//                sinhVienList.add(sinhVien);
-//            }
-//        }
-//        for (SinhVien item : sinhVienList
-//        ) {
-//            System.out.println(item);
-//        }
-//    }
+
+    public List<Product> seachingProduct(String name) {
+        List<Product> productListSeaching = new ArrayList<>();
+        for (Product product : productList) {
+            if (product.getNameProduct().toLowerCase().contains(name.toLowerCase())) {
+                productListSeaching.add(product);
+            }
+        }
+        return productListSeaching;
+    }
 }

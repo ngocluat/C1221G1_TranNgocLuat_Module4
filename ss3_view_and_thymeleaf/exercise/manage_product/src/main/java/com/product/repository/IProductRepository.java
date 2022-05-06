@@ -8,6 +8,8 @@ public interface IProductRepository {
 
     List<Product> findAll();
 
+    List<Product> seachingProduct(String name);
+
     void save(Product customer);
 
     Product findById(int id);
