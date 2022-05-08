@@ -27,8 +27,15 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void save(Product product) {
-        Integer idRandom = (int) (Math.random() * 100);
-        product.setId(idRandom);
+
+        int idIncreaseAuto;
+
+        if (productList.size() == 0) {
+            idIncreaseAuto = 1;
+        } else {
+            idIncreaseAuto = (productList.get(productList.size() - 1).getId()) + 1;
+        }
+        product.setId(idIncreaseAuto);
         productList.add(product);
     }
 

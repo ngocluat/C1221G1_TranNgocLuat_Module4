@@ -6,12 +6,13 @@ public class Product {
     String description;
     Double price;
 
+
     public Product(Integer id, String nameProduct, String description, Double price) {
         this.id = id;
         this.nameProduct = nameProduct;
         this.description = description;
         this.price = price;
-    }
+        }
 
     public Product() {
     }
@@ -46,6 +47,11 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+
+    public void setIdAutomatic() {
+
     }
 
     @Override

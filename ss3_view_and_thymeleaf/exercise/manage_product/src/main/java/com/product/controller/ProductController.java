@@ -5,6 +5,7 @@ import com.product.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    IProductService iProductService;
+    private IProductService iProductService;
 
     @GetMapping({"/", "/adg"})
     public String goHome(Model model) {
@@ -27,16 +28,16 @@ public class ProductController {
 
 
     @GetMapping("/show-create")
-    public String ShowCreateProduct(Model model) {
+    public String ShowCreateProduct(ModelMap model) {
         model.addAttribute("product", new Product());
-        return "create";
+        return "/abc";
     }
 
     @PostMapping("/save-product")
     public String create(Product product, Model model) {
         iProductService.save(product);
         model.addAttribute("msg", "successfully add new");
-        return "/create";
+        return "/abc";
     }
 
     @GetMapping("/{id}/delete")
