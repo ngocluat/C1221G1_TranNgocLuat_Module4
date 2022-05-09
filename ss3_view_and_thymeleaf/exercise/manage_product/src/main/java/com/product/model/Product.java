@@ -1,7 +1,14 @@
 package com.product.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+
     String nameProduct;
     String description;
     Double price;
@@ -12,9 +19,15 @@ public class Product {
         this.nameProduct = nameProduct;
         this.description = description;
         this.price = price;
-        }
+    }
 
     public Product() {
+    }
+
+    public Product(String nameProduct, String description, Double price) {
+        this.nameProduct = nameProduct;
+        this.description = description;
+        this.price = price;
     }
 
     public Integer getId() {

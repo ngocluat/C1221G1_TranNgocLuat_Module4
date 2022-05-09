@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+<div>
+    <p th:text="${update}">
+    </p>
+</div>
+
+
+<button type="button" class="btn btn-success">
+
+    <a th:href="@{/show-create}"> Thêm Mới </a>
+</button>
+
+<table class="table table-striped table-dark">
+    <tr>
+        <th>Id</th>
+        <th> Tên bài hát</th>
+        <th> Nghệ sĩ thể hiện</th>
+        <th> Thể loại nhạc</th>
+        <th> Đường dẫn file bài hát</th>
+        <th> Sửa</th>
+        <th> Xóa</th>
+    </tr>
+    <tr th:each="item: ${music}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.nameMusic}"></td>
+        <td th:text="${item.artist}"></td>
+        <td th:text="${item.category}"></td>
+        <td>
+            <a th:href="${item.pathFileMusic}"> Link Song </a>
+        <td>
+            <button class="btn btn-outline-warning"><a th:href="@{/{id}/edit(id=${item.getId()})}"> <i
+                    class="bi bi-hammer"></i> </a></button>
+        </td>
+
+        <td>
+            <button class="btn btn-outline-danger"><a th:href="@{/{id}/delete(id=${item.getId()})}"><i
+                    class="bi bi-x-lg"></i></a></button>
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal"
+                    th:onclick="'javascript:deleteUser(' + ${item.id} + ',\''+${item.nameMusic}+'\')'">
+                Delete
+            </button>
+
+    </tr>
+</table>
+
+<!--/modal -->
+<div>
+    <form th:action="@{/delete}" method="post">
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Xác Nhận </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="idDelete">
+                        <input type="hidden" name="actionCustomer" value="delete">
+                        <p style="color: red">Bạn có chắc muốn xóa <span id="nameDelete"></span> hay không</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<th:block th:replace="~{template :: Footer}"></th:block>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    function deleteUser(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerHTML = name;
+    }
+</script>

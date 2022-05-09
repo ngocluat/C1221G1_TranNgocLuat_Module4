@@ -25,17 +25,17 @@ public class ProductService implements IProductService {
 
     @Override
     public Product findById(int id) {
-        return iProductRepository.findById(id);
+        return iProductRepository.findOne((long) id);
     }
 
     @Override
-    public void update(int id, Product product) {
-        iProductRepository.update(id, product);
+    public void update(Product product) {
+        iProductRepository.update(product);
     }
 
     @Override
-    public void remove(int id) {
-        iProductRepository.remove(id);
+    public void remove(Product product) {
+        iProductRepository.delete(product);
     }
 
     @Override

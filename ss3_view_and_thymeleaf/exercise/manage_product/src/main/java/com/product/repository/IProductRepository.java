@@ -6,15 +6,18 @@ import java.util.List;
 
 public interface IProductRepository {
 
-    List<Product> findAll();
 
     List<Product> seachingProduct(String name);
 
-    void save(Product customer);
+    List<Product> findAll();
 
-    Product findById(int id);
+    Product findOne(Long id);
 
-    void update(int id, Product customer);
+    void save(Product Product);
 
-    void remove(int id);
+    void delete(Product music);
+
+
+    void update(Product music);
 }
+

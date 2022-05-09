@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+
+<form th:action="@{/update}" action="" method="post" th:object="${music}">
+    <input type="hidden" th:field="*{id}" th:name="idUpdate">
+    <label>
+        Tên bài hát
+        <input type="text" th:field="*{nameMusic}">
+    </label>
+
+    <label>
+        Nghệ sĩ thể hiện
+        <input type="text" th:field="*{artist}">
+
+    </label>
+
+    <label>
+        Thể loại nhạc
+        <input type="text" th:field="*{category}">
+
+    </label>
+
+    <label>
+        Đường dẫn file bài hát
+        <input type="text" th:field="*{pathFileMusic}">
+    </label>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Update </button>
+
+</form>
+<th:block th:replace="~{template :: Footer}"></th:block>
+</body>
+</html>

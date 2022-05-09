@@ -17,7 +17,7 @@ import java.util.List;
 @Controller
 public class ProductController {
 
-    @Autowired
+    @Autowired  
     private IProductService iProductService;
 
     @GetMapping({"/", "/adg"})
@@ -48,7 +48,8 @@ public class ProductController {
 
     @PostMapping("/delete")
     public String delete(Product product, RedirectAttributes redirect) {
-        iProductService.remove(product.getId());
+
+        iProductService.remove(product);
         redirect.addFlashAttribute("success", "Removed customer successfully!");
         return "redirect:/";
     }
@@ -61,7 +62,7 @@ public class ProductController {
 
     @PostMapping("/update")
     public String update(Product customer) {
-        iProductService.update(customer.getId(), customer);
+        iProductService.update( customer);
         return "redirect:/";
     }
 
