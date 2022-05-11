@@ -27,8 +27,8 @@ public class BlogController {
 
 
     @GetMapping({"/", "blog"})
-    //                                                                           , sort = "id"  ,direction = Sort.Direction.DESC
-    public String goHome(Model model, @RequestParam Optional<String> name, @PageableDefault( value = 4 ) Pageable pageable) {
+    //                                                                          , sort = "id" ,direction = Sort.Direction.DESC
+    public String goHome(Model model, @RequestParam Optional<String> name, @PageableDefault( value = 4    ) Pageable pageable) {
        String keyword = name.orElse("") ;
         model.addAttribute("blogPage", iBlogService.findAllByNameBlogContaining(keyword, pageable));
         model.addAttribute("keyword",keyword);
