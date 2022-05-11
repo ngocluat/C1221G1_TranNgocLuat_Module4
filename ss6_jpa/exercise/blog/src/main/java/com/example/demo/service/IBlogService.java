@@ -1,21 +1,23 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Blog;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface IBlogService {
 
-    List<Blog> listBlog();
+    Page<Blog> listBlog(Pageable pageable);
 
     void delete(Blog blog);
 
-
     void save(Blog Music);
-
 
     void update(Blog music);
 
-
     Blog findById(Long id);
+
+//    Page<Blog> findByName(String name);
+
+    Page<Blog> findAllByNameBlogContaining(String name, Pageable pageable);
+
 }

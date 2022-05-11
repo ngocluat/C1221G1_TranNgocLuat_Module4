@@ -5,10 +5,15 @@ import com.example.demo.service.IBlogService;
 import com.example.demo.service.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 public class BlogController {
@@ -16,14 +21,17 @@ public class BlogController {
     @Autowired
     IBlogService iBlogService;
 
-
     @Qualifier("postService")
     @Autowired
     IPostService iPostService;
 
+
     @GetMapping({"/", "blog"})
-    public String goHome(Model model) {
-        model.addAttribute("blog", iBlogService.listBlog());
+    //                                                                           , sort = "id"  ,direction = Sort.Direction.DESC
+    public String goHome(Model model, @RequestParam Optional<String> name, @PageableDefault( value = 4 ) Pageable pageable) {
+       String keyword = name.orElse("") ;
+        model.addAttribute("blogPage", iBlogService.findAllByNameBlogContaining(keyword, pageable));
+        model.addAttribute("keyword",keyword);
         return "home";
     }
 
@@ -36,11 +44,12 @@ public class BlogController {
 
 
     @PostMapping("/create")
-    public String createBlog(Blog blog, Model model) {
+    public String createBlog(Blog blog, Model model, RedirectAttributes redirectAttributes) {
         iBlogService.save(blog);
-        model.addAttribute("msg", "successfully add new");
+        redirectAttributes.addFlashAttribute("msg", "successfully add new");
         return "redirect:/showCreate";
     }
+
     @GetMapping("/{id}/edit")
     public String showEdit(@PathVariable Long id, Model model) {
         model.addAttribute("postEdit", iPostService.findAll());
@@ -71,6 +80,11 @@ public class BlogController {
         return "redirect:/";
     }
 
-
+    @GetMapping("/{id}/view")
+    public String view(@PathVariable Long id, Model model) {
+        model.addAttribute("postView", iPostService.findAll());
+        model.addAttribute("blog", iBlogService.findById(id));
+        return "view";
+    }
 
 }
