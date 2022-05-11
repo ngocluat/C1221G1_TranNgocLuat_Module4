@@ -16,4 +16,6 @@ public class PostService  implements IPostService {
     public List<Post> findAll() {
         return iPosstRepository.findAll();
     }
+
+
 }

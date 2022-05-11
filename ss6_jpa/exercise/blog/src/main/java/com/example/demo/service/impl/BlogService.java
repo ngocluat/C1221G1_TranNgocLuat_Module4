@@ -50,9 +50,8 @@ public class BlogService implements IBlogService {
     @Override
     public Page<Blog> findAllByNameBlogContaining(String name, Pageable pageable) {
         return iBlogRepository.findAllByNameBlogContaining(name, pageable);
-    }
 
-    Pageable sortedByPriceDesc = PageRequest.of(0, 3, Sort.by("id").descending());
+    }
 
 }
 

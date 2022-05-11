@@ -6,7 +6,7 @@
     <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
 
 </head>
-<body style="background-color: black">
+<body>
 <th:block th:replace="~{template :: Header}"></th:block>
 <button type="button" class="btn btn-success"><a th:href="@{/showCreate}">Thêm Mới Blog</a></button>
 
@@ -21,6 +21,44 @@
 </div>
 
 
+<div class="row">
+    <div class="row justify-content-between">
+        <div class="col-4">
+            <div class="section-title">
+                <h5 class="mt-3 content-title ">Recent added </h5>
+                <div class="form-group row">
+                    <span class="message text-success" th:text="${success}"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-7 w-auto">
+            <form th:action="@{/}">
+                <div class="row px-auto">
+                    <div class="col-3">
+                        <label for="search">Sort by</label>
+                    </div>
+                    <div class="col-3">
+                        <select id="search" class="form-select" name="sort">
+                            <option value="author">Author</option>
+                            <option value="nameBlog">Title</option>
+                            <option value="id"> ID</option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <select class="form-select" name="dir">
+                            <option value="asc">Asc</option>
+                            <option value="desc">Desc</option>
+
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-outline-primary" type="submit" id="button-addon2">Sort</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div>
     <button type="button" class="btn btn-secondary">
         <i class="bi bi-sort-numeric-down">
@@ -127,21 +165,23 @@
 
         <button>
             <a th:if="${blogPage.hasPrevious()}"
-               th:href="@{/blog(page=${blogPage.number -1 })}">
+               th:href="@{/blog(page=${blogPage.number -1 }, key= ${keyword}) }">
                 <i class="bi bi-arrow-left-circle-fill"></i>
                 Previous
             </a>
         </button>
 
-        <span th:text="${blogPage.number +1}" style="color: white"> </span>
+        <span th:text="${blogPage.number +1}"> </span>
         /
-        <span th:text="${blogPage.totalPages}" style="color: white"></span>
+        <span th:text="${blogPage.totalPages}"></span>
         <button>
+
             <a th:if="${blogPage.hasNext()}"
-               th:href="@{/blog(page=${blogPage.number +1})}">
+               th:href="@{/blog(page=${blogPage.number +1}, key= ${keyword})}">
                 <i class="bi bi-arrow-right-circle-fill"></i>
                 Previous
             </a>
+
         </button>
     </div>
 </div>

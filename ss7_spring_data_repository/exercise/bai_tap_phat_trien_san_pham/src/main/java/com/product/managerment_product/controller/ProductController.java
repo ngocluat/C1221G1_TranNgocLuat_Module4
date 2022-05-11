@@ -4,6 +4,8 @@ package com.product.managerment_product.controller;
 import com.product.managerment_product.model.Product;
 import com.product.managerment_product.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ProductController {
@@ -21,8 +23,11 @@ public class ProductController {
     private IProductService iProductService;
 
     @GetMapping({"/", "/adg"})
-    public String goHome(Model model) {
-        model.addAttribute("product", iProductService.findAll());
+    public String goHome(Model model,@PageableDefault( value = 5    ) Pageable pageable,
+                         @RequestParam Optional<String> nameProductSeach ) {
+
+        String key = nameProductSeach.orElse("");
+        model.addAttribute("product", iProductService.seachingProduct(key,pageable));
         return "home";
     }
 
@@ -68,8 +73,8 @@ public class ProductController {
 
 
 //    @PostMapping("/searching")
-//    public String seaching(@RequestParam String nameProductSeach, Model model) {
-//        List<Product> productListResutl = iProductService.seachingProduct(nameProductSeach);
+//    public String seaching(@RequestParam String nameProductSeach, @PageableDefault(value = 5) Pageable pageable, Model model) {
+//        Page<Product> productListResutl = iProductService.seachingProduct(nameProductSeach, pageable);
 //        if (productListResutl == null) {
 //            model.addAttribute("message", "not found!! ");
 //        } else {

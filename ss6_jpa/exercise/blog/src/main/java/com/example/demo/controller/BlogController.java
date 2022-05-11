@@ -5,6 +5,7 @@ import com.example.demo.service.IBlogService;
 import com.example.demo.service.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -27,11 +28,25 @@ public class BlogController {
 
 
     @GetMapping({"/", "blog"})
-    //                                                                          , sort = "id" ,direction = Sort.Direction.DESC
-    public String goHome(Model model, @RequestParam Optional<String> name, @PageableDefault( value = 4    ) Pageable pageable) {
-       String keyword = name.orElse("") ;
-        model.addAttribute("blogPage", iBlogService.findAllByNameBlogContaining(keyword, pageable));
-        model.addAttribute("keyword",keyword);
+    //                       , sort = "id" ,direction = Sort.Direction.DESC
+    public String goHome(Model model,
+                         @RequestParam(defaultValue = "0") Integer page,
+                         @RequestParam(defaultValue = "4") Integer pageSize,
+                         @RequestParam(defaultValue = "author") String sort,
+                         @RequestParam(defaultValue = "asc") String dir,
+                         @RequestParam Optional<String> name) {
+        String key = name.orElse("");
+
+        Pageable pageable;
+
+        if (dir.equals("asc")) {
+            pageable = PageRequest.of(page, pageSize, Sort.by(sort).ascending());
+        } else {
+            pageable = PageRequest.of(page, pageSize, Sort.by(sort).descending());
+        }
+
+        model.addAttribute("blogPage", iBlogService.findAllByNameBlogContaining(key, pageable));
+        model.addAttribute("keyword",name);
         return "home";
     }
 

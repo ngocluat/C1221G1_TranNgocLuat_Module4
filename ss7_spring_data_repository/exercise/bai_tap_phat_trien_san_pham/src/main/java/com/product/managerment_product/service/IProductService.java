@@ -1,11 +1,13 @@
 package com.product.managerment_product.service;
 
 import com.product.managerment_product.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface IProductService {
-    List<Product> findAll();
+    Page<Product> findAll(Pageable pageable);
 
     void save(Product customer);
 
@@ -15,6 +17,6 @@ public interface IProductService {
 
     void remove(Product customer);
 
-//    List<Product> seachingProduct(String name);
+    Page<Product> seachingProduct(String name, Pageable pageable);
 
 }
