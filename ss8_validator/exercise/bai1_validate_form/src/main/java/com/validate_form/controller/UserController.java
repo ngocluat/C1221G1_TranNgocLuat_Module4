@@ -32,12 +32,12 @@ public class UserController {
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes,
                          Model model) {
+
         new UserDto().validate(userDto,bindingResult);
 
         if (bindingResult.hasFieldErrors()) {
             return "home";
         } else {
-
             User user = new User();
             BeanUtils.copyProperties(userDto, user);
             iUserService.save(user);

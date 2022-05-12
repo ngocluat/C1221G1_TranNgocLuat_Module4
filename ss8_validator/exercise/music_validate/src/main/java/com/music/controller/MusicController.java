@@ -1,11 +1,15 @@
 package com.music.controller;
 
 
+import com.music.dto.MusicDto;
 import com.music.model.Music;
 import com.music.service.IMusicService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,16 +26,24 @@ public class MusicController {
 
     @GetMapping("/show-create")
     public String showCreate(Model model) {
-        model.addAttribute("music", new Music());
+        model.addAttribute("musicDto", new MusicDto());
         return "create";
     }
 
     @PostMapping("/create")
-    public String creare(Music music, Model model) {
+    public String creare(@ModelAttribute @Validated MusicDto musicDto,
+                         BindingResult bindingResult ,Model model) {
 
-        iMusicService.save(music);
-        model.addAttribute("msg", "successfully add new");
-        return "create";
+        if (bindingResult.hasFieldErrors()){
+            return "create";
+        }else {
+            Music music1 = new Music();
+
+            BeanUtils.copyProperties(musicDto, music1);
+            iMusicService.save(music1);
+            model.addAttribute("msg", "successfully add new");
+            return "create";
+        }
     }
 
     @GetMapping("/{id}/delete")

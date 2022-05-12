@@ -13,12 +13,14 @@
 </p>
 
 <p th:text="${msg}"></p>
-<form class="mx-auto" style="width: 50%;" th:object="${music}" method="post" th:action="create">
+<form class="mx-auto" style="width: 50%;" th:object="${musicDto}" method="post" th:action="create">
     <!-- 2 column grid layout with text inputs for the first and last names -->
 
     <div class="row mb-4 mx-auto">
         <div class="col">
             <div class="form-outline">
+                <p style=" color: red" th:if="${#fields.hasErrors('nameMusic')}"
+                th:errors="*{nameMusic}"></p>
                 <input type="text" id="form6Example1" class="form-control" th:field="*{nameMusic}"/>
                 <label class="form-label" for="form6Example1">Tên bài hát</label>
             </div>
@@ -26,6 +28,9 @@
 
         <div class="col">
             <div class="form-outline">
+                <p style="color: red" th:if="${#fields.hasErrors('artist')}"
+                   th:errors="*{artist}"></p>
+
                 <input type="text" id="form6Example2" class="form-control" th:field="*{artist}"/>
                 <label class="form-label" for="form6Example2"> Nghệ sĩ thể hiện</label>
             </div>
@@ -34,6 +39,8 @@
 
     <!-- Text input -->
     <div class="form-outline mb-4">
+        <p style="color: red" th:if="${#fields.hasErrors('category')}"
+           th:errors="*{category}"></p>
         <input type="text" id="form6Example3" class="form-control" th:field="*{category}"/>
         <label class="form-label" for="form6Example3"> Thể loại nhạc</label>
     </div>
