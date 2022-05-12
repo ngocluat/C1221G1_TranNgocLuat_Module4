@@ -62,7 +62,7 @@ public class BlogController {
     public String createBlog(Blog blog, Model model, RedirectAttributes redirectAttributes) {
         iBlogService.save(blog);
         redirectAttributes.addFlashAttribute("msg", "successfully add new");
-        return "redirect:/showCreate";
+            return "redirect:/showCreate";
     }
 
     @GetMapping("/{id}/edit")

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="786395e9-0b9e-40a6-9573-ecd2678455d0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/java/com/validate_form/cofig/Validate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/java/com/validate_form/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/java/com/validate_form/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/java/com/validate_form/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/java/com/validate_form/repository/IUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/java/com/validate_form/service/IUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/java/com/validate_form/service/impl/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/resources/templates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/resources/templates/result.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/resources/templates/template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss8_validator/exercise/bai1_validate_form/src/main/resources/validate.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss2_spring_controller/practice/quan_ly_khach_hang/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/practice/quan_ly_khach_hang/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/manager_product.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/manager_music/controller/MusicController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/manager_music/model/Music.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/manager_music/repository/BaseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/manager_music/repository/ICrudMusicRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/manager_music/repository/impl/MusicRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/manager_music/service/IMusicService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/manager_music/service/impl/MusicService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/manager_product-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/hibernate.conf.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/war/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manager_music/controller/MusicController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manager_music/model/Music.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manager_music/repository/BaseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manager_music/repository/ICrudMusicRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manager_music/repository/impl/MusicRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manager_music/service/IMusicService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/manager_music/service/impl/MusicService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.conf.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/create.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/template.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../practice/New folder/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../practice/New folder/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../practice/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../practice/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/blog/src/main/java/com/example/demo/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss6_jpa/exercise/blog/src/main/java/com/example/demo/controller/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/blog/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss6_jpa/exercise/blog/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.gradle/6.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.gradle/6.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.gradle/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.gradle/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.gradle/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/create_app_blog/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/src/main/java/com/product/ProductManagermentApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss6_jpa/exercise/demo/src/test/java/com/product/product/ProductManagermentApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="28uVZb2fq4juiJo4pUSU8wYy8Nl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../manager_music" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.manager_music.model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\codeGYM\C1221G1-tr-n-lu-t\C1221G1_[TranNgocLuat]_Module4\ss5_thao_tac_csdl\exercise\manager_product\src\main\resources" />
+      <recent name="D:\codeGYM\C1221G1-tr-n-lu-t\C1221G1_[TranNgocLuat]_Module4\ss5_thao_tac_csdl\exercise\manager_product\src\main\java\com\manager_music\repository" />
+      <recent name="D:\codeGYM\C1221G1-tr-n-lu-t\C1221G1_[TranNgocLuat]_Module4\ss5_thao_tac_csdl\exercise\manager_product\src\main\webapp\WEB-INF" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="application_music" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="application_music" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.62" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.62" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="Gradle : org.example : manager_product-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_manager_product" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="55475" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : org.example : manager_product-1.0-SNAPSHOT.war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="786395e9-0b9e-40a6-9573-ecd2678455d0" name="Default Changelist" comment="" />
+      <created>1652066513692</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652066513692</updated>
+      <workItem from="1652066519196" duration="19461000" />
+      <workItem from="1652098078677" duration="2568000" />
+      <workItem from="1652109981404" duration="249000" />
+      <workItem from="1652112081339" duration="82000" />
+      <workItem from="1652173938313" duration="1637000" />
+      <workItem from="1652187289097" duration="25000" />
+      <workItem from="1652259878370" duration="336000" />
+      <workItem from="1652260267694" duration="130000" />
+      <workItem from="1652344083727" duration="49000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="540" y="191" key="#Assign_Data_Sources" timestamp="1652078289118">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="540" y="191" key="#Assign_Data_Sources/0.0.1280.689@0.0.1280.689" timestamp="1652078289118" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1652072264230">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.689@0.0.1280.689" timestamp="1652072264230" />
+    <state x="446" y="42" key="#com.intellij.ide.util.MemberChooser" timestamp="1652072318688">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="446" y="42" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1652072318688" />
+    <state x="76" y="261" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1652260330889">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="76" y="261" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.689@0.0.1280.689" timestamp="1652260330889" />
+    <state x="421" y="86" width="438" height="503" key="FileChooserDialogImpl" timestamp="1652344129933">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="421" y="86" width="438" height="503" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1652344129933" />
+    <state width="834" height="402" key="GridCell.Tab.0.bottom" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.0.center" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.0.left" timestamp="1652110229615">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1652110229615" />
+    <state width="834" height="402" key="GridCell.Tab.0.right" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.1.bottom" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.1.bottom/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.1.center" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.1.center/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.1.left" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.1.left/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.1.right" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.2.bottom" timestamp="1652110229617">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.2.bottom/0.0.1280.689@0.0.1280.689" timestamp="1652110229617" />
+    <state width="834" height="402" key="GridCell.Tab.2.center" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.2.center/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.2.left" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.2.left/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="834" height="402" key="GridCell.Tab.2.right" timestamp="1652110229616">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="834" height="402" key="GridCell.Tab.2.right/0.0.1280.689@0.0.1280.689" timestamp="1652110229616" />
+    <state width="845" height="67" key="GridCell.Tab.3.bottom" timestamp="1652089534979">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="845" height="67" key="GridCell.Tab.3.bottom/0.0.1280.689@0.0.1280.689" timestamp="1652089534979" />
+    <state width="845" height="67" key="GridCell.Tab.3.center" timestamp="1652089534979">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="845" height="67" key="GridCell.Tab.3.center/0.0.1280.689@0.0.1280.689" timestamp="1652089534979" />
+    <state width="845" height="67" key="GridCell.Tab.3.left" timestamp="1652089534979">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="845" height="67" key="GridCell.Tab.3.left/0.0.1280.689@0.0.1280.689" timestamp="1652089534979" />
+    <state width="845" height="67" key="GridCell.Tab.3.right" timestamp="1652089534979">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="845" height="67" key="GridCell.Tab.3.right/0.0.1280.689@0.0.1280.689" timestamp="1652089534979" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1652260018650">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1652260018650" />
+    <state x="90" y="0" key="new project wizard" timestamp="1652260164200">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="90" y="0" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1652260164200" />
+    <state x="141" y="0" key="spring file set editor" timestamp="1652066702516">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="141" y="0" key="spring file set editor/0.0.1280.689@0.0.1280.689" timestamp="1652066702516" />
+  </component>
+</project>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+
+</head>
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+
+<form th:action="@{/create}" th:object="${userDto}" method="post">
+
+    <form>
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <p style="color: red" th:if="${#fields.hasErrors('fistName')}"
+                       th:errors="*{fistName}"></p>
+                    <input type="text" id="form6Example1" class="form-control" th:field="*{fistName}"/>
+                    <label class="form-label" for="form6Example1">Firstname bắt buộc
+                        ký tự</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <p style="color: red" th:if="${#fields.hasErrors('lastName')}"
+                       th:errors="*{lastName}"></p>
+
+                    <input type="text" id="form6Example2" class="form-control" th:field="*{lastName}"/>
+                    <label class="form-label" for="form6Example2">lastname bắt buộc
+                        </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <p style="color: red" th:if="${#fields.hasErrors('phoneNumber')}"
+            th:errors="*{phoneNumber}"></p>
+
+            <input type="text" id="form6Example3" class="form-control" th:field="*{phoneNumber}"/>
+            <label class="form-label" for="form6Example3">Phonenumber đúng quy tắc của sđt</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <p style="color: red" th:if="${#fields.hasErrors('dayOfBirh')}"
+               th:errors="*{dayOfBirh}"></p>
+
+            <input type="date" id="form6Example4" class="form-control" th:field="*{dayOfBirh}"/>
+            <label class="form-label" for="form6Example4">Age >=18</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <p style="color: red" th:if="${#fields.hasErrors('email')}"
+               th:errors="*{email}"></p>
+
+            <input type="email" id="form6Example5" class="form-control" th:field="*{email}"/>
+            <label class="form-label" for="form6Example5">Email</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+    </form>
+
+
+</form>
+<th:block th:replace="~{template :: Footer}"></th:block>
+
+</body>
+</html>
