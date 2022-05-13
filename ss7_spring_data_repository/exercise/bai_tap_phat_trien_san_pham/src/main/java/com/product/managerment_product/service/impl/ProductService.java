@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class ProductService implements IProductService {
@@ -42,7 +44,12 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Page<Product> seachingProduct(String name , Pageable pageable) {
-        return iProductRepository.findAllByNameProductContaining(name, pageable);
+    public Page<Product> seachingProduct(String name, String description, Pageable pageable) {
+        return iProductRepository.findAllByNameProductContainingAndDescriptionContaining(name, description, pageable);
+    }
+
+    @Override
+    public List<String> getListProduvtCode() {
+        return iProductRepository.getCodeProduct();
     }
 }

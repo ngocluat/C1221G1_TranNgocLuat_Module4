@@ -20,6 +20,7 @@ public class UserController {
     @Autowired
     private IUserService iUserService;
 
+
     @GetMapping({"/", "form"})
     public String goHome(Model model) {
         model.addAttribute("userDto", new UserDto());
@@ -35,15 +36,17 @@ public class UserController {
 
         new UserDto().validate(userDto,bindingResult);
 
-        if (bindingResult.hasFieldErrors()) {
-            return "home";
-        } else {
-            User user = new User();
-            BeanUtils.copyProperties(userDto, user);
-            iUserService.save(user);
+            if (bindingResult.hasFieldErrors()) {
+                    return "home";
+            } else {
+                User user = new User();
+                BeanUtils.copyProperties(userDto, user);
+                iUserService.save(user);
 
-            return "result";
-        }
+                return "result";
+            }
+
+
 
     }
 }

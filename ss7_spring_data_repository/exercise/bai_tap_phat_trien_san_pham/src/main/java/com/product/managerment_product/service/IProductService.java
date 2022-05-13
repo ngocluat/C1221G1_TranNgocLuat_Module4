@@ -17,6 +17,8 @@ public interface IProductService {
 
     void remove(Product customer);
 
-    Page<Product> seachingProduct(String name, Pageable pageable);
+    Page<Product> seachingProduct(String name,String description ,Pageable pageable);
+
+    List<String> getListProduvtCode();
 
 }
