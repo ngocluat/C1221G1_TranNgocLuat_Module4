@@ -129,8 +129,8 @@ public class ProductDto implements Validator {
             errors.rejectValue("price", "price.small", "errors system");
 
         }
-        if (productDto.listProductCode.contains(productDto.productCode)){
-            errors.rejectValue("listProductCode", "product.code", "Trùng productCode");
+        if (productDto.getListProductCode().contains(productDto.getProductCode())){
+            errors.rejectValue("listProductCode", "product.code", " Duplicate productCode");
         }
     }
 }

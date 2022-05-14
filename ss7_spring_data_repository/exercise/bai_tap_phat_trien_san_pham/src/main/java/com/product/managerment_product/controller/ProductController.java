@@ -30,22 +30,20 @@ public class ProductController {
                          @RequestParam Optional<String> nameProductSeach,
                          @RequestParam Optional<String> description,
                          @RequestParam(defaultValue = "0") Integer page,
-                         @RequestParam(defaultValue = "4") Integer pageSize,
+                         @RequestParam(defaultValue = "20") Integer pageSize,
                          @RequestParam(defaultValue = "id") String sort,
                          @RequestParam(defaultValue = "asc") String dir) {
-
-        Pageable pageable1;
-
+        Pageable pageable;
         if (dir.equals("asc")) {
-            pageable1 = PageRequest.of(page, pageSize, Sort.by(sort).ascending());
+            pageable = PageRequest.of(page, pageSize, Sort.by(sort).ascending());
         } else {
-            pageable1 = PageRequest.of(page, pageSize, Sort.by(sort).descending());
+            pageable = PageRequest.of(page, pageSize, Sort.by(sort).descending());
         }
 
         String key = nameProductSeach.orElse("");
         String key2 = description.orElse("");
 
-        model.addAttribute("product", iProductService.seachingProduct(key, key2, pageable1));
+        model.addAttribute("product", iProductService.seachingProduct(key, key2, pageable));
         model.addAttribute("sort", sort);
         model.addAttribute("dir", dir);
         return "home";
@@ -88,7 +86,6 @@ public class ProductController {
        Product product= iProductService.findById(id);
         iProductService.remove(product);
         return "redirect:/";
-
     }
 
     @GetMapping("/{id}/edit")

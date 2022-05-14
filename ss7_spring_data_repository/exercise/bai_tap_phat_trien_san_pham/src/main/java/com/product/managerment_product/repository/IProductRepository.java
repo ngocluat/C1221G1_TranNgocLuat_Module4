@@ -14,7 +14,7 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
 
     Page<Product> findAllByNameProductContainingAndDescriptionContaining(String name, String description, Pageable pageable);
 
-    @Query(value = "select product_code  from  product_orm  ", nativeQuery = true)
+    @Query(value = "select product_code from  product_orm", nativeQuery = true)
     List<String> getCodeProduct();
 }
 
