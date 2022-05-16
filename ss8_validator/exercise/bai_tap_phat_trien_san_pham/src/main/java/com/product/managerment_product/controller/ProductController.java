@@ -33,6 +33,7 @@ public class ProductController {
                          @RequestParam(defaultValue = "20") Integer pageSize,
                          @RequestParam(defaultValue = "id") String sort,
                          @RequestParam(defaultValue = "asc") String dir) {
+
         Pageable pageable;
         if (dir.equals("asc")) {
             pageable = PageRequest.of(page, pageSize, Sort.by(sort).ascending());
@@ -60,6 +61,7 @@ public class ProductController {
     public String create(@Validated @ModelAttribute ProductDto productDto,
                          BindingResult bindingResult
             , RedirectAttributes redirectAttributes) {
+
         productDto.setListProductCode(iProductService.getListProduvtCode());
 
         new ProductDto().validate(productDto, bindingResult);

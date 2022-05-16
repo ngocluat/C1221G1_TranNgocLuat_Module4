@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+
+</head>
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+
+<form th:action="@{/update-customer}" method="post" th:object="${customerEdit}">
+    <input type="hidden" th:field="*{customerId}">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form6Example1" class="form-control" th:field="*{customerTypeId}"/>
+                <label class="form-label" for="form6Example1">Customer Type Id </label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form6Example2" class="form-control" th:field="*{customerCode}"/>
+                <label class="form-label" for="form6Example2">Customer Code </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="form6Example3" class="form-control" th:field="*{customerName}"/>
+        <label class="form-label" for="form6Example3">Customer Name </label>
+    </div>
+
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="form6Example4" class="form-control" th:field="*{customerBirthDay}"/>
+        <label class="form-label" for="form6Example4">Customer Birth day </label>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="form6Example5" class="form-control" th:field="*{customerGender}"/>
+        <label class="form-label" for="form6Example5">Customer Gender </label>
+    </div>
+
+    <!-- Number input -->
+    <div class="form-outline mb-4">
+        <input type="number" id="form6Example6" class="form-control" th:field="*{customerCMDD}"/>
+        <label class="form-label" for="form6Example6"> Số CMND </label>
+    </div>
+
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="form6Example14" class="form-control" th:field="*{customerPhone}"/>
+        <label class="form-label" for="form6Example14">Customer Phone </label>
+    </div>
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="form6Exampl24" class="form-control" th:field="*{customerEmail}"/>
+        <label class="form-label" for="form6Exampl24">Customer Email </label>
+    </div>
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="form6Example34" class="form-control" th:field="*{customerAddress}"/>
+        <label class="form-label" for="form6Example34">Customer Address </label>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+
+
+</form>
+<th:block th:replace="~{template :: Footer}"></th:block>
+
+</body>
+</html>

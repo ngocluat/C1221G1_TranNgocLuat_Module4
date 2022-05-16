@@ -18,7 +18,6 @@ public class Post {
     public Post(Long id, String namePost) {
         this.id = id;
         this.namePost = namePost;
-
     }
 
     public Post() {

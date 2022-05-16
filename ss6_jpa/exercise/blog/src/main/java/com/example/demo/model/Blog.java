@@ -1,12 +1,11 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
-import java.security.acl.LastOwnerException;
 
 @Entity
 public class Blog {
     @Id
-    @GeneratedValue( strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nameBlog;
     private String content;

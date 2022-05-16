@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p style=" color: chartreuse" th:text="${bookSuccess}"></p>
+
+<p style=" color: chartreuse" th:text="${message}"></p>
+
+<table>
+    <tr>
+        <th> ID Sách</th>
+        <th>
+            Tên Sách
+        </th>
+        <th>Mô Tả</th>
+        <th>Giá</th>
+        <th> Số Lượng</th>
+    </tr>
+    <tr th:each="item : ${book}">
+        <td th:text="${item.id}"></td>
+        <td>
+            <a th:href="@{/{id}/borrow(id=${item.getId()})}" th:text="${item.bookName}"></a>
+        </td>
+        <td th:text="${item.describeBook}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.quantity}"></td>
+    </tr>
+</table>
+
+
+</body>
+</html>

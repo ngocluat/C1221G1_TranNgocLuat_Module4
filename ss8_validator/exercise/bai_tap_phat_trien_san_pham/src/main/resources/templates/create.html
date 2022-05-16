@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="tamplate :: link_boostrap_js_jquery_icon_head">
+    </th:block>
+
+</head>
+<body class="mx-auto" style="width: 50%;">
+<p th:text="${msg}"></p>
+<a th:href="@{/}">back to home
+</a>
+<form th:action="@{/save-product}" th:object="${productDto}" method="post">
+
+
+    <input type="hidden" th:field="*{id}"/>
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <p style="color: red" th:if="${#fields.hasErrors('nameProduct')}"
+                   th:errors="*{nameProduct}"></p>
+                <input type="text" id="form3Example1" class="form-control" th:field="*{nameProduct}"/>
+                <label class="form-label" for="form3Example1">Tên Sản Phẩm </label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <p style="color: red" th:if="${#fields.hasErrors('price')}"
+                   th:errors="*{price}"></p>
+
+                <input type="text" id="form3Example2" class="form-control" th:field="*{price}"/>
+                <label class="form-label" for="form3Example2">Giá </label>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center">
+        <label> Mô Tả </label>
+        <label>
+            <input th:field="*{description}">
+        </label>
+    </div>
+
+    <div style="text-align: center">
+        <label> Ngày Sản Xuất </label>
+        <label>
+
+            <p style="color: red" th:if="${#fields.hasErrors('dayManufacturing')}"
+               th:errors="*{dayManufacturing}"></p>
+
+            <input type="date" th:field="*{dayManufacturing}">
+        </label>
+    </div>
+
+    <div style="text-align: center">
+        <label> Mã Sản Phảm </label>
+        <label>
+            <p style="color: red" th:if="${#fields.hasErrors('productCode')}"
+               th:errors="*{productCode}"></p>
+            <input type="text" th:field="*{productCode}">
+        </label>
+    </div>
+
+    <button type="submit"> Thêm Mới</button>
+</form>
+
+
+</body>
+</html>

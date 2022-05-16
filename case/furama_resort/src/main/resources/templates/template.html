@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:fragment="link_boostrap_js_jquery_icon_head">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+
+        <link rel="stylesheet" href="layout/styles/layout.css" type="text/css"/>
+        <script type="text/javascript" src="layout/scripts/jquery.min.js"></script>
+        <script type="text/javascript" src="layout/scripts/jquery.jcarousel.pack.js"></script>
+        <script type="text/javascript" src="layout/scripts/jquery.easing.1.3.js"></script>
+        <script type="text/javascript" src="layout/scripts/jquery.jcarousel.setup.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+              integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+              crossorigin="anonymous">
+    </th:block>
+</head>
+<body>
+
+<th:block th:fragment="Header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <img
+                            src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/62371531.jpg?k=fb1828d64f739b526944dcb487699e4625ad8799986e0e4ef5c2c930dcf39b6c&o=&hp=1"
+                            height="40"
+                            alt="MDB Logo"
+                            loading="lazy"
+                    />
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Employee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Projects</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+
+                <!-- Notifications -->
+                <div class="dropdown">
+                    <a
+                            class="text-reset me-3 dropdown-toggle hidden-arrow"
+                            href="#"
+                            id="navbarDropdownMenuLink"
+                            role="button"
+                            data-mdb-toggle="dropdown"
+                            aria-expanded="false"
+                    >
+                        <i class="fas fa-bell"></i>
+                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                    </a>
+                    <ul
+                            class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="navbarDropdownMenuLink"
+                    >
+                        <li>
+                            <a class="dropdown-item" href="#">Some news</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Another news</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Avatar -->
+                <div class="dropdown">
+                    <a
+                            class="dropdown-toggle d-flex align-items-center hidden-arrow"
+                            href="#"
+                            id="navbarDropdownMenuAvatar"
+                            role="button"
+                            data-mdb-toggle="dropdown"
+                            aria-expanded="false"
+                    >
+                        <img
+                                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                class="rounded-circle"
+                                height="25"
+                                alt="Black and White Portrait of a Man"
+                                loading="lazy"
+                        />
+                    </a>
+                    <ul
+                            class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="navbarDropdownMenuAvatar"
+                    >
+                        <li>
+                            <a class="dropdown-item" href="#">My profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Settings</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+</th:block>
+<th:block th:fragment="Footer">
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-facebook-f"></i
+                ></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-twitter"></i
+                ></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-google"></i
+                ></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-instagram"></i
+                ></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-linkedin-in"></i
+                ></a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+                ><i class="fab fa-github"></i
+                ></a>
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Form -->
+            <section class="">
+                <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-5 col-12">
+                            <!-- Email input -->
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="form5Example21" class="form-control"
+                                       placeholder="Search My Web"/>
+                                <label class="form-label" for="form5Example21">Email address</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-auto">
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-outline-light mb-4">
+                                Subscribe
+                            </button>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </form>
+            </section>
+            <!-- Section: Form -->
+
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                </p>
+            </section>
+            <!-- Section: Text -->
+
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase " style="color: aqua"> myself </h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white"> <i class="bi bi-facebook"></i>: Facebook</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-person-circle"></i>: Zalo</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-instagram"></i>: Instagram</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-google"></i>: Google</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase"><i class="bi bi-house-door-fill" style="color: burlywood"> Home </i>
+                        </h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-apple">: Apple</i></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-arrow-through-heart-fill">:
+                                    Love </i></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-badge-4k-fill">: HD</i></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-bank2">: Bank </i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase" style="color: brown"> Feel</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-emoji-angry-fill">: Angry </i></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-emoji-kiss-fill">: Kiss</i></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-emoji-expressionless-fill">:
+                                    Expressionless </i></a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-emoji-smile-fill">: Smile </i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase" style="color: white">Function</h5>
+
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-award-fill"></i> : Bward</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-balloon-fill"></i> : Balloon</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-calendar3-range-fill"></i> :
+                                    Calendar</a>
+                            </li>
+                            <li>
+                                <a href="#!" class="text-white"><i class="bi bi-chat-quote-fill"></i> : Chat</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-white" href="https://www.facebook.com/luat.tranngoc.94">tranngocluat.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+</th:block>
+<th:block th:fragment="Wanning">
+    <script>
+        console.log('%cDừng lại!', 'color: red; font-size: 50px; font-family: sans-serif; text-shadow: 1px 1px 5px #000;');
+        console.log('%c Hệ Thông Báo!   Nguy Hiểm Nếu Bạn Nhìn Thấy Source Code Của Trần Ngọc Luật', 'color: red; font-size: 25px; font-family: sans-serif; text-shadow: 1px 1px 5px #000;');
+        console.log('%cTruy cập https://www.facebook.com/luat.tranngoc.94 để biết thêm chi tiết .', 'color: #444; font-size: 25px; font-family: sans-serif;');
+    </script>
+</th:block>
+
+<th:block th:fragment="Script">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+            integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+            crossorigin="anonymous"></script>
+</th:block>
+</body>
+</html>
