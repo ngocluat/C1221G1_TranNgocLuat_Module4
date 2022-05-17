@@ -21,5 +21,7 @@ public interface IBorrowService {
 
     void remove(int id);
 
-    void delete(Integer id);
+    void delete(Long code);
+
+    BorrowBooks findByBookCode(Long bookCode);
 }

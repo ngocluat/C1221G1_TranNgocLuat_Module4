@@ -40,11 +40,16 @@
 
 </form>
 
+<div>
+
+    <a th:href="@{/borrowReturn11}">trả sách</a>
+</div>
 
 <form th:action="@{/returnBook}" method="post">
-    <input type="number" name="id">
+    <label>
+        nhập mã sách để trả
+        <input type="number" name="bookCode">
+    </label>
     <button type="submit">Trả sách</button>
-</form>
-
 </body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<p>
+    <a href="/shopping-cart">
+        <i class="bi bi-bag-dash-fill">  Your cart</i>
+      </a>
+</p>
+<h1>
+    <i class="bi bi-bag-heart"></i>
+</h1>
+
+<div class="row">
+    <div th:each="product:${products}" class="col-3">
+        <div class="card  " style="width: 100%">
+            <div class="card-body">
+                <img th:src="${product.imgPart}" class="card-img-top " style="height: 100%;width: 100%">
+                <h5 class="card-title" th:text="${product.name}"></h5>
+                Giá Giảm Còn :
+                <h6 class="card-subtitle mb-2 text-muted" th:text="${product.price}"></h6>
+                <button class="btn btn-outline-secondary">
+                    <a class="card-link" th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

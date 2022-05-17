@@ -55,4 +55,14 @@ public class BorrowBooks {
     public void setBook(Books book) {
         this.book = book;
     }
+
+
+    @Override
+    public String toString() {
+        return "BorrowBooks{" +
+                "id=" + id +
+                ", bookCode=" + bookCode +
+                ", book=" + book +
+                '}';
+    }
 }

@@ -35,12 +35,12 @@ public class BookController {
         return "borrow";
     }
 
-    @PostMapping("/borrowBook")
+    @PostMapping("/borrowReturn")
     public String borrowBook(Books book, Model model,
                              RedirectAttributes redirectAttributes,
                              @RequestParam Integer id) {
-        System.err.println(book);
         Books books = iBookService.findById(id);
+        System.err.println(book);
         iBookService.save(books);
 
         BorrowBooks borrowBooks = new BorrowBooks();
@@ -50,13 +50,15 @@ public class BookController {
         return "redirect:/";
     }
 
+
     @PostMapping("/returnBook")
-    public String returnBook(@RequestParam Integer id, RedirectAttributes redirectAttributes) {
-        BorrowBooks borrowBooks = this.iBorrowService.findById(id);
+    public String returnBook(@RequestParam Long bookCode, RedirectAttributes redirectAttributes) {
+        BorrowBooks borrowBooks = iBorrowService.findByBookCode(bookCode);
+
         iBookService.back(borrowBooks.getBook());
-        iBorrowService.delete(id);
-        redirectAttributes.addFlashAttribute("message", "Đã trả sách thành công");
-        return "redirect:/";
+        iBorrowService.delete(bookCode);
+        redirectAttributes.addFlashAttribute("success", "Bạn đã trả thành công!");
+        return "redirect:/book";
     }
 
 
@@ -64,7 +66,6 @@ public class BookController {
     public String errors() {
         return "errors";
     }
-
 
 
 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+</head>
+<body>
+<p>
+    <a href="/shop">Shop</a>
+</p>
+
+
+<form th:action="@{/shop}" th:object="${cart}" method="post">
+    <div style=" text-align: center">
+        <h3>Total Items: <span th:text="${cart.countItemQuantity()}"></span></h3>
+        <h3>Total Products: <span th:text="${cart.countProductQuantity()}"></span></h3>
+    </div>
+
+    <div class="row">
+        <div th:each="product: ${cart.products}">
+            <div class="card col" style="width: 18rem;">
+                <a th:href="@{/{id}/detail(id=${product.getKey().getId()})}">
+                    <img th:src="${product.getKey().imgPart}" class="card-img-top"
+                         alt="">
+                </a>
+
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${product.getKey().name}">Card title</h5>
+                    <span th:text="${product.getValue()}"></span>
+                    <br>
+                    <div>
+                        GIÁ TRên 1 Sản Phẩm
+                        <h6 class="badge badge-success rounded-pill d-inline" th:text="${product.getKey().price}"></h6>
+                    </div>
+                    <button type="button" class="btn btn-info">
+                        <a th:href="@{/reduction/__${product.getKey().id}__(action='show')}"
+                           th:text="${'-'}"></a>
+                    </button>
+                    <button type="button" class="btn btn-success">
+                        <a th:href="@{/add/__${product.getKey().id}__(action='show')}"
+                           th:text="${'+'}"></a>
+                    </button>
+                    <div>
+                        Tổng Tiền
+                        <p th:text="${cart.countTotalPayment()}"></p>
+                    </div>
+
+                    <button>
+                        <a th:href="@{/pay/${product.getKey().getId()}}"></a>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteModal"
+                            th:attr="onclick=|deleteProduct(${product.getKey().getId()},'${product.getKey().name}')|"
+                    >
+                        Delete
+                    </button>                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+<div>
+    <form th:action="@{/delete}" method="post">
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Xác Nhận </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="hidden" name="id" id="idDelete">
+                        <input type="hidden" name="actionCustomer" value="delete">
+                        <p style="color: red">Bạn có chắc muốn xóa <span id="nameDelete"></span> hay không</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    function deleteProduct(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").innerHTML = name;
+    }
+</script>
+

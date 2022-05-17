@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class BorrowService implements IBorrowService {
@@ -17,7 +16,7 @@ public class BorrowService implements IBorrowService {
 
     @Override
     public BorrowBooks findById(Integer id) {
-        return iBorrowRepository.findById(id).orElse(null);
+        return iBorrowRepository.findById(id).get();
     }
 
     @Override
@@ -57,7 +56,14 @@ public class BorrowService implements IBorrowService {
     }
 
     @Override
-    public void delete(Integer id) {
-        iBorrowRepository.deleteById(id);
+    public void delete(Long code) {
+        iBorrowRepository.deleteByBookCode(code);
     }
+
+    @Override
+    public BorrowBooks findByBookCode(Long bookCode) {
+        return iBorrowRepository.findByBookCode(bookCode);
+    }
+
+
 }
