@@ -25,7 +25,13 @@ public class ProductController {
     }
 
     @GetMapping({"/", "/shop"})
-    public ModelAndView showShop() {
+    public ModelAndView showShop(Model model,
+                                 @CookieValue(value = "idProduct", defaultValue = "-1") Long idProduct) {
+
+        if (idProduct != 1) {
+            model.addAttribute("history", productService.findById(idProduct));
+        }
+
         ModelAndView modelAndView = new ModelAndView("/shop");
         modelAndView.addObject("products", productService.findAll());
         return modelAndView;
@@ -74,16 +80,11 @@ public class ProductController {
         Optional<Product> productOptional = productService.findById(id);
 
         model.addAttribute("product", productOptional.get());
-        return "detail";
+        return "detail2";
     }
 
 
-    @PostMapping("/delete")
-    public String delete(@RequestParam Long id) {
-        Product product = productService.findById(id).get();
 
-        return "";
-    }
 
 
 }

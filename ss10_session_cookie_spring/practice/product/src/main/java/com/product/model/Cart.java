@@ -83,9 +83,16 @@ public class Cart {
     }
 
 
-    public void delete() {
+    public void removeProduct(Product product) {
+        if (checkItemInCart(product)) {
+            Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
+            if (itemEntry.getValue() < 0) {
+                products.remove(itemEntry.getKey(), itemEntry.getValue());
+            } else {
+                products.remove(itemEntry.getKey(), itemEntry.getValue());
+            }
 
-
+        }
     }
 
 }

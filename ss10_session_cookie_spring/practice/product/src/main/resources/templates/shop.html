@@ -34,8 +34,19 @@
                 </button>
             </div>
         </div>
+
+        <div th:if="${history}">
+            <div class="card" style="width: 18rem;">
+                <img th:src="${product.imgPart}" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text"> lịch sữ </p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
+
 
 </body>
 </html>

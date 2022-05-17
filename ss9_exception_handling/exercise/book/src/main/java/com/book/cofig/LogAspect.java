@@ -21,14 +21,14 @@ public class LogAspect {
 
     @Before("allMethodListPointCut()")
     public void beforeCallMethodList(JoinPoint joinPoint) {
-        System.err.println(" chuẩn bị chạy : " +
+        System.err.println(" Prepare to run method   : " +
                 joinPoint.getSignature().getName() +
-                "time : " + LocalDate.now());
+                " time : " + LocalDate.now());
     }
 
     @After("allMethodListPointCut()")
     public void afterCallMethodList(JoinPoint joinPoint) {
-        System.err.println(" cchỵ xong  : " +
+        System.err.println(" finished running  : " +
                 joinPoint.getSignature().getName() +
                 "time : " + LocalDate.now());
     }
@@ -36,14 +36,14 @@ public class LogAspect {
 
     @Before("allMethodCallPointCut()")
     public void beforeCallMethod(JoinPoint joinPoint) {
-        System.err.println(" chuẩn bị chạy : " +
+        System.err.println(" prepare to run method  : " +
                 joinPoint.getSignature().getName() +
                 "time : " + LocalDate.now());
     }
 
     @AfterReturning("allMethodCallPointCut()")
     public void afterCallMethod(JoinPoint joinPoint) {
-        System.err.println("  chạy xong  : " +
+        System.err.println("  finished running   : " +
                 joinPoint.getSignature().getName() +
                 " time : " + LocalDate.now());
     }

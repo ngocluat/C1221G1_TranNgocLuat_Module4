@@ -11,7 +11,7 @@
 <p>
     <a href="/shop">Shop</a>
 </p>
-
+<p th:text="${message}"></p>
 
 <form th:action="@{/shop}" th:object="${cart}" method="post">
     <div style=" text-align: center">
@@ -55,9 +55,15 @@
                             th:attr="onclick=|deleteProduct(${product.getKey().getId()},'${product.getKey().name}')|"
                     >
                         Delete
-                    </button>                </div>
-            </div>
+                    </button>
 
+                    <div>
+                        <button>
+                            <a th:href="@{{id}/delete(id=${product.getKey().getId()})}"> xóa đi 1 </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>
