@@ -8,16 +8,22 @@
 </head>
 <body>
 <th:block th:replace="~{template :: Header}"></th:block>
-<div>
+<div class="mx-auto" style=" width: 40%;">
 
 <form th:action="@{/create-customer}" method="post" th:object="${customer}">
     <input type="hidden" th:field="*{customerId}">
     <div class="row mb-4">
         <div class="col">
             <div class="form-outline">
-                <input type="text" id="form6Example1" class="form-control" th:field="*{customerTypeId}"/>
-                <label class="form-label" for="form6Example1">Customer Type Id </label>
-            </div>
+                <div>
+                    <select th:field="*{customerTypeId}">
+                        <option th:each="item : ${customerType}"
+                                th:value="${item.customerTypeId}"
+                                th:text="${item.customerTypeName}"></option>
+                    </select>
+                    <label class="form-label" for="form6Example3"> Customer Type  </label>
+                </div>
+      </div>
         </div>
         <div class="col">
             <div class="form-outline">

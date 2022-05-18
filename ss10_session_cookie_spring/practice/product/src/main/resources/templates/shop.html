@@ -10,15 +10,18 @@
             background-color: black;
         }
     </style>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+
 </head>
 <body>
-<p>
-    <a href="/shopping-cart">
-        <i class="bi bi-bag-dash-fill">  Your cart</i>
-      </a>
-</p>
+<th:block th:replace="~{template :: Header}"></th:block>
+
+
+
 <h1>
-    <i class="bi bi-bag-heart"></i>
+    <a href="/shopping-cart">
+        <i class="bi bi-bag-dash-fill"> Your cart</i>
+    </a>
 </h1>
 
 <div class="row">
@@ -29,24 +32,18 @@
                 <h5 class="card-title" th:text="${product.name}"></h5>
                 Giá Giảm Còn :
                 <h6 class="card-subtitle mb-2 text-muted" th:text="${product.price}"></h6>
-                <button class="btn btn-outline-secondary">
+                <button class="btn btn-success btn-rounded">
                     <a class="card-link" th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a>
+                </button>
+
+                <button class="btn btn-outline-info" >
+                    <a th:href="@{/buy/{id}(id=${product.id})}"> Mua Ngay </a>
                 </button>
             </div>
         </div>
-
-        <div th:if="${history}">
-            <div class="card" style="width: 18rem;">
-                <img th:src="${product.imgPart}" class="card-img-top" alt="">
-                <div class="card-body">
-                    <p class="card-text"> lịch sữ </p>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
-
+<th:block th:replace="~{template :: Footer}"></th:block>
 
 </body>
 </html>

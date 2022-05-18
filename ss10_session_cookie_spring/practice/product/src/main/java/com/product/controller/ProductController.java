@@ -16,6 +16,7 @@ import java.util.Optional;
 @Controller
 @SessionAttributes("cart")
 public class ProductController {
+
     @Autowired
     private IProductService productService;
 
@@ -80,7 +81,7 @@ public class ProductController {
         Optional<Product> productOptional = productService.findById(id);
 
         model.addAttribute("product", productOptional.get());
-        return "detail2";
+        return "detail";
     }
 
 

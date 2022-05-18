@@ -59,11 +59,22 @@
 
     <tr th:each="item : ${customer}">
         <td th:text="${item.customerId}"></td>
-        <td th:text="${item.customerTypeId}"></td>
+
+        <td >
+            <div th:each="type : ${customerType}">
+                <p th:if="${item.customerTypeId}==${type.customerTypeId}"
+                   th:text="${type.customerTypeName}">
+                </p>
+            </div>
+        </td>
+
         <td th:text="${item.customerCode}"></td>
         <td th:text="${item.customerName}"></td>
         <td th:text="${item.customerBirthDay}"></td>
-        <td th:text="${item.customerGender}"></td>
+        <td>
+            <p th:if="${item.customerGender} == 0"> Nữ</p>
+            <p th:if="${item.customerGender} == 1"> Nam</p>
+        </td>
         <td th:text="${item.customerCMDD}"></td>
         <td th:text="${item.customerPhone}"></td>
         <td th:text="${item.customerEmail}"></td>

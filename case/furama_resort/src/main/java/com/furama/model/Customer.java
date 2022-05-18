@@ -17,7 +17,9 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
+
     private Integer customerTypeId;
+
     private String customerCode;
     private String customerName;
     private String customerBirthDay;
@@ -123,5 +125,11 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
 
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
+    }
 }

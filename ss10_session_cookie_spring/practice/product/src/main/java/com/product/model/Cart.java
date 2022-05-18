@@ -55,8 +55,9 @@ public class Cart {
         } else {
             Map.Entry<Product, Integer> itemEntry = selectItemInCart(product);
             Integer newQuantity = itemEntry.getValue() - 1;
-            if (newQuantity < 0) {
-                newQuantity = 0;
+            if (newQuantity == 0) {
+                products.remove(itemEntry.getKey());
+
             }
             products.replace(itemEntry.getKey(), newQuantity);
         }

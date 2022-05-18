@@ -22,6 +22,14 @@ public class CustomerType {
         this.customerTypeName = customerTypeName;
     }
 
+    public List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public void setCustomerList(List<Customer> customerList) {
+        this.customerList = customerList;
+    }
+
     public Long getCustomerTypeId() {
         return customerTypeId;
     }
@@ -30,7 +38,7 @@ public class CustomerType {
         this.customerTypeId = customerTypeId;
     }
 
-    String getCustomerTypeName() {
+    public String getCustomerTypeName() {
         return customerTypeName;
     }
 

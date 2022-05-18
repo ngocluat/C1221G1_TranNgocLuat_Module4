@@ -41,7 +41,7 @@ public class LogAspect {
                 "time : " + LocalDate.now());
     }
 
-    @AfterReturning("allMethodCallPointCut()")
+    @AfterReturning("allMethodCallPointCut()")  
     public void afterCallMethod(JoinPoint joinPoint) {
         System.err.println("  finished running   : " +
                 joinPoint.getSignature().getName() +

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -51,8 +50,8 @@ public class BlogController {
     }
 
     @GetMapping("/showCreate")
-    public String showCreate(Model model) {
-        model.addAttribute("post", iPostService.findAll());
+    public String showCreate(Model model, Pageable pageable) {
+        model.addAttribute("post", iPostService.findAll(pageable));
         model.addAttribute("blogCreate", new Blog());
         return "create";
     }
@@ -66,8 +65,8 @@ public class BlogController {
     }
 
     @GetMapping("/{id}/edit")
-    public String showEdit(@PathVariable Long id, Model model) {
-        model.addAttribute("postEdit", iPostService.findAll());
+    public String showEdit(@PathVariable Long id, Model model, Pageable pageable) {
+        model.addAttribute("postEdit", iPostService.findAll(pageable));
         model.addAttribute("blog", iBlogService.findById(id));
         return "/edit";
     }
@@ -96,8 +95,8 @@ public class BlogController {
     }
 
     @GetMapping("/{id}/view")
-    public String view(@PathVariable Long id, Model model) {
-        model.addAttribute("postView", iPostService.findAll());
+    public String view(@PathVariable Long id, Model model, Pageable pageable) {
+        model.addAttribute("postView", iPostService.findAll(pageable));
         model.addAttribute("blog", iBlogService.findById(id));
         return "view";
     }

@@ -38,4 +38,10 @@ public class ShoppingCartController {
         return "redirect:/shopping-cart";
 
     }
+
+
+    @GetMapping("/buy/{id}")
+    public String buy(@PathVariable Long id) {
+        return "buy";
+    }
 }

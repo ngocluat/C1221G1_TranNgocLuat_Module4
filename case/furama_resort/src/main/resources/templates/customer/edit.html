@@ -8,17 +8,17 @@
 </head>
 <body>
 <th:block th:replace="~{template :: Header}"></th:block>
-
-<form th:action="@{/update-customer}" method="post" th:object="${customerEdit}">
-    <input type="hidden" th:field="*{customerId}">
-    <div class="row mb-4">
-        <div class="col">
-            <div class="form-outline">
-                <input type="text" id="form6Example1" class="form-control" th:field="*{customerTypeId}"/>
-                <label class="form-label" for="form6Example1">Customer Type Id </label>
+<div class="mx-auto" style="width: 40%;">
+    <form th:action="@{/update-customer}" method="post" th:object="${customerEdit}">
+        <input type="hidden" th:field="*{customerId}">
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="form6Example1" class="form-control" th:field="*{customerTypeId}"/>
+                    <label class="form-label" for="form6Example1">Customer Type Id </label>
+                </div>
             </div>
-        </div>
-        <div class="col">
+            <div class="col">
             <div class="form-outline">
                 <input type="text" id="form6Example2" class="form-control" th:field="*{customerCode}"/>
                 <label class="form-label" for="form6Example2">Customer Code </label>
@@ -39,10 +39,14 @@
     </div>
 
     <!-- Email input -->
-    <div class="form-outline mb-4">
-        <input type="text" id="form6Example5" class="form-control" th:field="*{customerGender}"/>
-        <label class="form-label" for="form6Example5">Customer Gender </label>
-    </div>
+        <div class="form-outline mb-4">
+            <!--        <input type="text" id="form6Example5" class="form-control" th:field="*{customerGender}"/>-->
+            <select th:field="*{customerGender}">
+                <option th:value="1"> Nam</option>
+                <option th:value="0"> Nữ</option>
+            </select>
+            <label class="form-label">Customer Gender </label>
+        </div>
 
     <!-- Number input -->
     <div class="form-outline mb-4">
@@ -61,17 +65,18 @@
         <label class="form-label" for="form6Exampl24">Customer Email </label>
     </div>
     <!-- Text input -->
-    <div class="form-outline mb-4">
-        <input type="text" id="form6Example34" class="form-control" th:field="*{customerAddress}"/>
-        <label class="form-label" for="form6Example34">Customer Address </label>
-    </div>
+        <div class="form-outline mb-4">
+            <input type="text" id="form6Example34" class="form-control" th:field="*{customerAddress}"/>
+            <label class="form-label" for="form6Example34">Customer Address </label>
+        </div>
 
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
 
 
-</form>
+    </form>
+</div>
+
 <th:block th:replace="~{template :: Footer}"></th:block>
-
 </body>
 </html>
