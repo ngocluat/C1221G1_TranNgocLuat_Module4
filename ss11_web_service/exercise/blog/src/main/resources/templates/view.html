@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+</head>
+<body>
+<p style="text-align: center">
+    <a th:href="@{/}" > Back to Home </a>
+</p>
+
+<form class="mx-auto" style="width: 50%;" th:action="@{/update}" method="post" th:object="${blog}">
+    <div class="row mb-4">
+        <div class="col">
+            <div>
+                <label>
+                    Tên Blog :
+                    <p id="form6Example1" th:text="*{nameBlog}"></p>
+                </label>
+            </div>
+        </div>
+        <div class="col">
+            <div>
+                <label>Nội Dung :
+                    <p id="form6Example2" th:text="*{content}"></p>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <label>Tác Giả :
+            <p id="form6Example3" th:text="*{author}"></p>
+        </label>
+    </div>
+
+    <div>
+        Bài Viết
+        <h5 th:text="*{post.namePost}"></h5>
+    </div>
+
+
+    <div style="text-align: center">
+        <p style="color: red">chưa phát triển bài viết cho lắm  </p>
+    </div>
+
+
+
+</form>
+</body>
+</html>
