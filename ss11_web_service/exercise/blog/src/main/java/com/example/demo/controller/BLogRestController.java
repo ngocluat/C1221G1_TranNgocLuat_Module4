@@ -43,7 +43,7 @@ public class BLogRestController {
     // Xem danh sách các bài viết.
     //http://localhost:8080/rest-post/list-blog
     @GetMapping("list-blog")
-    public ResponseEntity<Page<Blog>> getLisstBlog(@PageableDefault(value = 4) Pageable pageable,
+    public ResponseEntity<Page<Blog>> getLisstBlog( Pageable pageable,
                                                    @RequestParam Optional<String> name,
                                                    @RequestParam Optional<String> author) {
         String key1 = name.orElse("");
