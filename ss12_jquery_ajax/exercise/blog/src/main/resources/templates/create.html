@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+
+
+</head>
+<body>
+<p >
+    <a th:href="@{/}"> Back to Home </a>
+</p>
+
+
+<p th:text="${msg}" style=" color: chartreuse"></p>
+<form class="mx-auto" style="width: 50%;" th:action="@{/create}" method="post" th:object="${blogCreate}">
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form6Example1" class="form-control" th:field="*{nameBlog}"/>
+                <label class="form-label" for="form6Example1">Tên Blog </label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <input type="text" id="form6Example2" class="form-control" th:field="*{content}"/>
+                <label class="form-label" for="form6Example2">Nội Dung</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="form6Example3" class="form-control" th:field="*{author}"/>
+        <label class="form-label" for="form6Example3">Tác Giả</label>
+    </div>
+
+    <div>
+        <select th:field="*{post}">
+            <option th:each="item: ${post}"
+                    th:value="${item.id}"
+                    th:text="${item.namePost}"></option>
+        </select>
+        <label class="form-label" for="form6Example3">Bài Viết </label>
+    </div>
+
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+</form>
+</body>
+</html>

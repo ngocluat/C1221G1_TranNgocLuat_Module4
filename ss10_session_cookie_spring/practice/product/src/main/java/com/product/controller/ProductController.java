@@ -28,7 +28,6 @@ public class ProductController {
     @GetMapping({"/", "/shop"})
     public ModelAndView showShop(Model model,
                                  @CookieValue(value = "idProduct", defaultValue = "-1") Long idProduct) {
-
         if (idProduct != 1) {
             model.addAttribute("history", productService.findById(idProduct));
         }
