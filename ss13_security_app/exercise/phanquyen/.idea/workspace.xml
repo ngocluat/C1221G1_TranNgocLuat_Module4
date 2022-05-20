@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ffd79bfe-4132-42d1-b732-aff7ad25c43f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../ss2_spring_controller/practice/quan_ly_khach_hang/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss2_spring_controller/practice/quan_ly_khach_hang/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5_thao_tac_csdl/practice/New folder/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss5_thao_tac_csdl/practice/New folder/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5_thao_tac_csdl/practice/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss5_thao_tac_csdl/practice/customer-management" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss9_exception_handling/practice/customer-management" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss9_exception_handling/practice/customer-management" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="29OBU1xPZBc0JVGCyhjgZtQckGQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/athentication" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\codeGYM\C1221G1-tr-n-lu-t\C1221G1_[TranNgocLuat]_Module4\ss13_security_app\exercise\phanquyen\src\main\java\com\athentication" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="SpringAthenticationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-athentication.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.athentication.SpringAthenticationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ffd79bfe-4132-42d1-b732-aff7ad25c43f" name="Default Changelist" comment="" />
+      <created>1652974263216</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652974263216</updated>
+      <workItem from="1652974268832" duration="645000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

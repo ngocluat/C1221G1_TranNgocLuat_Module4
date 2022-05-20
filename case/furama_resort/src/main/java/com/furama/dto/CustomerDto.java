@@ -1,24 +1,9 @@
-package com.furama.model;
+package com.furama.dto;
 
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-@Table(name = "customer")
-public class Customer {
-    @ManyToOne
-    @JoinColumn(name = "idCustomerType", referencedColumnName = "customerTypeId")
-    CustomerType customerType;
-
-    @OneToMany(mappedBy = "idCustomer")
-    List<Contract> idContracts;
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerDto {
     private Long customerId;
 
-
+    private Integer customerTypeId;
 
     private String customerCode;
     private String customerName;
@@ -29,12 +14,12 @@ public class Customer {
     private String customerEmail;
     private String customerAddress;
 
-    public Customer() {
+
+    public CustomerDto() {
     }
 
-
-    public Customer( String customerCode, String customerName, String customerBirthDay, Integer customerGender, String customerCMDD, String customerPhone, String customerEmail, String customerAddress) {
-
+    public CustomerDto(Integer customerTypeId, String customerCode, String customerName, String customerBirthDay, Integer customerGender, String customerCMDD, String customerPhone, String customerEmail, String customerAddress) {
+        this.customerTypeId = customerTypeId;
         this.customerCode = customerCode;
         this.customerName = customerName;
         this.customerBirthDay = customerBirthDay;
@@ -51,6 +36,14 @@ public class Customer {
 
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
+    }
+
+    public Integer getCustomerTypeId() {
+        return customerTypeId;
+    }
+
+    public void setCustomerTypeId(Integer customerTypeId) {
+        this.customerTypeId = customerTypeId;
     }
 
     public String getCustomerCode() {
@@ -117,11 +110,19 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-    public CustomerType getCustomerType() {
-        return customerType;
-    }
-
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType;
+    @Override
+    public String toString() {
+        return "CustomerDto{" +
+                "customerId=" + customerId +
+                ", customerTypeId=" + customerTypeId +
+                ", customerCode='" + customerCode + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", customerBirthDay='" + customerBirthDay + '\'' +
+                ", customerGender=" + customerGender +
+                ", customerCMDD='" + customerCMDD + '\'' +
+                ", customerPhone='" + customerPhone + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerAddress='" + customerAddress + '\'' +
+                '}';
     }
 }

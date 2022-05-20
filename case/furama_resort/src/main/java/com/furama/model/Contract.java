@@ -27,22 +27,21 @@ public class Contract {
     private String contractEndDay;
     private Double contractDeposit;
     private Double contractToTalMoney;
-    private Long employeeId;
-    private Long customerId;
-    private Long serviceId;
 
 
     public Contract() {
     }
 
-    public Contract(String contractStartDay, String contractEndDay, Double contractDeposit, Double contractToTalMoney, Long employeeId, Long customerId, Long serviceId) {
+    public Contract(Employee idEmployee, Customer idCustomer, Service idService, List<ContractDetail> contractDetails, Long contractId, String contractStartDay, String contractEndDay, Double contractDeposit, Double contractToTalMoney) {
+        this.idEmployee = idEmployee;
+        this.idCustomer = idCustomer;
+        this.idService = idService;
+        this.contractDetails = contractDetails;
+        this.contractId = contractId;
         this.contractStartDay = contractStartDay;
         this.contractEndDay = contractEndDay;
         this.contractDeposit = contractDeposit;
         this.contractToTalMoney = contractToTalMoney;
-        this.employeeId = employeeId;
-        this.customerId = customerId;
-        this.serviceId = serviceId;
     }
 
     public Long getContractId() {
@@ -85,27 +84,35 @@ public class Contract {
         this.contractToTalMoney = contractToTalMoney;
     }
 
-    public Long getEmployeeId() {
-        return employeeId;
+    public Employee getIdEmployee() {
+        return idEmployee;
     }
 
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
+    public void setIdEmployee(Employee idEmployee) {
+        this.idEmployee = idEmployee;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Customer getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setIdCustomer(Customer idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
-    public Long getServiceId() {
-        return serviceId;
+    public Service getIdService() {
+        return idService;
     }
 
-    public void setServiceId(Long serviceId) {
-        this.serviceId = serviceId;
+    public void setIdService(Service idService) {
+        this.idService = idService;
+    }
+
+    public List<ContractDetail> getContractDetails() {
+        return contractDetails;
+    }
+
+    public void setContractDetails(List<ContractDetail> contractDetails) {
+        this.contractDetails = contractDetails;
     }
 }

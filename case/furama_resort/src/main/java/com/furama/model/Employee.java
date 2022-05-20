@@ -8,6 +8,7 @@ public class Employee {
     @ManyToOne
     @JoinColumn(referencedColumnName = "positionId")
     Positon idPositon;
+
     @ManyToOne
     @JoinColumn(referencedColumnName = "educationDegreeId")
     EducationDegree idEducationDegree;
@@ -29,9 +30,6 @@ public class Employee {
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
-    private Long positionId;
-    private Long educationDegreeId;
-    private Long divisionId;
     private String userName;
 
 
@@ -47,9 +45,7 @@ public class Employee {
         this.employeePhone = employeePhone;
         this.employeeEmail = employeeEmail;
         this.employeeAddress = employeeAddress;
-        this.positionId = positionId;
-        this.educationDegreeId = educationDegreeId;
-        this.divisionId = divisionId;
+
         this.userName = userName;
     }
 
@@ -115,30 +111,6 @@ public class Employee {
 
     public void setEmployeeAddress(String employeeAddress) {
         this.employeeAddress = employeeAddress;
-    }
-
-    public Long getPositionId() {
-        return positionId;
-    }
-
-    public void setPositionId(Long positionId) {
-        this.positionId = positionId;
-    }
-
-    public Long getEducationDegreeId() {
-        return educationDegreeId;
-    }
-
-    public void setEducationDegreeId(Long educationDegreeId) {
-        this.educationDegreeId = educationDegreeId;
-    }
-
-    public Long getDivisionId() {
-        return divisionId;
-    }
-
-    public void setDivisionId(Long divisionId) {
-        this.divisionId = divisionId;
     }
 
     public String getUserName() {
