@@ -1,4 +1,4 @@
-package com.example.cofig;
+package com.test.cofig;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

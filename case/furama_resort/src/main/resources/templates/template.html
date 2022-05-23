@@ -19,6 +19,7 @@
               integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
               crossorigin="anonymous">
     </th:block>
+
 </head>
 <body>
 
@@ -40,7 +41,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
                     <img
-                            src="https://cf.bstatic.com/xdata/images/hotel/max1280x900/62371531.jpg?k=fb1828d64f739b526944dcb487699e4625ad8799986e0e4ef5c2c930dcf39b6c&o=&hp=1"
+                            src="https://i.pinimg.com/originals/c4/93/69/c493696c68f79d4213baf47e6b8c1b09.jpg"
                             height="40"
                             alt="MDB Logo"
                             loading="lazy"
@@ -52,10 +53,10 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Customer</a>
+                        <a class="nav-link" th:href="@{/customer}">Customer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Employee</a>
+                        <a class="nav-link" th:href="@{/employee}">Employee</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Service</a>
@@ -354,5 +355,7 @@
             integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
             crossorigin="anonymous"></script>
 </th:block>
+
+
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.furama.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,6 +13,8 @@ public class Contract {
 
     @ManyToOne
     @JoinColumn(referencedColumnName = "customerId")
+    // xóa
+    @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     Customer idCustomer;
 
     @ManyToOne

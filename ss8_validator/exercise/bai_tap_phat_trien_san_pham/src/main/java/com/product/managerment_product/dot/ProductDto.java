@@ -30,7 +30,7 @@ public class ProductDto implements Validator {
 
     Double price;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+        @DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotEmpty(message = "is empty ")
     @Column(columnDefinition = "DATE")
     String dayManufacturing;

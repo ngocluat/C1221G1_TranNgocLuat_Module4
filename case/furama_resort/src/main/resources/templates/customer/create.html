@@ -10,23 +10,28 @@
 <th:block th:replace="~{template :: Header}"></th:block>
 <div class="mx-auto" style=" width: 40%;">
 
-<form th:action="@{/create-customer}" method="post" th:object="${customer}">
+<form th:action="@{/create-customer}" method="post" th:object="${customerDto}">
     <input type="hidden" th:field="*{customerId}">
     <div class="row mb-4">
         <div class="col">
             <div class="form-outline">
                 <div>
-                    <select th:field="*{customerTypeId}">
-                        <option th:each="item : ${customerType}"
-                                th:value="${item.customerTypeId}"
-                                th:text="${item.customerTypeName}"></option>
-                    </select>
+                    <label>
+                        <select th:field="*{customerType}">
+                            <option th:each="item : ${customerType}"
+                                    th:value="${item.customerTypeId}"
+                                    th:text="${item.customerTypeName}">
+                            </option>
+                        </select>
+                    </label>
                     <label class="form-label" for="form6Example3"> Customer Type  </label>
                 </div>
       </div>
         </div>
         <div class="col">
             <div class="form-outline">
+                <p style="color: red" th:if="${#fields.hasErrors('customerCode')}"
+                   th:errors="*{customerCode}"></p>
                 <input type="text" id="form6Example2" class="form-control" th:field="*{customerCode}"/>
                 <label class="form-label" for="form6Example2">Customer Code </label>
             </div>
@@ -35,35 +40,51 @@
 
     <!-- Text input -->
     <div class="form-outline mb-4">
+
+        <p style="color: red" th:if="${#fields.hasErrors('customerName')}"
+           th:errors="*{customerName}"></p>
         <input type="text" id="form6Example3" class="form-control" th:field="*{customerName}"/>
         <label class="form-label" for="form6Example3">Customer Name </label>
     </div>
 
     <!-- Text input -->
     <div class="form-outline mb-4">
-        <input type="text" id="form6Example4" class="form-control" th:field="*{customerBirthDay}"/>
+        <p style="color: red" th:if="${#fields.hasErrors('customerBirthDay')}"
+           th:errors="*{customerBirthDay}"></p>
+        <input type="date" id="form6Example4" class="form-control" th:field="*{customerBirthDay}"/>
         <label class="form-label" for="form6Example4">Customer Birth day </label>
     </div>
 
     <!-- Email input -->
     <div class="form-outline mb-4">
-        <input type="text" id="form6Example5" class="form-control" th:field="*{customerGender}"/>
-        <label class="form-label" for="form6Example5">Customer Gender </label>
+<!--        <input type="text" id="form6Example5" class="form-control" th:field="*{customerGender}"/>-->
+       <select  th:field="*{customerGender}">
+           <option th:value="1" th:text="Nam"></option>
+           <option th:value="0" th:text="Nữ"></option>
+       </select>
+
+        <label class="form-label">Customer Gender </label>
     </div>
 
     <!-- Number input -->
     <div class="form-outline mb-4">
+        <p style="color: red" th:if="${#fields.hasErrors('customerCMDD')}"
+           th:errors="*{customerCMDD}"></p>
         <input type="number" id="form6Example6" class="form-control" th:field="*{customerCMDD}"/>
         <label class="form-label" for="form6Example6"> Số CMND </label>
     </div>
 
     <!-- Text input -->
     <div class="form-outline mb-4">
+        <p style="color: red" th:if="${#fields.hasErrors('customerPhone')}"
+           th:errors="*{customerPhone}"></p>
         <input type="text" id="form6Example14" class="form-control" th:field="*{customerPhone}"/>
         <label class="form-label" for="form6Example14">Customer Phone </label>
     </div>
     <!-- Text input -->
     <div class="form-outline mb-4">
+        <p style="color: red" th:if="${#fields.hasErrors('customerEmail')}"
+           th:errors="*{customerEmail}"></p>
         <input type="text" id="form6Exampl24" class="form-control" th:field="*{customerEmail}"/>
         <label class="form-label" for="form6Exampl24">Customer Email </label>
     </div>

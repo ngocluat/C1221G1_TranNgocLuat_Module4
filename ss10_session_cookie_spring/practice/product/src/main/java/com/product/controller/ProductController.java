@@ -25,6 +25,7 @@ public class ProductController {
         return new Cart();
     }
 
+
     @GetMapping({"/", "/shop"})
     public ModelAndView showShop(Model model,
                                  @CookieValue(value = "idProduct", defaultValue = "-1") Long idProduct) {
@@ -39,15 +40,18 @@ public class ProductController {
 
 
     @GetMapping("/add/{id}")
-    public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
+    public String addToCart(@PathVariable Long id,
+                            @ModelAttribute Cart cart,
+                            @RequestParam("action") String action) {
         Optional<Product> productOptional = productService.findById(id);
+
         if (!productOptional.isPresent()) {
             return "detail";
         }
 
         if (action.equals("show")) {
             cart.addProduct(productOptional.get());
-            return "redirect:/shopping-cart";
+                    return "redirect:/shopping-cart";
         }
         cart.addProduct(productOptional.get());
         return "redirect:/shop";
@@ -82,9 +86,6 @@ public class ProductController {
         model.addAttribute("product", productOptional.get());
         return "detail";
     }
-
-
-
 
 
 }

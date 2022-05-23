@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: rgba(255, 144, 0, 0.16);
+        }
+
+        .big {
+            font-size: 1.2em;
+        }
+
+        /* Custom dropdown */
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 10px; /* demo only */
+        }
+
+        .custom-dropdown select {
+            background-color: #1abc9c;
+            color: #fff;
+            font-size: inherit;
+            padding: .5em;
+            padding-right: 2.5em;
+            border: 0;
+            margin: 0;
+            border-radius: 3px;
+            text-indent: 0.01px;
+            text-overflow: '';
+            -webkit-appearance: button; /* hide default arrow in chrome OSX */
+        }
+
+        .custom-dropdown::before,
+        .custom-dropdown::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .custom-dropdown::after { /*  Custom dropdown arrow */
+            content: "\25BC";
+            height: 1em;
+            font-size: .625em;
+            line-height: 1;
+            right: 1.2em;
+            top: 50%;
+            margin-top: -.5em;
+        }
+
+        .custom-dropdown::before { /*  Custom dropdown arrow cover */
+            width: 2em;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .custom-dropdown select[disabled] {
+            color: rgba(0, 0, 0, .3);
+        }
+
+        .custom-dropdown select[disabled]::after {
+            color: rgba(0, 0, 0, .1);
+        }
+
+        .custom-dropdown::before {
+            background-color: rgba(0, 0, 0, .15);
+        }
+
+        .custom-dropdown::after {
+            color: rgba(0, 0, 0, .4);
+        }
+    </style>
+
+</head>
+
+<body>
+
+<th:block th:replace="~{template :: Header}"></th:block>
+
+
+<div class="container">
+
+    <form class="well form-horizontal" th:action="@{/create}" th:object="${employeeDto}" method="post"
+          id="contact_form">
+
+        <!-- Form Name -->
+        <legend>Employee Us Today!</legend>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Name Employee </label>
+            <div class="col-md-4 inputGroupContainer">
+                <p style=" color: red" th:if="${#fields.hasErrors('employeeName')}"
+                   th:errors="*{employeeName}"></p>
+                <div class="input-group">
+
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input th:field="*{employeeName}" name="first_name" placeholder="First Name" class="form-control"
+                           type="text">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Employee Code </label>
+            <div class="col-md-4 inputGroupContainer">
+                <p style=" color: red" th:if="${#fields.hasErrors('employeeCode')}"
+                   th:errors="*{employeeCode}"></p>
+                <div class="input-group">
+
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input th:field="*{employeeCode}" name="last_name" placeholder="Last Name" class="form-control"
+                           type="text">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">E-Mail</label>
+            <div class="col-md-4 inputGroupContainer">
+                <p style="color: red" th:if="${#fields.hasErrors('employeeEmail')}"
+                   th:errors="*{employeeEmail}"></p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input th:field="*{employeeEmail}" name="email" placeholder="E-Mail Address" class="form-control"
+                           type="text">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Text input-->
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Phone #</label>
+            <div class="col-md-4 inputGroupContainer">
+                <p style=" color: red" th:if="${#fields.hasErrors('employeePhone')}"
+                   th:errors="*{employeePhone}"></p>
+                <div class="input-group">
+
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                    <input th:field="*{employeePhone}" name="phone" placeholder="(845)555-1212" class="form-control"
+                           type="text">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+            <label class="col-md-4 control-label">Address</label>
+            <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input th:field="*{employeeAddress}" name="address" placeholder="Address" class="form-control"
+                           type="text">
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Số Chứng Minh Nhân Dân</label>
+            <div class="col-md-4 inputGroupContainer">
+                <p style=" color: red" th:if="${#fields.hasErrors('employeeCMND')}"
+                   th:errors="*{employeeCMND}"></p>
+                <div class="input-group">
+
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input th:field="*{employeeCMND}" name="city" placeholder="city" class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+        <!-- Text input-->
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Lương </label>
+            <div class="col-md-4 inputGroupContainer">
+                <p style=" color: red" th:if="${#fields.hasErrors('employeeSalary')}"
+                   th:errors="*{employeeSalary}"></p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input th:field="*{employeeSalary}" name="zip" placeholder=" Lương " class="form-control"
+                           type="text">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label"> birthday </label>
+            <div class="col-md-4 inputGroupContainer">
+                <p style=" color: red" th:if="${#fields.hasErrors('employeeBirthDay')}"
+                   th:errors="*{employeeBirthDay}"></p>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                    <input th:field="*{employeeBirthDay}" name="city" placeholder="city" class="form-control"
+                           type="date">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Chức Vụ
+
+                <label>
+                    <select th:field="*{idPositon}" class="custom-dropdown big">
+                        <option th:each="pst : ${position}"
+                                th:value="${pst.positionId}"
+                                th:text="${pst.positionName}">
+                        </option>
+                    </select>
+                </label>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Bộ Phận
+                <label>
+                    <select th:field="*{idDivision}" class="custom-dropdown big">
+                        <option th:each="dvs : ${division}"
+                                th:value="${dvs.divisionId}"
+                                th:text="${dvs.divisionName}">
+                        </option>
+                    </select>
+                </label>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Băng Cấp
+                <label>
+                    <select th:field="*{idEducationDegree}" class="custom-dropdown big">
+                        <option th:each="edct : ${education}"
+                                th:value="${edct.educationDegreeId}"
+                                th:text="${edct.educationDegreeName}">
+                        </option>
+                    </select>
+                </label>
+            </label>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-warning">Send <span class="glyphicon glyphicon-send"></span>
+                </button>
+            </div>
+        </div>
+
+
+        <div></div>
+        <div></div>
+    </form>
+</div>
+<th:block th:replace="~{template :: Footer}"></th:block>
+</body>
+</html>

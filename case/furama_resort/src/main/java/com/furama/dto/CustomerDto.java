@@ -1,34 +1,52 @@
 package com.furama.dto;
 
-public class CustomerDto {
+import com.furama.model.CustomerType;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+import javax.persistence.Column;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
+public class CustomerDto implements Validator {
+
     private Long customerId;
 
-    private Integer customerTypeId;
+    private CustomerType customerType;
 
+
+    @Pattern(regexp = "^KH\\-[0-9]{0,4}$")
+    @NotEmpty(message = "it's not empty ")
     private String customerCode;
+
+    @NotEmpty(message = "name customer in not empty")
     private String customerName;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @Column(columnDefinition = "DATE")
+    @NotEmpty(message = "it's not empty ")
     private String customerBirthDay;
+
     private Integer customerGender;
+
+    @Pattern(regexp = "^[0-9]{9}$", message = "it not number CMND vietNam, retry ")
+    @NotEmpty(message = "it's not empty ")
     private String customerCMDD;
+
+    @Pattern(regexp = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$", message = "phone Malformed  ")
     private String customerPhone;
+
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "email not regular meeting")
+    @NotEmpty(message = "it's not empty ")
     private String customerEmail;
+
     private String customerAddress;
 
 
     public CustomerDto() {
     }
 
-    public CustomerDto(Integer customerTypeId, String customerCode, String customerName, String customerBirthDay, Integer customerGender, String customerCMDD, String customerPhone, String customerEmail, String customerAddress) {
-        this.customerTypeId = customerTypeId;
-        this.customerCode = customerCode;
-        this.customerName = customerName;
-        this.customerBirthDay = customerBirthDay;
-        this.customerGender = customerGender;
-        this.customerCMDD = customerCMDD;
-        this.customerPhone = customerPhone;
-        this.customerEmail = customerEmail;
-        this.customerAddress = customerAddress;
-    }
 
     public Long getCustomerId() {
         return customerId;
@@ -38,12 +56,12 @@ public class CustomerDto {
         this.customerId = customerId;
     }
 
-    public Integer getCustomerTypeId() {
-        return customerTypeId;
+    public CustomerType getCustomerType() {
+        return customerType;
     }
 
-    public void setCustomerTypeId(Integer customerTypeId) {
-        this.customerTypeId = customerTypeId;
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
     }
 
     public String getCustomerCode() {
@@ -114,7 +132,7 @@ public class CustomerDto {
     public String toString() {
         return "CustomerDto{" +
                 "customerId=" + customerId +
-                ", customerTypeId=" + customerTypeId +
+                ", customerTypeId=" + customerType +
                 ", customerCode='" + customerCode + '\'' +
                 ", customerName='" + customerName + '\'' +
                 ", customerBirthDay='" + customerBirthDay + '\'' +
@@ -124,5 +142,15 @@ public class CustomerDto {
                 ", customerEmail='" + customerEmail + '\'' +
                 ", customerAddress='" + customerAddress + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        CustomerDto customerDto = (CustomerDto) (target);
     }
 }

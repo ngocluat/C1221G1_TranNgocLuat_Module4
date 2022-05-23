@@ -22,6 +22,7 @@ public class MainController {
         return "welcomePage";
     }
 
+
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(Model model, Principal principal) {
 

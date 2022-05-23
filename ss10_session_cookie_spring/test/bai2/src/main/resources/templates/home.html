@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<table  class="table table-striped">
+    <tr>
+        <th> Id </th>
+        <th> tên</th>
+        <th> giá</th>
+        <th> Số Lượng </th>
+        <th> moo tả</th>
+        <th> Detail </th>
+
+    </tr>
+    <tr th:each="item : ${product}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.quantyti55}"></td>
+        <td th:text="${item.qqdescribe}"></td>
+        <td>
+            <a th:href="@{/detail/{id}(id=${item.id})}" th:text="${item.name}"> </a>
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>

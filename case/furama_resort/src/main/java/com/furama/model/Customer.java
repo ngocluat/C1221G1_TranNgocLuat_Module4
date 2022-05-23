@@ -8,6 +8,7 @@ import java.util.List;
 public class Customer {
     @ManyToOne
     @JoinColumn(name = "idCustomerType", referencedColumnName = "customerTypeId")
+
     CustomerType customerType;
 
     @OneToMany(mappedBy = "idCustomer")
@@ -21,6 +22,7 @@ public class Customer {
 
 
     private String customerCode;
+
     private String customerName;
     private String customerBirthDay;
     private Integer customerGender;

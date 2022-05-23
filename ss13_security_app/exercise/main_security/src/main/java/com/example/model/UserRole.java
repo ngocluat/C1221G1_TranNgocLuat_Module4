@@ -1,14 +1,6 @@
 package com.example.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "User_Role", //
@@ -20,10 +12,11 @@ public class UserRole {
     @GeneratedValue
     @Column(name = "Id", nullable = false)
     private Long id;
-// (fetch = FetchType.EAGER)
+         // (fetch = FetchType.EAGER)
     @ManyToOne
     @JoinColumn(name = "User_Id", nullable = false)
     private AppUser appUser;
+
 
     @ManyToOne
     @JoinColumn(name = "Role_Id", nullable = false)

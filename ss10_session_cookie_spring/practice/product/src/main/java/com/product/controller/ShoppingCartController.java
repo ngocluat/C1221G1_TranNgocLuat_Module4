@@ -23,6 +23,7 @@ public class ShoppingCartController {
         return new Cart();
     }
 
+
     @GetMapping("/shopping-cart")
     public ModelAndView showCart(@SessionAttribute("cart") Cart cart) {
         ModelAndView modelAndView = new ModelAndView("/cart");
@@ -31,12 +32,12 @@ public class ShoppingCartController {
     }
 
     @GetMapping("{id}/delete")
-    public String removeCart(@PathVariable Long id, RedirectAttributes redirectAttributes, @SessionAttribute("cart") Cart cart) {
+    public String removeCart(@PathVariable Long id, RedirectAttributes redirectAttributes,
+                             @SessionAttribute("cart") Cart cart) {
         Product product = productService.findById(id).get();
         cart.removeProduct(product);
         redirectAttributes.addFlashAttribute("message", "you delete one product in to cart");
         return "redirect:/shopping-cart";
-
     }
 
 
