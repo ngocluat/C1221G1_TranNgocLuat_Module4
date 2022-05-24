@@ -5,6 +5,7 @@ import java.util.List;
 
 @Entity
 public class Service {
+
     @JoinColumn(name = "rentId", referencedColumnName = "serviceTypeId")
     @ManyToOne
     ServiceType serviceType;
@@ -19,22 +20,25 @@ public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long serviceId;
+
     private String serviceName;
     private Integer serviceArea;
     private Double serviceCost;
     private String serviceMaxPeople;
     private String standardRoom;
+
     private String descriptionOtherConvernience;
     private Double poolArea;
     private Integer numberOffFloors;
-    private String rentTypeId;
-    private String serviceTypeId;
+
 
     public Service() {
     }
 
-
-    public Service(Long serviceId, String serviceName, Integer serviceArea, Double serviceCost, String serviceMaxPeople, String standardRoom, String descriptionOtherConvernience, Double poolArea, Integer numberOffFloors, String rentTypeId, String serviceTypeId) {
+    public Service(ServiceType serviceType, RentType rentTypeService, List<Contract> idContracts, Long serviceId, String serviceName, Integer serviceArea, Double serviceCost, String serviceMaxPeople, String standardRoom, String descriptionOtherConvernience, Double poolArea) {
+        this.serviceType = serviceType;
+        this.rentTypeService = rentTypeService;
+        this.idContracts = idContracts;
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceArea = serviceArea;
@@ -43,9 +47,30 @@ public class Service {
         this.standardRoom = standardRoom;
         this.descriptionOtherConvernience = descriptionOtherConvernience;
         this.poolArea = poolArea;
-        this.numberOffFloors = numberOffFloors;
-        this.rentTypeId = rentTypeId;
-        this.serviceTypeId = serviceTypeId;
+    }
+
+    public ServiceType getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(ServiceType serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public RentType getRentTypeService() {
+        return rentTypeService;
+    }
+
+    public void setRentTypeService(RentType rentTypeService) {
+        this.rentTypeService = rentTypeService;
+    }
+
+    public List<Contract> getIdContracts() {
+        return idContracts;
+    }
+
+    public void setIdContracts(List<Contract> idContracts) {
+        this.idContracts = idContracts;
     }
 
     public Long getServiceId() {
@@ -118,21 +143,5 @@ public class Service {
 
     public void setNumberOffFloors(Integer numberOffFloors) {
         this.numberOffFloors = numberOffFloors;
-    }
-
-    public String getRentTypeId() {
-        return rentTypeId;
-    }
-
-    public void setRentTypeId(String rentTypeId) {
-        this.rentTypeId = rentTypeId;
-    }
-
-    public String getServiceTypeId() {
-        return serviceTypeId;
-    }
-
-    public void setServiceTypeId(String serviceTypeId) {
-        this.serviceTypeId = serviceTypeId;
     }
 }

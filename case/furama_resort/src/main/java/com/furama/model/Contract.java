@@ -11,10 +11,8 @@ public class Contract {
     @JoinColumn(referencedColumnName = "employeeId")
     Employee idEmployee;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(referencedColumnName = "customerId")
-    // xóa
-    @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     Customer idCustomer;
 
     @ManyToOne

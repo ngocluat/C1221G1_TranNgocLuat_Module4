@@ -28,6 +28,7 @@
 </button>
 
 
+
 <div style="float: right">
     <form action="" th:action="@{/employee}" method="get">
         <label>
@@ -39,10 +40,36 @@
     </form>
 </div>
 
+<div class="col-7 w-auto">
+    <form th:action="@{/employee}">
+        <div class="row px-auto">
+            <div class="col-3">
+                <label for="search">Sort by</label>
+            </div>
+            <div class="col-3">
+                <select id="search" class="form-select" name="sort">
+                    <option value="employeeId"> ID Nhân Viên</option>
+                    <option value="employeeCode"> Mã Nhân Viên</option>
+                    <option value="employeeSalary"> Lương</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <select class="form-select" name="dir">
+                    <option value="asc">Asc</option>
+                    <option value="desc">Desc</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-outline-primary" type="submit" id="button-addon2">Sort</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 <div class="row bace">
     <div class="col-6" th:each="item : ${employee}">
-        <div class="card ">
+        <div class="card " style="width: 92%">
             <div class="additional">
                 <div class="user-card">
                     <div class="level center">
@@ -154,15 +181,16 @@
                         </g>
                     </svg>
                 </div>
-                <div class="more-info">
+                <div class="more-info" style="width: 70%">
                     <h1 th:text="${item.employeeName}">Jane Doe</h1>
                     <div class="coords">
-                        <p th:text="${item.employeeId}"></p>
-                        <span th:text="${item.employeeId}">Group Name</span>
-                        <span th:text="${item.employeeCMND}"></span>
+
+                        <p> ID : <span th:text="${item.employeeId}"></span></p>
+                        <p>Số Chứng Minh :<span th:text="${item.employeeCMND}"></span></p>
+
                     </div>
                     <div class="coords">
-                        <span th:text="${item.employeeSalary}"></span>
+                        <p> Lương <span th:text="${item.employeeSalary}"></span></p>
                         <span th:text="${item.employeeAddress}"></span>
                     </div>
                     <div class="stats">
@@ -222,6 +250,31 @@
         </div>
     </div>
 </div>
+
+<div style="text-align: center">
+    <div>
+        <button>
+            <a
+                    th:attrappend="class=${!employee.hasPrevious() ? ' disabled' : ''}"
+                    th:href="@{/employee/(page=${employee.number -1 },sort=${sort}, dir= ${dir}) }">
+                <i class="bi bi-arrow-left-circle-fill"></i>
+                Previous
+            </a>
+        </button>
+        <span th:text="${employee.number +1}"> </span>
+        /
+        <span th:text="${employee.totalPages}"></span>
+        <button>
+            <a
+                    th:attrappend="class=${!employee.hasNext() ? ' disabled' : ''}"
+                    th:href="@{/employee/(page=${employee.number +1},sort=${sort}, dir= ${dir})}">
+                <i class="bi bi-arrow-right-circle-fill"></i>
+                Previous
+            </a>
+        </button>
+    </div>
+</div>
+
 <div>
     <form th:action="@{/delete}" method="get">
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

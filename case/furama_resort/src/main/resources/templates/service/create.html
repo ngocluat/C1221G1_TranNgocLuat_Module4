@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #success_message {
+            display: none;
+        }
+    </style>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+
+<marquee>
+
+    <h6>Xin Mời Chọn Loại Dịch Vụ </h6>
+
+</marquee>
+
+
+<div class="container" th:object="${service}">
+
+    <form class="well form-horizontal" th:action="@{/add-service}" method="post" id="contact_form">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Contact Us Today!</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Diẹn tích Hồ Bơi</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input th:field="*{poolArea}" name="email" placeholder="E-Mail Address" class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Tên Dich Vụ</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input th:field="*{serviceName}" name="phone" placeholder="tên dịch vụ " class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+
+            <!-- Text input-->
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label"> kiểu thuê </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input th:field="*{serviceType}" name="city" placeholder="kiểu thuê " class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label"> Loại Thuê </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <select th:field="*{rentTypeService}">
+                            <option th:each="rent : ${rentType}"
+                                    th:value="${rent.rentTypeId}"
+                                    th:text="${rent.rentTypeName}"
+                            ></option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Giá </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                        <input name="website" placeholder="Giá" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+
+                <select name="" id="select">
+                    <option>--- Chưa Có Dịch Vụ ---</option>
+                    <option th:each="item : ${typeService}"
+                            th:value="${item.serviceTypeId}"
+                            th:text="${item.serviceTypeName}"
+                    ></option>
+
+                </select>
+            </div>
+
+
+            <div class="form-group" id="moTa">
+                <label class="col-md-4 control-label"> Mô Tả Tiện Nghi Khác</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{descriptionOtherConvernience}" name="first_name"
+                               placeholder="Mô tả tiện nghi  " class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="soTang">
+                <label class="col-md-4 control-label">Số Tầng </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{numberOffFloors}" name="last_name" placeholder=" số tầng "
+                               class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="tieuChuan">
+                <label class="col-md-4 control-label">Tiêu Chuẩn pphòng </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input th:field="*{standardRoom}" name="address" placeholder="Tiêu Chuẩn pphòng"
+                               class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-warning">Send <span
+                                class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<th:block th:replace="~{template :: Footer}"></th:block>
+
+</body>
+</html>
+<script>
+    $("#moTa").hide()
+    $("#soTang").hide()
+    $('#tieuChuan').hide()
+
+    $("#select").change(function () {
+        if (this.value == 1) {
+
+            $("#moTa").show()
+            $("#soTang").show()
+            $('#tieuChuan').show()
+        } else if (this.value == 2) {
+            $("#moTa").hide()
+            $("#soTang").show()
+            $('#tieuChuan').show()
+        } else if (this.value == 3) {
+            $("#moTa").hide()
+            $("#soTang").hide()
+            $('#tieuChuan').hide()
+        } else {
+            $("#moTa").hide()
+            $("#soTang").hide()
+            $('#tieuChuan').hide()
+        }
+    })
+
+</script>

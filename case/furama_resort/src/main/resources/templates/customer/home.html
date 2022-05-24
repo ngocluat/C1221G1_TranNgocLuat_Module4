@@ -25,16 +25,51 @@
         </a>
     </button>
 </div>
-<p th:text="${message}"></p>
+sắp xếp
+<div class="col-7 w-auto">
+    <form th:action="@{/customer}" method="get">
+        <div class="row px-auto">
+            <div class="col-3">
+                <label for="search">Sort by</label>
+            </div>
+            <div class="col-3">
+                <select id="search" class="form-select" name="sort">
+                    <option value="customerName"> Tên Khách Hàng</option>
+                    <option value="customerBirthDay"> Birthday</option>
+                    <option value="customerCode"> Customer Code</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <label>
+                    <select class="form-select" name="dir">
+                        <option value="asc">Asc</option>
+                        <option value="desc">Desc</option>
+                    </select>
+                </label>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-outline-primary" type="submit" id="button-addon2">Sort</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
 <!--tìm kiếm -->
 <div style="float: right">
-    <form action="" th:action="@{/customer}" method="get">
+    <form action="" th:action="@{/customer}" method="get" th:value="${customer}">
         <label>
             <input type="text" name="nameCustomerSeach" placeholder="  Tìm Kiếm Theo Tên Khách Hàng  :">
-            <input type="text" name="addressCustomerSearch" placeholder="  Tìm Kiếm Địa Chi :">
-            <input type="text" name="customerCodeSearch" placeholder="  Tìm Kiếm Mã KHách Hàng  :">
+            <input type="text" name="emailCustomerSearch" placeholder="  Tìm Kiếm Địa Chi :">
+            <select name="typeCustomer">
+                <option value="%">Chưa Có Loại Khác Hàng</option>
+                <option th:each="item  : ${customerType}"
+                        th:value="${item.customerTypeId}"
+                        th:text="${item.customerTypeName}"
+                ></option>
+            </select>
         </label>
-        <button class="btn" style="background-color: #ffe294" type="submit"> Tìm</button>
+        <button class="btn" style="background-color: #60a7c5" type="submit"> Tìm</button>
     </form>
 </div>
 
@@ -75,7 +110,7 @@
 
         </td>
 
-        <td th:text="${item.customerCode}"></td>
+        <td th:utext="${item.customerCode}"></td>
         <td th:text="${item.customerName}"></td>
         <td th:text="${item.customerBirthDay}"></td>
         <td>
@@ -137,7 +172,7 @@
         <button>
             <a
                     th:attrappend="class=${!customer.hasPrevious() ? ' disabled' : ''}"
-                    th:href="@{/customer/(page=${customer.number -1 }) }">
+                    th:href="@{/customer/(page=${customer.number -1 },sort=${sort}, dir= ${dir}) }">
                 <i class="bi bi-arrow-left-circle-fill"></i>
                 Previous
             </a>
@@ -148,7 +183,7 @@
         <button>
             <a
                     th:attrappend="class=${!customer.hasNext() ? ' disabled' : ''}"
-                    th:href="@{/customer/(page=${customer.number +1})}">
+                    th:href="@{/customer/(page=${customer.number +1},sort=${sort}, dir= ${dir})}">
                 <i class="bi bi-arrow-right-circle-fill"></i>
                 Previous
             </a>

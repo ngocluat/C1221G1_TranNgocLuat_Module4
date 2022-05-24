@@ -2,15 +2,15 @@ package com.furama.controller;
 
 import com.furama.dto.EmployeeDto;
 import com.furama.model.Employee;
-import com.furama.repository.IDivisionRepositiory;
-import com.furama.repository.IEducationRepository;
 import com.furama.service.IDivisionService;
 import com.furama.service.IEducattionService;
 import com.furama.service.IEmployeeService;
 import com.furama.service.IPositionService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,17 +34,30 @@ public class EmployeeController {
 
     @GetMapping("/employee")
     public String goHoneEmployee(Model model,
-                                 Pageable pageable,
                                  @RequestParam Optional<String> name,
                                  @RequestParam Optional<String> address,
-                                 @RequestParam Optional<String> phone
+                                 @RequestParam Optional<String> phone,
+                                 @RequestParam(defaultValue = "0") Integer page,
+                                 @RequestParam(defaultValue = "6") Integer pageSize,
+                                 @RequestParam(defaultValue = "employeeId") String sort,
+                                 @RequestParam(defaultValue = "asc") String dir
     ) {
+
+        Pageable pageable;
+
+        if (dir.equals("asc")) {
+            pageable = PageRequest.of(page, pageSize, Sort.by(sort).ascending());
+        } else {
+            pageable = PageRequest.of(page, pageSize, Sort.by(sort).descending());
+        }
+
         String key1 = name.orElse("");
         String key2 = address.orElse("");
         String key3 = phone.orElse("");
 
         model.addAttribute("employee", iEmployeeService.findAllEmployees(key1, key2, key3, pageable));
-
+        model.addAttribute("sort", sort);
+        model.addAttribute("dir", dir);
         return "employee/home";
     }
 
@@ -62,11 +75,14 @@ public class EmployeeController {
     @PostMapping("/create")
     public String creareEmloyee(@Validated @ModelAttribute EmployeeDto employeeDto,
                                 BindingResult bindingResult,
-                                RedirectAttributes redirectAttributes) {
+                                RedirectAttributes redirectAttributes, Model model) {
 
         new EmployeeDto().validate(employeeDto, bindingResult);
 
         if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("position", iPositionService.listPositons());
+            model.addAttribute("education", iEducattionService.lisEducationDegree());
+            model.addAttribute("division", divisionService.listDivisions());
             return "employee/create";
         } else {
             Employee employee = new Employee();
@@ -88,7 +104,6 @@ public class EmployeeController {
 
     public String editEmployee(@PathVariable Long id, Model model) {
         Employee employee = iEmployeeService.findById(id);
-        
         model.addAttribute("employee", employee);
         return "employee/edit";
     }

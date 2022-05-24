@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+
+</head>
+<button>
+    <a th:href="@{/create-facility}"> Thêm Mới 1 Dịch Dụ </a>
+</button>
+
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+<table class="table table-striped">
+    <tr>
+        <th> Id Dich Vụ</th>
+        <th>Mô Tả Tiện Nghi</th>
+        <th> Số Tầng</th>
+        <th> Diện Tích Hồ Bơi</th>
+        <th>Tên Dịch Vụ</th>
+        <th>Tiêu Chuẩn Phòng</th>
+        <th>Kiểu Thuê</th>
+        <th>Loại Thuê</th>
+        <th>Giá</th>
+    </tr>
+     <tr th:each="item : ${service} ">
+        <td th:text="${item.serviceId}"></td>
+        <td th:text="${item.descriptionOtherConvernience}"></td>
+        <td th:text="${item.numberOffFloors}"></td>
+        <td th:text="${item.poolArea}"></td>
+        <td th:text="${item.serviceName}"></td>
+        <td th:text="${item.standardRoom}"></td>
+        <td th:text="${item.serviceType.serviceTypeName}"></td>
+        <td th:text="${item.rentTypeService.rentTypeName}"></td>
+        <td th:text="${item.serviceCost}"></td>
+    </tr>
+</table>
+<th:block th:replace="~{template :: Footer}"></th:block>
+
+</body>
+</html>

@@ -13,7 +13,6 @@ public interface ICustomerService {
     Page<Customer> findAllByCustomerNameContainingAndCustomerAddressContainingAndCustomerCodeContaining(String name, String address, String customerCode, Pageable pageable);
 
 
-
     void save(Customer customer);
 
     Customer findById(Long id);
@@ -22,10 +21,11 @@ public interface ICustomerService {
 
     void remove(Customer customer);
 
-    Page<Customer> seachingCustomer(String name,String description ,Pageable pageable);
+    Page<Customer> seachingCustomer(String name, String description, Pageable pageable);
 
-    List<String> getListProductCode();
-    
+    List<String> getListPhone();
+
+    Page<Customer> findAllAndSearch(String searchName, String searchEmail, String searchType, Pageable pageable);
 }
 
 

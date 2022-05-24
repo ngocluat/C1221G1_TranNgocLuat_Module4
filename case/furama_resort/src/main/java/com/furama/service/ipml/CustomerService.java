@@ -24,7 +24,8 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Page<Customer> findAllByCustomerNameContainingAndCustomerAddressContainingAndCustomerCodeContaining(String name, String address, String customerCode, Pageable pageable) {
-        return iCustomerRepository.findAllByCustomerNameContainingAndCustomerAddressContainingAndCustomerCodeContaining(name, address, customerCode, pageable);
+        return iCustomerRepository.
+                findAllByCustomerNameContainingAndCustomerAddressContainingAndCustomerCodeContaining(name, address, customerCode, pageable);
     }
 
     @Override
@@ -54,8 +55,13 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public List<String> getListProductCode() {
-        return null;
+    public List<String> getListPhone() {
+        return iCustomerRepository.findAllListPhone();
+    }
+
+    @Override
+    public Page<Customer> findAllAndSearch(String searchName, String searchEmail, String searchType, Pageable pageable) {
+        return iCustomerRepository.findAllAndSearch("%" + searchName + "%", "%" + searchEmail + "%", searchType, pageable);
     }
 
 

@@ -1,5 +1,7 @@
 package com.furama.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,11 +9,11 @@ import java.util.List;
 @Table(name = "customer")
 public class Customer {
     @ManyToOne
+    @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     @JoinColumn(name = "idCustomerType", referencedColumnName = "customerTypeId")
 
     CustomerType customerType;
-
-    @OneToMany(mappedBy = "idCustomer")
+   @OneToMany(mappedBy = "idCustomer" , cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     List<Contract> idContracts;
 
 

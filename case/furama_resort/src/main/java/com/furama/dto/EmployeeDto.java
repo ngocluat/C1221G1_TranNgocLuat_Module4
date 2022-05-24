@@ -13,15 +13,18 @@ public class EmployeeDto implements Validator {
 
     private static final String DAYOFBIRTH = "^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$";
     private static final String MAIL = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    private static final String NAME = " [\\p{Lu}\\p{Ll}\\s]{5,50}$";
+    private static final String NAME = "^[\\p{Lu}\\p{Ll}\\s]{5,50}$";
     private static final String EMPLOYEECODE = "^NV\\-\\d{4}$";
     private static final String CMND = "[0-9]{9}$";
     @NotNull(message = "it not isEmpty ")
     Positon idPositon;
+
     @NotNull(message = "it not isEmpty ")
     Division idDivision;
+
     @NotNull(message = "it not isEmpty ")
     EducationDegree idEducationDegree;
+
 
     private Long employeeId;
     private String employeeCode;
@@ -177,6 +180,7 @@ public class EmployeeDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         EmployeeDto employeeDto = (EmployeeDto) target;
+
         salaryValidid(errors, employeeDto);
         birthValidid(errors, employeeDto);
         mailValidid(errors, employeeDto);
@@ -220,9 +224,10 @@ public class EmployeeDto implements Validator {
     }
 
     private void birthValidid(Errors errors, EmployeeDto employeeDto) {
-        if (!employeeDto.getEmployeeBirthDay().matches(DAYOFBIRTH)) {
-            errors.rejectValue("employeeBirthDay", "day.format", "errors");
-        } else if (employeeDto.getEmployeeBirthDay() == null) {
+//        if (!employeeDto.getEmployeeBirthDay().matches(DAYOFBIRTH)) {
+//            errors.rejectValue("employeeBirthDay", "day.format", "errors");
+//        } else
+            if (employeeDto.getEmployeeBirthDay() == null) {
             errors.rejectValue("employeeEmail", "is.empty", "errors");
         }
     }

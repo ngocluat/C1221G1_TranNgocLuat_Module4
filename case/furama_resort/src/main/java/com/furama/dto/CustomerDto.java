@@ -8,6 +8,7 @@ import org.springframework.validation.Validator;
 import javax.persistence.Column;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 public class CustomerDto implements Validator {
 
@@ -42,6 +43,9 @@ public class CustomerDto implements Validator {
     private String customerEmail;
 
     private String customerAddress;
+
+
+    private List<String> listPhone;
 
 
     public CustomerDto() {
@@ -128,20 +132,14 @@ public class CustomerDto implements Validator {
         this.customerAddress = customerAddress;
     }
 
-    @Override
-    public String toString() {
-        return "CustomerDto{" +
-                "customerId=" + customerId +
-                ", customerTypeId=" + customerType +
-                ", customerCode='" + customerCode + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", customerBirthDay='" + customerBirthDay + '\'' +
-                ", customerGender=" + customerGender +
-                ", customerCMDD='" + customerCMDD + '\'' +
-                ", customerPhone='" + customerPhone + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", customerAddress='" + customerAddress + '\'' +
-                '}';
+
+
+    public List<String> getListPhone() {
+        return listPhone;
+    }
+
+    public void setListPhone(List<String> listPhone) {
+        this.listPhone = listPhone;
     }
 
     @Override
@@ -152,5 +150,15 @@ public class CustomerDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         CustomerDto customerDto = (CustomerDto) (target);
+        if (customerDto.getCustomerAddress() == null) {
+            errors.rejectValue("customerAddress", "customer.address.null", "errors");
+        } else if (customerDto.getCustomerAddress().equals("abc")) {
+            errors.rejectValue("customerAddress", "customer.address.null", "errors");
+        }
+
+        if (customerDto.getListPhone().contains(customerDto.getCustomerPhone())){
+            errors.rejectValue("customerPhone", "phone.note.duplicate", "Duplicate productCode");
+        }
     }
+
 }

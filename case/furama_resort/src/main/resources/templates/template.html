@@ -24,6 +24,7 @@
 <body>
 
 <th:block th:fragment="Header">
+    <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <button
@@ -59,7 +60,7 @@
                         <a class="nav-link" th:href="@{/employee}">Employee</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Service</a>
+                        <a class="nav-link" th:href="@{/home-service}">Service</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Projects</a>
@@ -139,7 +140,9 @@
             <!-- Right elements -->
         </div>
         <!-- Container wrapper -->
+
     </nav>
+    </div>
     <!-- Navbar -->
 </th:block>
 <th:block th:fragment="Footer">

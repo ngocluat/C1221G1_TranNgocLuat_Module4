@@ -90,6 +90,8 @@
     </div>
     <!-- Text input -->
     <div class="form-outline mb-4">
+        <p style="color: red" th:if="${#fields.hasErrors('customerAddress')}"
+           th:errors="*{customerAddress}"></p>
         <input type="text" id="form6Example34" class="form-control" th:field="*{customerAddress}"/>
         <label class="form-label" for="form6Example34">Customer Address </label>
     </div>

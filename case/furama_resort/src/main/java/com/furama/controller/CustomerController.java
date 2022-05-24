@@ -6,8 +6,9 @@ import com.furama.service.ICustomerService;
 import com.furama.service.ICustomerTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,20 +29,44 @@ public class CustomerController {
     ICustomerTypeService iCustomerTypeService;
 
     @GetMapping("/customer")
-    public ModelAndView goListCusstomer(@PageableDefault(size = 5, sort = {}) Pageable pageable,
-                                        @RequestParam Optional<String> nameCustomerSeach,
-                                        @RequestParam Optional<String> addressCustomerSearch,
-                                        @RequestParam Optional<String> customerCodeSearch, Model model
+    public ModelAndView goListCusstomer(
+            Model model,
+
+            @RequestParam Optional<String> nameCustomerSeach,
+            @RequestParam Optional<String> emailCustomerSearch,
+            @RequestParam Optional<String> typeCustomer,
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "6") Integer pageSize,
+            @RequestParam Optional<String> sort,
+            @RequestParam Optional<String> dir
     ) {
-
+        Pageable pageable;
         String name = nameCustomerSeach.orElse("");
-        String address = addressCustomerSearch.orElse("");
-        String code = customerCodeSearch.orElse("");
-        model.addAttribute("customerType", iCustomerTypeService.findAll());
+        String email = emailCustomerSearch.orElse("");
+        String type = typeCustomer.orElse("%");
 
+        String sortVal = sort.orElse("");
+        String dirVal = dir.orElse("");
+
+        if ("".equals(sortVal)) {
+            pageable = PageRequest.of(page, pageSize);
+        } else {
+            if (dir.equals("asc")) {
+                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
+            } else {
+                pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).descending());
+            }
+        }
+        model.addAttribute("customerType", iCustomerTypeService.findAll());
         ModelAndView modelAndView = new ModelAndView("customer/home");
+
         modelAndView.addObject("customer",
-                iCustomerService.findAllByCustomerNameContainingAndCustomerAddressContainingAndCustomerCodeContaining(name, address, code, pageable));
+                iCustomerService.findAllAndSearch(name, email, type, pageable));
+
+        modelAndView.addObject("name", name);
+        modelAndView.addObject("sort", sortVal);
+        modelAndView.addObject("dir", dirVal);
+
         return modelAndView;
     }
 
@@ -58,6 +83,10 @@ public class CustomerController {
                                  BindingResult bindingResult,
                                  RedirectAttributes redirectAttributes, Model model
     ) {
+        // không trùng lặp
+        customerDto.setListPhone(iCustomerService.getListPhone());
+
+        new CustomerDto().validate(customerDto, bindingResult);
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("customerType", iCustomerTypeService.findAll());
