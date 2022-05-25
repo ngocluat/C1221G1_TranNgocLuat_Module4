@@ -6,6 +6,7 @@ import com.furama.service.ICustomerService;
 import com.furama.service.ICustomerTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -23,15 +24,14 @@ import java.util.Optional;
 public class CustomerController {
 
     @Autowired
-    ICustomerService iCustomerService;
+    private ICustomerService iCustomerService;
 
     @Autowired
-    ICustomerTypeService iCustomerTypeService;
+    private ICustomerTypeService iCustomerTypeService;
 
     @GetMapping("/customer")
     public ModelAndView goListCusstomer(
             Model model,
-
             @RequestParam Optional<String> nameCustomerSeach,
             @RequestParam Optional<String> emailCustomerSearch,
             @RequestParam Optional<String> typeCustomer,
@@ -44,10 +44,8 @@ public class CustomerController {
         String name = nameCustomerSeach.orElse("");
         String email = emailCustomerSearch.orElse("");
         String type = typeCustomer.orElse("%");
-
         String sortVal = sort.orElse("");
         String dirVal = dir.orElse("");
-
         if ("".equals(sortVal)) {
             pageable = PageRequest.of(page, pageSize);
         } else {
@@ -59,10 +57,8 @@ public class CustomerController {
         }
         model.addAttribute("customerType", iCustomerTypeService.findAll());
         ModelAndView modelAndView = new ModelAndView("customer/home");
-
-        modelAndView.addObject("customer",
-                iCustomerService.findAllAndSearch(name, email, type, pageable));
-
+        Page<Customer> customer = iCustomerService.findAllAndSearch(name, email, type, pageable);
+        modelAndView.addObject("customer", customer);
         modelAndView.addObject("name", name);
         modelAndView.addObject("sort", sortVal);
         modelAndView.addObject("dir", dirVal);
@@ -85,9 +81,7 @@ public class CustomerController {
     ) {
         // không trùng lặp
         customerDto.setListPhone(iCustomerService.getListPhone());
-
         new CustomerDto().validate(customerDto, bindingResult);
-
         if (bindingResult.hasErrors()) {
             model.addAttribute("customerType", iCustomerTypeService.findAll());
 
@@ -95,7 +89,7 @@ public class CustomerController {
         } else {
             Customer customer = new Customer();
             BeanUtils.copyProperties(customerDto, customer);
-
+            customer.setFlag(1);
             iCustomerService.save(customer);
             redirectAttributes.addFlashAttribute("message", "successfully added new");
             return "redirect:/customer";
@@ -119,7 +113,8 @@ public class CustomerController {
     @PostMapping("/delete-customer")
     public String deleteCustomer(@RequestParam Long id, RedirectAttributes redirectAttributes) {
         Customer customerDelete = iCustomerService.findById(id);
-        iCustomerService.remove(customerDelete);
+
+        iCustomerService.remove(id);
         redirectAttributes.addFlashAttribute("message", "Xóa thành công");
         return "redirect:/customer";
     }

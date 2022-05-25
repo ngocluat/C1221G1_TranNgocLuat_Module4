@@ -66,7 +66,7 @@ insert into service_type(service_type_id,service_type_name) values
 -- , service_type_id, , , rent_id
 
 insert into service(service_name, service_area, service_cost, service_max_people,standard_room,description_other_convernience
-,pool_area,number_off_floors,rent_type_service_rent_type_id,rent_id)
+,pool_area,number_off_floors,rent_type_service_rent_type_id,rent_type)
  value("Villa Beach Front","25000",10000000,10,"vip","Có hồ bơi",500,4,3,1),
 ("House Princess 01","14000",5000000,7,"vip","Có thêm bếp nướng",null,3,2,2),
 ("Room Twin 01","5000",1000000,2,"vip","Có tivi",null,null,4,3),

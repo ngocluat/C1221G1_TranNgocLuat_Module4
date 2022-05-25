@@ -43,6 +43,7 @@ public class CustomerDto implements Validator {
     private String customerEmail;
 
     private String customerAddress;
+    private  Integer flag ;
 
 
     private List<String> listPhone;
@@ -132,7 +133,13 @@ public class CustomerDto implements Validator {
         this.customerAddress = customerAddress;
     }
 
+    public Integer getFlag() {
+        return flag;
+    }
 
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
 
     public List<String> getListPhone() {
         return listPhone;

@@ -12,6 +12,7 @@ public class ServiceType {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
+
     private Long serviceTypeId;
     private String serviceTypeName;
 

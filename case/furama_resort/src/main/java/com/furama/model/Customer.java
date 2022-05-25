@@ -1,5 +1,6 @@
 package com.furama.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -32,6 +33,8 @@ public class Customer {
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
+    @JsonIgnore
+    private  Integer flag ;
 
     public Customer() {
     }
@@ -127,5 +130,21 @@ public class Customer {
 
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
+    }
+
+    public List<Contract> getIdContracts() {
+        return idContracts;
+    }
+
+    public void setIdContracts(List<Contract> idContracts) {
+        this.idContracts = idContracts;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 }

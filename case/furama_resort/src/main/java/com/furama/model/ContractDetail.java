@@ -16,18 +16,13 @@ public class ContractDetail {
     Contract contract;
     @Id
     private Long contractDetailId;
-    private Long contractId;
-    private Long attachSerrviceId;
+
+
     private Long quantity;
 
     public ContractDetail() {
     }
 
-    public ContractDetail(Long contractId, Long attachSerrviceId, Long quantity) {
-        this.contractId = contractId;
-        this.attachSerrviceId = attachSerrviceId;
-        this.quantity = quantity;
-    }
 
     public Long getContractDetailId() {
         return contractDetailId;
@@ -37,20 +32,20 @@ public class ContractDetail {
         this.contractDetailId = contractDetailId;
     }
 
-    public Long getContractId() {
-        return contractId;
+    public AttachService getIdAttachService() {
+        return idAttachService;
     }
 
-    public void setContractId(Long contractId) {
-        this.contractId = contractId;
+    public void setIdAttachService(AttachService idAttachService) {
+        this.idAttachService = idAttachService;
     }
 
-    public Long getAttachSerrviceId() {
-        return attachSerrviceId;
+    public Contract getContract() {
+        return contract;
     }
 
-    public void setAttachSerrviceId(Long attachSerrviceId) {
-        this.attachSerrviceId = attachSerrviceId;
+    public void setContract(Contract contract) {
+        this.contract = contract;
     }
 
     public Long getQuantity() {

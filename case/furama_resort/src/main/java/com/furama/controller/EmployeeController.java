@@ -24,13 +24,13 @@ import java.util.Optional;
 public class EmployeeController {
 
     @Autowired
-    IEmployeeService iEmployeeService;
+    private  IEmployeeService iEmployeeService;
     @Autowired
-    IPositionService iPositionService;
+    private IPositionService iPositionService;
     @Autowired
-    IDivisionService divisionService;
+    private IDivisionService divisionService;
     @Autowired
-    IEducattionService iEducattionService;
+    private IEducattionService iEducattionService;
 
     @GetMapping("/employee")
     public String goHoneEmployee(Model model,

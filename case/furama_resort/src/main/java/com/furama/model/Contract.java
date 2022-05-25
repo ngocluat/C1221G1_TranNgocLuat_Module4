@@ -117,4 +117,14 @@ public class Contract {
     public void setContractDetails(List<ContractDetail> contractDetails) {
         this.contractDetails = contractDetails;
     }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "idCustomer=" + idCustomer.getCustomerName() +
+                ", idService=" + idService.getServiceName() +
+                ", contractStartDay='" + contractStartDay + '\'' +
+                ", contractEndDay='" + contractEndDay + '\'' +
+                '}';
+    }
 }

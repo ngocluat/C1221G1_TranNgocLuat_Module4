@@ -21,6 +21,11 @@ public class EmployeeSerrvice implements IEmployeeService {
         return iEmployeeRepository.findByEmployeeNameContainingAndAndEmployeeAddressContainingAndAndEmployeePhoneContaining(name, address, phone, pageable);
     }
 
+    @Override
+    public Page<Employee> findEmployees(Pageable pageable) {
+        return iEmployeeRepository.findAll(pageable);
+    }
+
 
     @Override
     public void save(Employee employee) {

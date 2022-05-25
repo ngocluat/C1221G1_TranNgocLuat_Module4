@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FuramaController {
 
-    @Autowired
-    ICustomerService iCustomerService;
 
     @GetMapping({"/", "/furama/luat.tran94"})
     public String goHomeFurama() {

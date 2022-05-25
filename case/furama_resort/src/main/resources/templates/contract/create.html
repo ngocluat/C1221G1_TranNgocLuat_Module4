@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: url(http://wrbbradio.org/wp-content/uploads/2016/10/grey-background-07.jpg) no-repeat center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            background: #2d3e3f;
+            width: 350px;
+            height: 400px;
+            padding-bottom: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: auto;
+            padding: 70px 50px 20px 50px;
+        }
+
+
+        .fl {
+            float: left;
+            width: 110px;
+            line-height: 35px;
+        }
+
+        .fontLabel {
+            color: white;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .clr {
+            clear: both;
+        }
+
+        .box {
+            width: 360px;
+            height: 35px;
+            margin-top: 10px;
+            font-family: verdana;
+            font-size: 12px;
+        }
+
+        .textBox {
+            height: 35px;
+            width: 190px;
+            border: none;
+            padding-left: 20px;
+        }
+
+        .new {
+            float: left;
+        }
+
+        .iconBox {
+            height: 35px;
+            width: 40px;
+            line-height: 38px;
+            text-align: center;
+            background: #ff6600;
+        }
+
+        .radio {
+            color: white;
+            background: #2d3e3f;
+            line-height: 38px;
+        }
+
+        .terms {
+            line-height: 35px;
+            text-align: center;
+            background: #2d3e3f;
+            color: white;
+        }
+
+        .submit {
+            float: right;
+            border: none;
+            color: white;
+            width: 110px;
+            height: 35px;
+            background: #ff6600;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+        }
+
+
+    </style>
+</head>
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+
+
+<!-- Body of Form starts -->
+<div class="container">
+    <form method="post" th:object="${contract}" th:action="@{/create-contract}">
+
+        <div class="box">
+            <label class="fl fontLabel"> Money deposit : </label>
+            <div class="new iconBox">
+                <i class="fa fa-user" aria-hidden="true"></i>
+            </div>
+            <div class="fr">
+                <input type="text" name="" placeholder="Tiền Đặt Trước"
+                       th:field="*{contractDeposit}" class="textBox" autofocus="on" required>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="box">
+            <label class="fl fontLabel">Day Start : </label>
+            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="date" required name="secondName"
+                       th:field="*{contractStartDay}" placeholder="Day Start Contract" class="textBox">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="box">
+            <label class="fl fontLabel"> Day End : </label>
+            <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+            <div class="fr">
+                <label>
+                    <input type="date" required name="phoneNo" maxlength="10"
+                           th:field="*{contractEndDay}" placeholder="Day End Contract: ." class="textBox">
+                </label>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="box">
+            <label class="fl fontLabel"> Total Money </label>
+            <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+            <div class="fr">
+                <input type="text" required name="tt" placeholder="Toltal Money"
+                       th:field="*{contractToTalMoney}" class="textBox" pattern="[0-9]{20}}">
+            </div>
+            <div class="clr"></div>
+        </div>
+
+        <div class="box">
+            <label class="fl fontLabel">Customer: </label>
+            <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+            <div class="fr">
+                <select>
+                    <option value="">-- CHưa Có Khách Hàng --</option>
+                    <option th:each="ct: ${customer}"
+                            th:value="${ct.customerId}"
+                            th:text="${ct.customerName}"
+                    ></option>
+                </select>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="box">
+            <label class="fl fontLabel"> Emlpoyee: </label>
+            <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+            <div class="fr">
+                <select>
+                    <option value="">-- CHưa Có Nhân Viên --</option>
+
+                    <option th:each="em: ${employee}"
+                            th:value="${em.employeeId}"
+                            th:text="${em.employeeName}"
+                    ></option>
+                </select>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="box">
+            <label class="fl fontLabel"> Service: </label>
+            <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+            <div class="fr">
+                <select>
+                    <option value="">-- CHưa Có Dịch Vụ --</option>
+                    <option th:each="sv: ${service}"
+                            th:value="${sv.serviceId}"
+                            th:text="${sv.serviceName}"
+                    ></option>
+                </select>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="box radio">
+            <label class="fl fontLabel"> Tác Giả : </label>
+            <input type="radio" name="Gender" value="Male" required> Trần Ngọc &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="radio" name="Gender" value="Female" required> Luật
+        </div>
+
+        <div class="box" style="background: #2d3e3f">
+            <input type="Submit" name="Submit" class="submit" value="SUBMIT">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

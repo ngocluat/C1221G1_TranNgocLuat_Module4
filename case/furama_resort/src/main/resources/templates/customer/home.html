@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css" type="text/css">
 <style>
     body{
-        background-color: #fbf8ff;
+        background-color: #3f404c;
     }
 </style>
 </head>
@@ -21,27 +21,29 @@
     <p style="color: #07d89d" th:text="${message}"></p>
     <button class="btn " style="background-color: #60a7c5">
         <a th:href="@{/create-customer}">
-            <i class="bi bi-folder-plus" style="color: white"> Thêm Mới</i>
+            <i class="bi bi-folder-plus" style="color: white"></i>
+            Thêm Mới
         </a>
     </button>
 </div>
-sắp xếp
-<div class="col-7 w-auto">
+
+<div class="col-7 w-auto" style="float:left;">
     <form th:action="@{/customer}" method="get">
         <div class="row px-auto">
-            <div class="col-3">
-                <label for="search">Sort by</label>
+            <div class="col-0">
+                <label for="search" style="color: white">Sort by</label>
             </div>
-            <div class="col-3">
-                <select id="search" class="form-select" name="sort">
-                    <option value="customerName"> Tên Khách Hàng</option>
-                    <option value="customerBirthDay"> Birthday</option>
-                    <option value="customerCode"> Customer Code</option>
+            <div class="col-4">
+                <select id="search" class="form-select form-control" name="sort">
+                    <option value="customer_name"> Tên Khách Hàng</option>
+                    <option value="customer_birth_day"> Birthday</option>
+                    <option value="customer_code"> Customer Code</option>
+                    <option value="customer_id"> Customer Id</option>
                 </select>
             </div>
             <div class="col-3">
                 <label>
-                    <select class="form-select" name="dir">
+                    <select class="form-select form-control" name="dir">
                         <option value="asc">Asc</option>
                         <option value="desc">Desc</option>
                     </select>
@@ -96,18 +98,14 @@ sắp xếp
         <th>Delete</th>
     </tr>
 
-    <tr th:each="item : ${customer}"  style="background-color: #2E2E2E">
-
+    <tr th:each="item:${customer}" style="background-color: #2E2E2E">
         <td th:text="${item.customerId}"></td>
-
-        <td >
-
+        <td>
             <div th:each="type : ${customerType}">
                 <p th:if="${item.customerType.customerTypeId} ==  ${type.customerTypeId}"
                    th:text="${type.customerTypeName}">
                 </p>
             </div>
-
         </td>
 
         <td th:utext="${item.customerCode}"></td>

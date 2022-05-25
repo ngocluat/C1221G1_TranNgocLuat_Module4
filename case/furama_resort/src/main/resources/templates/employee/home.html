@@ -10,51 +10,54 @@
     <link rel="stylesheet" href="../../static/css/homeEmployee.css">
 
     <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+<style>
+    body {
+        background-color: #ffcad2;
+    }
 
+    a {
+        text-decoration: none;
+    }
+</style>
 </head>
 
 <body>
 <th:block th:replace="~{template :: Header}"></th:block>
 
 
-<button type="button" class="btn btn-secondary btn-lg btn-block">
-    Employee
-</button>
+
 <button class="custom-btn btn-4">
     <span>
         <i class="bi bi-plus-circle-fill">
-            <a th:href="@{/create-employee}">Thêm Mới</a></i>
+            <a th:href="@{/create-employee}">Add New </a></i>
     </span>
 </button>
-
-
 
 <div style="float: right">
     <form action="" th:action="@{/employee}" method="get">
         <label>
-            <input type="text" name="name" placeholder="  Tên Khách Hàng:">
-            <input type="text" name="address" placeholder="  Tìm Kiếm Địa Chi :">
-            <input type="text" name="phone" placeholder=" Số Điện Thoại   :">
+            <input type="text" name="name" placeholder=" Search Name Customer :">
+            <input type="text" name="address" placeholder="  Search Address  :">
+            <input  type="text" name="phone" placeholder=" Search Phone   :">
         </label>
         <button class="btn btn-outline-info" type="submit"> Tìm</button>
     </form>
 </div>
 
-<div class="col-7 w-auto">
+<div class="col-7 w-auto" style="float:right;">
     <form th:action="@{/employee}">
         <div class="row px-auto">
             <div class="col-3">
-                <label for="search">Sort by</label>
             </div>
-            <div class="col-3">
-                <select id="search" class="form-select" name="sort">
-                    <option value="employeeId"> ID Nhân Viên</option>
-                    <option value="employeeCode"> Mã Nhân Viên</option>
-                    <option value="employeeSalary"> Lương</option>
+            <div class="col-3 ">
+                <select id="search" class=" form-control" name="sort" style="width: 190px;">
+                    <option value="employeeId"> ID Employee</option>
+                    <option value="employeeCode"> Code Employee</option>
+                    <option value="employeeSalary"> Salary</option>
                 </select>
             </div>
-            <div class="col-3">
-                <select class="form-select" name="dir">
+            <div class="col-3 ">
+                <select class="form-select form-control" name="dir">
                     <option value="asc">Asc</option>
                     <option value="desc">Desc</option>
                 </select>
@@ -69,14 +72,13 @@
 
 <div class="row bace">
     <div class="col-6" th:each="item : ${employee}">
-        <div class="card " style="width: 92%">
+        <div class="card " style="width: 92% ; height: 300px;" >
             <div class="additional">
                 <div class="user-card">
                     <div class="level center">
                         Information
                     </div>
                     <div>
-                        <!--                            // xóa -->
                         <button type="button" class="btn btn-outline-danger" data-toggle="modal"
                                 data-target="#deleteModal"
                                 th:attr="onclick=|deleteEmlpoyee(${item.employeeId},'${item.employeeName}')|"
@@ -86,8 +88,10 @@
                     </div>
                     <div>
                         <button class="btn btn-outline-warning"><a
-                                th:href="@{/{id}/edit-employee(id=${item.getEmployeeId()})}"> <i
-                                class="bi bi-pencil-fill"></i> </a></button>
+                                th:href="@{/{id}/edit-employee(id=${item.getEmployeeId()})}">
+                            <i class="bi bi-gear-fill"></i>
+
+                            </i> </a></button>
                     </div>
                     <div class="points center">
                         5,312 Points
@@ -186,11 +190,11 @@
                     <div class="coords">
 
                         <p> ID : <span th:text="${item.employeeId}"></span></p>
-                        <p>Số Chứng Minh :<span th:text="${item.employeeCMND}"></span></p>
+                        <p>CMND :<span th:text="${item.employeeCMND}"></span></p>
 
                     </div>
                     <div class="coords">
-                        <p> Lương <span th:text="${item.employeeSalary}"></span></p>
+                        <p> Salary : <span th:text="${item.employeeSalary}"></span></p>
                         <span th:text="${item.employeeAddress}"></span>
                     </div>
                     <div class="stats">
@@ -204,7 +208,7 @@
                             <div class="title" th:text="${item.employeeBirthDay}">Matches</div>
                             <i class="fa fa-gamepad"></i>
                             <div class="value">
-                                <small>Ngày Sinh</small></div>
+                                <small>Day Of Birth : </small></div>
                         </div>
                         <div>
                             <div class="title" th:text="${item.employeeEmail}">Pals</div>
@@ -231,18 +235,18 @@
                 <h1 th:text="${item.employeeName}">Jane Doe</h1>
                 <p th:text="${item.employeeEmail}">.</p>
                 <div>
-                    <p> Bộ Phận :
+                    <p> Part :
                         <span th:text="${item.idDivision.divisionName}"></span>
                     </p>
                 </div>
                 <div>
-                    <p> Băng Cấp :
+                    <p> Bandage Level :
                         <span th:text="${item.idEducationDegree.educationDegreeName}"></span>
                     </p>
                 </div>
 
                 <div>
-                    <p> chức vụ :
+                    <p> Position :
                         <span th:text="${item.idPositon.positionName}"></span>
                     </p>
                 </div>
@@ -251,9 +255,9 @@
     </div>
 </div>
 
-<div style="text-align: center">
+<div style="text-align: center ; color: white">
     <div>
-        <button>
+        <button class="btn btn-info">
             <a
                     th:attrappend="class=${!employee.hasPrevious() ? ' disabled' : ''}"
                     th:href="@{/employee/(page=${employee.number -1 },sort=${sort}, dir= ${dir}) }">
@@ -264,7 +268,7 @@
         <span th:text="${employee.number +1}"> </span>
         /
         <span th:text="${employee.totalPages}"></span>
-        <button>
+        <button class="btn btn-info">
             <a
                     th:attrappend="class=${!employee.hasNext() ? ' disabled' : ''}"
                     th:href="@{/employee/(page=${employee.number +1},sort=${sort}, dir= ${dir})}">

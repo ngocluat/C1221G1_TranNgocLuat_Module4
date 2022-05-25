@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class Service {
 
-    @JoinColumn(name = "rentId", referencedColumnName = "serviceTypeId")
+    @JoinColumn(name = "rentType", referencedColumnName = "serviceTypeId")
     @ManyToOne
     ServiceType serviceType;
 
@@ -30,7 +30,7 @@ public class Service {
     private String descriptionOtherConvernience;
     private Double poolArea;
     private Integer numberOffFloors;
-
+String serviceFree;
 
     public Service() {
     }
@@ -75,6 +75,14 @@ public class Service {
 
     public Long getServiceId() {
         return serviceId;
+    }
+
+    public String getServiceFree() {
+        return serviceFree;
+    }
+
+    public void setServiceFree(String serviceFree) {
+        this.serviceFree = serviceFree;
     }
 
     public void setServiceId(Long serviceId) {

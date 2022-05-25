@@ -14,18 +14,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ServiceController {
 
     @Autowired
-    IServiceService iServiceService;
+    private IServiceService iServiceService;
 
     @Autowired
-    ITypeServiceService iTypeServiceService;
+    private ITypeServiceService iTypeServiceService;
 
     @Autowired
-    RentTypeService rentTypeService;
+    private RentTypeService rentTypeService;
 
     @GetMapping(value = "/home-service")
     public String goHomeService(Model model, Pageable pageable) {
@@ -42,12 +43,17 @@ public class ServiceController {
     }
 
     @PostMapping(value = "/add-service")
-    public String CreateFacility(@ModelAttribute ServiceDto serviceDto, Model model, Pageable pageable, BindingResult bindingResult) {
-        Service service= new Service();
+    public String CreateFacility(@ModelAttribute ServiceDto serviceDto,
+                                 Model model,
+                                 Pageable pageable,
+                                 BindingResult bindingResult,
+                                 RedirectAttributes redirectAttributes
+    ) {
+        Service service = new Service();
         BeanUtils.copyProperties(serviceDto, service);
-
         iServiceService.save(service);
-        return "service/create";
+        redirectAttributes.addFlashAttribute("message", " add new success !! ");
+        return "redirect:/home-service";
     }
 
 

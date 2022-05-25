@@ -66,4 +66,13 @@ public class AttachService {
     public void setAttachServiceStatus(String attachServiceStatus) {
         this.attachServiceStatus = attachServiceStatus;
     }
+
+    @Override
+    public String toString() {
+        return "AttachService{" +
+                "attachServiceName='" + attachServiceName + '\'' +
+                ", attachServiceUnit='" + attachServiceUnit + '\'' +
+                ", attachServiceStatus='" + attachServiceStatus + '\'' +
+                '}';
+    }
 }

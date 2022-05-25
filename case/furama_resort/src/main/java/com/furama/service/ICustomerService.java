@@ -19,7 +19,7 @@ public interface ICustomerService {
 
     void update(Customer customer);
 
-    void remove(Customer customer);
+    void remove(Long customer);
 
     Page<Customer> seachingCustomer(String name, String description, Pageable pageable);
 

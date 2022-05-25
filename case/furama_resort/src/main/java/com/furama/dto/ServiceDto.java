@@ -18,10 +18,11 @@ public class ServiceDto {
     private String descriptionOtherConvernience;
     private Double poolArea;
     private Integer numberOffFloors;
-
+    String serviceFree;
     List<Contract> idContracts;
 
     RentType rentTypeService;
+
 
     ServiceType serviceType;
 
@@ -82,6 +83,14 @@ public class ServiceDto {
 
     public void setDescriptionOtherConvernience(String descriptionOtherConvernience) {
         this.descriptionOtherConvernience = descriptionOtherConvernience;
+    }
+
+    public String getServiceFree() {
+        return serviceFree;
+    }
+
+    public void setServiceFree(String serviceFree) {
+        this.serviceFree = serviceFree;
     }
 
     public Double getPoolArea() {

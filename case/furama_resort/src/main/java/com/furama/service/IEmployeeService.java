@@ -10,6 +10,7 @@ import java.util.List;
 public interface IEmployeeService {
     Page<Employee> findAllEmployees(String name , String address , String phone,Pageable pageable);
 
+    Page<Employee> findEmployees(Pageable pageable);
 
     void save(Employee employee);
 

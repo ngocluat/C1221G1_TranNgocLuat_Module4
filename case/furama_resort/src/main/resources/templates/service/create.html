@@ -18,7 +18,7 @@
 
 <marquee>
 
-    <h6>Xin Mời Chọn Loại Dịch Vụ </h6>
+    <h6> Xin Mời Chọn Loại Dịch Vụ </h6>
 
 </marquee>
 
@@ -28,23 +28,7 @@
     <form class="well form-horizontal" th:action="@{/add-service}" method="post" id="contact_form">
         <fieldset>
 
-            <!-- Form Name -->
             <legend>Contact Us Today!</legend>
-
-            <!-- Text input-->
-            <div class="form-group">
-                <label class="col-md-4 control-label">Diẹn tích Hồ Bơi</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input th:field="*{poolArea}" name="email" placeholder="E-Mail Address" class="form-control"
-                               type="text">
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label">Tên Dich Vụ</label>
                 <div class="col-md-4 inputGroupContainer">
@@ -55,55 +39,51 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Text input-->
-
-
-            <!-- Text input-->
-
-
             <div class="form-group">
-                <label class="col-md-4 control-label"> kiểu thuê </label>
+                <label class="col-md-4 control-label"> Loại Thuê </label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <input th:field="*{serviceType}" name="city" placeholder="kiểu thuê " class="form-control"
+                        <label>
+                            <select th:field="*{rentTypeService}">
+                                <option th:each="rent : ${rentType}"
+                                        th:value="${rent.getRentTypeId()}"
+                                        th:text="${rent.getRentTypeName()}"
+                                ></option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Giá </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                        <input th:field="*{serviceCost}" name="website" placeholder="Giá" class="form-control"
                                type="text">
                     </div>
                 </div>
             </div>
 
 
-            <div class="form-group">
-                <label class="col-md-4 control-label"> Loại Thuê </label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <select th:field="*{rentTypeService}">
-                            <option th:each="rent : ${rentType}"
-                                    th:value="${rent.rentTypeId}"
-                                    th:text="${rent.rentTypeName}"
-                            ></option>
-                        </select>
 
-                    </div>
-                </div>
-            </div>
-
-            <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label">Giá </label>
+                <label class="col-md-4 control-label"> số Nguòi tối đa </label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                        <input name="website" placeholder="Giá" class="form-control" type="text">
+                        <input th:field="*{serviceMaxPeople}" name="website" placeholder="max people  "
+                               class="form-control"
+                               type="text">
                     </div>
                 </div>
             </div>
 
             <div>
 
-                <select name="" id="select">
-                    <option>--- Chưa Có Dịch Vụ ---</option>
+                <select name="" id="select" th:field="*{serviceType}">
+                    <option value="">--- Chưa Có Dịch Vụ ---</option>
                     <option th:each="item : ${typeService}"
                             th:value="${item.serviceTypeId}"
                             th:text="${item.serviceTypeName}"
@@ -112,7 +92,16 @@
                 </select>
             </div>
 
-
+            <div class="form-group" id="mienPhi">
+                <label class="col-md-4 control-label">Dich Vụ Miển Phí </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                        <input th:field="*{serviceFree}" name="website" placeholder="Miễn Phí " class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
             <div class="form-group" id="moTa">
                 <label class="col-md-4 control-label"> Mô Tả Tiện Nghi Khác</label>
                 <div class="col-md-4 inputGroupContainer">
@@ -143,6 +132,16 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group" id="hoBoi">
+                <label class="col-md-4 control-label">Diẹn tích Hồ Bơi</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input th:field="*{poolArea}" name="email" placeholder="Diện tích hồ bơi " class="form-control"
+                               type="text">
+                    </div>
+                </div>
+            </div>
 
             <div class="form-group">
                 <div class="form-group">
@@ -164,25 +163,41 @@
     $("#moTa").hide()
     $("#soTang").hide()
     $('#tieuChuan').hide()
+    $('#hoBoi').hide()
+    $('#mienPhi').hide()
 
     $("#select").change(function () {
         if (this.value == 1) {
-
             $("#moTa").show()
             $("#soTang").show()
             $('#tieuChuan').show()
+            $('#hoBoi').show()
+            $('#mienPhi').hide()
+            $('#mienPhi').val("")
         } else if (this.value == 2) {
             $("#moTa").hide()
+            $("#moTa").val("")
+            $("#hoBoi").hide()
+            $("#hoBoi").val("")
+            $("#mienPhi").hide()
+            $("#mienPhi").val("")
             $("#soTang").show()
             $('#tieuChuan').show()
         } else if (this.value == 3) {
             $("#moTa").hide()
+            $("#moTa").val("")
             $("#soTang").hide()
+            $("#soTang").val("")
+            $("#hoBoi").hide()
+            $("#hoBoi").val("")
             $('#tieuChuan').hide()
+            $('#mienPhi').show()
         } else {
             $("#moTa").hide()
             $("#soTang").hide()
             $('#tieuChuan').hide()
+            $('#hoBoi').hide()
+            $('#mienPhi').hide()
         }
     })
 
