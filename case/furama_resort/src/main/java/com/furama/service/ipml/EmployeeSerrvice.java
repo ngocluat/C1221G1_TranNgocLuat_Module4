@@ -43,8 +43,9 @@ public class EmployeeSerrvice implements IEmployeeService {
     }
 
     @Override
-    public void remove(Employee employee) {
-        iEmployeeRepository.delete(employee);
+    public void remove(Long id ) {
+        iEmployeeRepository.deleteEmployee(id);
+
     }
 
 

@@ -71,7 +71,7 @@
 
 
 <div class="row bace">
-    <div class="col-6" th:each="item : ${employee}">
+    <div class="col-6" th:each="item : ${employee}" th:if="${item.flag== 1 }">
         <div class="card " style="width: 92% ; height: 300px;" >
             <div class="additional">
                 <div class="user-card">

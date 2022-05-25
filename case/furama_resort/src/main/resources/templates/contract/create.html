@@ -122,8 +122,10 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
             </div>
             <div class="fr">
-                <input type="text" name="" placeholder="Tiền Đặt Trước"
-                       th:field="*{contractDeposit}" class="textBox" autofocus="on" required>
+                <label>
+                    <input type="text" name="" placeholder="Tiền Đặt Trước"
+                           th:field="*{contractDeposit}" class="textBox" autofocus="on" required>
+                </label>
             </div>
             <div class="clr"></div>
         </div>
@@ -162,7 +164,9 @@
             <label class="fl fontLabel">Customer: </label>
             <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
             <div class="fr">
-                <select>
+                <p style="color: red" th:if="${#fields.hasErrors('idCustomer')}"
+                   th:errors="*{idCustomer}"></p>
+                <select th:field="*{idCustomer}">
                     <option value="">-- CHưa Có Khách Hàng --</option>
                     <option th:each="ct: ${customer}"
                             th:value="${ct.customerId}"
@@ -176,9 +180,11 @@
             <label class="fl fontLabel"> Emlpoyee: </label>
             <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
             <div class="fr">
-                <select>
-                    <option value="">-- CHưa Có Nhân Viên --</option>
+                <p style="color: red" th:if="${#fields.hasErrors('idEmployee')}"
+                   th:errors="*{idEmployee}"></p>
 
+                <select th:field="*{idEmployee}">
+                    <option value="">-- CHưa Có Nhân Viên --</option>
                     <option th:each="em: ${employee}"
                             th:value="${em.employeeId}"
                             th:text="${em.employeeName}"
@@ -191,7 +197,9 @@
             <label class="fl fontLabel"> Service: </label>
             <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
             <div class="fr">
-                <select>
+                <p style="color: red" th:if="${#fields.hasErrors('idService')}"
+                   th:errors="*{idService}"></p>
+                <select th:field="*{idService}">
                     <option value="">-- CHưa Có Dịch Vụ --</option>
                     <option th:each="sv: ${service}"
                             th:value="${sv.serviceId}"
@@ -203,8 +211,8 @@
         </div>
         <div class="box radio">
             <label class="fl fontLabel"> Tác Giả : </label>
-            <input type="radio" name="Gender" value="Male" required> Trần Ngọc &nbsp; &nbsp; &nbsp; &nbsp;
-            <input type="radio" name="Gender" value="Female" required> Luật
+            <input type="radio" name="Gender" value="Male"> Trần Ngọc &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="radio" name="Gender" value="Female"> Luật
         </div>
 
         <div class="box" style="background: #2d3e3f">
@@ -212,6 +220,5 @@
         </div>
     </form>
 </div>
-
 </body>
 </html>

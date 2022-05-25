@@ -154,21 +154,25 @@
 </head>
 <body>
 <div class="container">
-    <form th:action="@{/craete-contract-detail}" th:object="${contractDetailDto}" method="post">
+    <form th:action="@{/create-contract-detail}" th:object="${contractDetailDto}" method="post">
     <div class="left">
         <div class="header">
             <h2 class="animation a1">Welcome Back</h2>
             <h4 class="animation a2">create Contract Detail </h4>
         </div>
-        <input type="number" class="form-field animation a3" placeholder="quantity" th:field="*{quantity}">
+        <input type="number" class="form-field animation a3"
+               placeholder="quantity"
+               th:field="*{quantity}">
         <div class="form">
-            <select class="form-field animation a3" th:field="*{contract}">
+            <select class="form-field animation a3"
+                    th:field="*{contract}">
                 <option th:each="ct: ${contract}"
                         th:value="${ct.contractId}"
                         th:text="${ct.toString()}"
                 ></option>
             </select>
-            <select class="form-field animation a4" th:field="*{idAttachService}" >
+            <select class="form-field animation a4"
+                    th:field="*{idAttachService}" >
                 <option th:each="at: ${attach}"
                         th:value="${at.attachServiceId}"
                         th:text="${at.toString()}"

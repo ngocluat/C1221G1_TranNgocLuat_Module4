@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,14 +48,23 @@ public class ContractController {
     }
 
     @RequestMapping(value = "/create-contract", method = RequestMethod.POST)
-    public String createContract(@ModelAttribute ContractDto contractDto, Model model, RedirectAttributes redirectAttributes) {
-
-        Contract contract = new Contract();
-        BeanUtils.copyProperties(contractDto, contract);
-
-        iContractService.saveContract(contract);
-        redirectAttributes.addFlashAttribute("messager", "add new one contract success !! congratulations !!");
-        return "redirect:/contract";
+    public String createContract(@Validated @ModelAttribute ContractDto contractDto,
+                                 BindingResult bindingResult,
+                                 Model model,
+                                 Pageable pageable,
+                                 RedirectAttributes redirectAttributes) {
+        new ContractDto().validate(contractDto, bindingResult);
+        if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("service", iServiceService.listService(pageable));
+            model.addAttribute("customer", iCustomerService.findAllCustomer(pageable));
+            model.addAttribute("employee", iEmployeeService.findEmployees(pageable));
+            return "contract/create";
+        } else {
+            Contract contract = new Contract();
+            BeanUtils.copyProperties(contractDto, contract);
+            iContractService.saveContract(contract);
+            redirectAttributes.addFlashAttribute("messager", "add new one contract success !! congratulations !!");
+            return "redirect:/contract";
+        }
     }
-
 }

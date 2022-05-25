@@ -4,10 +4,12 @@ import com.furama.model.ContractDetail;
 import com.furama.model.Customer;
 import com.furama.model.Employee;
 import com.furama.model.Service;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import java.util.List;
 
-public class ContractDto {
+public class ContractDto implements Validator {
 
     private Long contractId;
     private String contractStartDay;
@@ -93,5 +95,18 @@ public class ContractDto {
 
     public void setIdEmployee(Employee idEmployee) {
         this.idEmployee = idEmployee;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        ContractDto contractDto = (ContractDto) target;
+        if (contractDto.getIdCustomer()== null){
+            errors.rejectValue("idCustomer", "err.err", "errors");
+        }
     }
 }

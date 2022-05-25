@@ -95,7 +95,7 @@ public class EmployeeController {
     @GetMapping("/delete")
     public String deleteEmployee(Model model, @RequestParam Long id, RedirectAttributes redirectAttributes) {
         Employee employee = iEmployeeService.findById(id);
-        iEmployeeService.remove(employee);
+        iEmployeeService.remove(id);
         redirectAttributes.addFlashAttribute("message", "remove one employee success ");
         return "redirect:/employee";
     }

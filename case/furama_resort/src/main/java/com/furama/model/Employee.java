@@ -34,7 +34,7 @@ public class Employee {
     private String employeeEmail;
     private String employeeAddress;
     private String userName;
-
+    private Integer flag;
 
     public Employee() {
     }
@@ -180,7 +180,13 @@ public class Employee {
         this.employeeCode = employeeCode;
     }
 
+    public Integer getFlag() {
+        return flag;
+    }
 
+    public void setFlag(Integer flag) {
+        this.flag = flag;
+    }
 
     @Override
     public boolean equals(Object o) {

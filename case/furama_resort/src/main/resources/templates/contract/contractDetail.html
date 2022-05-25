@@ -17,7 +17,7 @@
     <tr th:each="item:${contractDetail}" >
         <td th:text="${item.contractDetailId}"></td>
         <td th:text="${item.quantity}"></td>
-        <td th:text="${item.quantity}"></td>
+        <td th:text="${item.contract.toString()}"></td>
         <td th:text="${item.idAttachService.attachServiceName}"></td>
     </tr>
 </table>

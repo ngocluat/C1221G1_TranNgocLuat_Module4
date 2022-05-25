@@ -39,12 +39,14 @@ public class ContractDetailController {
     }
 
 
-    @PostMapping("/craete-contract-detail")
+    @PostMapping("/create-contract-detail")
     public String createContractDetail(@ModelAttribute ContractDetailDto contractDetailDto, Model model, Pageable pageable) {
+
         ContractDetail contractDetail = new ContractDetail();
         BeanUtils.copyProperties(contractDetailDto, contractDetail);
+
         iContractDetailService.saveContractDetail(contractDetail);
-        return "contract/createContractDetail";
+        return "contract/contractDetail";
     }
 
 }

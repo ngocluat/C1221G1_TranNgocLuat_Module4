@@ -1,7 +1,5 @@
 package com.furama.model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -120,11 +118,9 @@ public class Contract {
 
     @Override
     public String toString() {
-        return "Contract{" +
-                "idCustomer=" + idCustomer.getCustomerName() +
-                ", idService=" + idService.getServiceName() +
-                ", contractStartDay='" + contractStartDay + '\'' +
-                ", contractEndDay='" + contractEndDay + '\'' +
-                '}';
+        return
+                "Customer=" + idCustomer.getCustomerName() +
+                        ", Service=" + idService.getServiceName();
+
     }
 }
