@@ -25,7 +25,12 @@ public interface ICustomerService {
 
     List<String> getListPhone();
 
+    List<String> getListEmail();
+
     Page<Customer> findAllAndSearch(String searchName, String searchEmail, String searchType, Pageable pageable);
+
+    void deleteByIdIn(Integer[] integers);
+
 }
 
 

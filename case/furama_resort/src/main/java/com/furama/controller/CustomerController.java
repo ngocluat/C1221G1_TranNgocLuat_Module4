@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -81,10 +82,11 @@ public class CustomerController {
     ) {
         // không trùng lặp
         customerDto.setListPhone(iCustomerService.getListPhone());
+        customerDto.setListEmail(iCustomerService.getListEmail());
+
         new CustomerDto().validate(customerDto, bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("customerType", iCustomerTypeService.findAll());
-
             return "customer/create";
         } else {
             Customer customer = new Customer();
@@ -115,7 +117,14 @@ public class CustomerController {
         Customer customerDelete = iCustomerService.findById(id);
 
         iCustomerService.remove(id);
-        redirectAttributes.addFlashAttribute("message", "Xóa thành công");
+        redirectAttributes.addFlashAttribute("message", "Delete successfully");
+        return "redirect:/customer";
+    }
+
+    @GetMapping("/deleteMany")
+    public String deleteCustomerMany(@RequestParam("cb") Integer[] cb, RedirectAttributes redirectAttributes) {
+        iCustomerService.deleteByIdIn(cb);
+        redirectAttributes.addFlashAttribute("message", "Delete successfully");
         return "redirect:/customer";
     }
 }

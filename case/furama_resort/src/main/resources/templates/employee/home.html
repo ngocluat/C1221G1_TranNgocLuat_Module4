@@ -257,8 +257,8 @@
 
 <div style="text-align: center ; color: white">
     <div>
-        <button class="btn btn-info">
-            <a
+        <button>
+            <a type="button" class="btn btn-dark"
                     th:attrappend="class=${!employee.hasPrevious() ? ' disabled' : ''}"
                     th:href="@{/employee/(page=${employee.number -1 },sort=${sort}, dir= ${dir}) }">
                 <i class="bi bi-arrow-left-circle-fill"></i>
@@ -268,8 +268,8 @@
         <span th:text="${employee.number +1}"> </span>
         /
         <span th:text="${employee.totalPages}"></span>
-        <button class="btn btn-info">
-            <a
+        <button>
+            <a type="button" class="btn btn-dark"
                     th:attrappend="class=${!employee.hasNext() ? ' disabled' : ''}"
                     th:href="@{/employee/(page=${employee.number +1},sort=${sort}, dir= ${dir})}">
                 <i class="bi bi-arrow-right-circle-fill"></i>

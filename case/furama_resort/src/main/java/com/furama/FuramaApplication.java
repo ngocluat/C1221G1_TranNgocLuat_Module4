@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LuatApplication {
+public class FuramaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LuatApplication.class, args);
+        SpringApplication.run(FuramaApplication.class, args);
     }
 
 }

@@ -16,8 +16,11 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
 
     Page<Customer> findAllByCustomerNameContainingAndCustomerAddressContainingAndCustomerCodeContaining(String name, String address, String customerCode, Pageable pageable);
 
-    @Query(value = "select customer_phone from customer ",  nativeQuery = true)
+    @Query(value = "select customer_phone from customer ", nativeQuery = true)
     List<String> findAllListPhone();
+
+    @Query(value = "select customer_email from customer ", nativeQuery = true)
+    List<String> findAllListEmail();
 
     @Query(value = "select * from customer where customer_name like :searchName and customer_email like :searchEmail and id_customer_type like:searchType  and flag=1",
             countQuery = "select count(*) from customer where customer_name like :searchName and customer_email like :searchEmail and id_customer_type like:searchType and flag=1 ",
@@ -33,4 +36,12 @@ public interface ICustomerRepository extends JpaRepository<Customer, Long> {
     @Modifying
     @Query(value = "UPDATE customer SET flag = 0 WHERE customer_id = :id", nativeQuery = true)
     void deteCustomer(@Param("id") Long id);
+
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE customer SET flag = 0 WHERE customer_id in(:integers)", nativeQuery = true)
+    void deleteByIdIn(List<Integer> integers);
+
+
 }

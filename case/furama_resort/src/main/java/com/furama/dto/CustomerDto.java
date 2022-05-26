@@ -17,7 +17,7 @@ public class CustomerDto implements Validator {
     private CustomerType customerType;
 
 
-    @Pattern(regexp = "^KH\\-[0-9]{0,4}$")
+    @Pattern(regexp = "^KH\\-[0-9]{4}$", message = " Not Format !! ")
     @NotEmpty(message = "it's not empty ")
     private String customerCode;
 
@@ -47,6 +47,7 @@ public class CustomerDto implements Validator {
 
 
     private List<String> listPhone;
+    private List<String> listEmail;
 
 
     public CustomerDto() {
@@ -141,6 +142,14 @@ public class CustomerDto implements Validator {
         this.flag = flag;
     }
 
+    public List<String> getListEmail() {
+        return listEmail;
+    }
+
+    public void setListEmail(List<String> listEmail) {
+        this.listEmail = listEmail;
+    }
+
     public List<String> getListPhone() {
         return listPhone;
     }
@@ -162,10 +171,11 @@ public class CustomerDto implements Validator {
         } else if (customerDto.getCustomerAddress().equals("abc")) {
             errors.rejectValue("customerAddress", "customer.address.null", "errors");
         }
-
-        if (customerDto.getListPhone().contains(customerDto.getCustomerPhone())){
-            errors.rejectValue("customerPhone", "phone.note.duplicate", "Duplicate productCode");
+        if (customerDto.getListPhone().contains(customerDto.getCustomerPhone())) {
+            errors.rejectValue("customerPhone", "phone.note.duplicate", "Duplicate Customer  Phone");
+        }
+        if (customerDto.getListEmail().contains(customerDto.getCustomerEmail())) {
+            errors.rejectValue("customerEmail", "mail.note.duplicate", "Duplicate Customer  Phone");
         }
     }
-
 }

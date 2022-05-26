@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -59,8 +60,18 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
+    public List<String> getListEmail() {
+        return iCustomerRepository.findAllListEmail();
+    }
+
+    @Override
     public Page<Customer> findAllAndSearch(String searchName, String searchEmail, String searchType, Pageable pageable) {
         return iCustomerRepository.findAllAndSearch("%" + searchName + "%", "%" + searchEmail + "%", searchType, pageable);
+    }
+
+    @Override
+    public void deleteByIdIn(Integer[] integers) {
+        iCustomerRepository.deleteByIdIn(Arrays.asList(integers));
     }
 
 

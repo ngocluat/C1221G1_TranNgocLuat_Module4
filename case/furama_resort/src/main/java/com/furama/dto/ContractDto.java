@@ -7,18 +7,23 @@ import com.furama.model.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class ContractDto implements Validator {
 
     private Long contractId;
+    @NotNull(message = "not null !! ")
     private String contractStartDay;
     private String contractEndDay;
     private Double contractDeposit;
     private Double contractToTalMoney;
     List<ContractDetail> contractDetails;
+    @NotNull(message = "not null !! ")
     Service idService;
+    @NotNull(message = "not null !! ")
     Customer idCustomer;
+    @NotNull(message = "not null !! ")
     Employee idEmployee;
 
 

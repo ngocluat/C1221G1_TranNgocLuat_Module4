@@ -42,9 +42,7 @@ public class EmployeeController {
                                  @RequestParam(defaultValue = "employeeId") String sort,
                                  @RequestParam(defaultValue = "asc") String dir
     ) {
-
         Pageable pageable;
-
         if (dir.equals("asc")) {
             pageable = PageRequest.of(page, pageSize, Sort.by(sort).ascending());
         } else {
@@ -87,6 +85,7 @@ public class EmployeeController {
         } else {
             Employee employee = new Employee();
             BeanUtils.copyProperties(employeeDto, employee);
+            employee.setFlag(1);
             iEmployeeService.save(employee);
             return "redirect:/employee";
         }

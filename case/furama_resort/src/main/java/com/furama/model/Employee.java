@@ -33,38 +33,15 @@ public class Employee {
     private String employeePhone;
     private String employeeEmail;
     private String employeeAddress;
-    private String userName;
+
+    @JoinColumn()
+    @ManyToOne()
+    private AppUser userName;
     private Integer flag;
 
     public Employee() {
     }
 
-    public Employee(Long employeeId, String employeeName, String employeeBirthDay, String employeeCMND, Double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, Long positionId, Long educationDegreeId, Long divisionId, String userName) {
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
-        this.employeeBirthDay = employeeBirthDay;
-        this.employeeCMND = employeeCMND;
-        this.employeeSalary = employeeSalary;
-        this.employeePhone = employeePhone;
-        this.employeeEmail = employeeEmail;
-        this.employeeAddress = employeeAddress;
-        this.userName = userName;
-
-    }
-
-
-    public Employee(Long employeeId, String employeeCode, String employeeName, String employeeBirthDay, String employeeCMND, Double employeeSalary, String employeePhone, String employeeEmail, String employeeAddress, String userName) {
-        this.employeeId = employeeId;
-        this.employeeCode = employeeCode;
-        this.employeeName = employeeName;
-        this.employeeBirthDay = employeeBirthDay;
-        this.employeeCMND = employeeCMND;
-        this.employeeSalary = employeeSalary;
-        this.employeePhone = employeePhone;
-        this.employeeEmail = employeeEmail;
-        this.employeeAddress = employeeAddress;
-        this.userName = userName;
-    }
 
 
     public Long getEmployeeId() {
@@ -131,11 +108,11 @@ public class Employee {
         this.employeeAddress = employeeAddress;
     }
 
-    public String getUserName() {
+    public AppUser getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(AppUser userName) {
         this.userName = userName;
     }
 

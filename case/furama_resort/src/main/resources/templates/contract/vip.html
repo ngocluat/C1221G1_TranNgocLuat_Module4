@@ -15,10 +15,7 @@
 
     <p th:text="${messager}"></p>
 
-<a class="btn btn-primary" style="background-color: #55acee;" th:href="@{/create-contract}" role="button">
-    <i class="bi bi-pen-fill"></i>
-   Add New Contract
-</a>
+
 
 <a class="btn btn-primary" style="background-color: #55acee;" th:href="@{/contract-detail}" role="button">
     <i class="bi bi-journal-medical"></i>
@@ -27,25 +24,27 @@
 
 <table class="table table-striped">
     <tr>
-        <th> Contract Id</th>
-        <th> Money deposit</th>
-        <th> Day Start Contract</th>
-        <th> Day End Contract</th>
-        <th> Contract Total Money</th>
-        <th> Customer</th>
-        <th>Emlpoyee</th>
-        <th> Service</th>
+        <th>ID </th>
+        <th>Name</th>
+        <th> Type</th>
+        <th> Service Name</th>
+        <th> Start Date</th>
+        <th> End Date</th>
+        <th>Attach Service</th>
+        <th>Total</th>
+
     </tr>
 
-    <tr th:each="item : ${contract}">
-        <td th:text="${item.contractId}"></td>
-        <td th:text="${item.contractDeposit }"></td>
-        <td th:text="${item.contractStartDay}"></td>
-        <td th:text="${item.contractEndDay}"></td>
-        <td th:text="${item.contractToTalMoney}"></td>
-        <td th:href="@{/customer}" th:text="${item.idCustomer.customerName}"></td>
-        <td th:href="@{/employee}" th:text="${item.idEmployee.employeeName}"></td>
-        <td th:text="${item.idService.serviceName}"></td>
+    <tr th:each="item : ${vipCustomer}">
+        <td th:text="${item.customerId}"></td>
+        <td th:text="${item.customerName}"></td>
+        <td th:text="${item.customerTypeName}"></td>
+        <td th:text="${item.serviceName}"></td>
+        <td th:text="${item.startDate}"></td>
+        <td th:text="${item.endDate}"></td>
+        <td th:text="${item.attachServiceName}"></td>
+        <td th:text="${item.total}"></td>
+
     </tr>
 </table>
 

@@ -32,6 +32,7 @@ public class ContractController {
     private  IServiceService iServiceService;
 
 
+
     @GetMapping("/contract")
     public String goHomeContract(Model model) {
         model.addAttribute("contract", iContractService.listContract());
@@ -67,4 +68,11 @@ public class ContractController {
             return "redirect:/contract";
         }
     }
+
+    @GetMapping("/vip-customer")
+    public String goVipCustomer(Model model) {
+        model.addAttribute("vipCustomer", iContractService.getCustomerVip());
+        return "contract/vip";
+    }
+
 }

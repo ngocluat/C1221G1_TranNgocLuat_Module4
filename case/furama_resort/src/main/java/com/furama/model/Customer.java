@@ -14,16 +14,13 @@ public class Customer {
     @JoinColumn(name = "idCustomerType", referencedColumnName = "customerTypeId")
 
     CustomerType customerType;
-   @OneToMany(mappedBy = "idCustomer" , cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToMany(mappedBy = "idCustomer", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     List<Contract> idContracts;
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
-
-
-
     private String customerCode;
 
     private String customerName;
