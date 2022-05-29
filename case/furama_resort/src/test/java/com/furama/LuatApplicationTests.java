@@ -9,5 +9,5 @@ class LuatApplicationTests {
     @Test
     void contextLoads() {
     }
-
+// luật đã vào  
 }
