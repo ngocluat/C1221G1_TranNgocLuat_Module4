@@ -37,6 +37,7 @@ public class Employee {
     @JoinColumn()
     @ManyToOne()
     private AppUser userName;
+
     private Integer flag;
 
     public Employee() {

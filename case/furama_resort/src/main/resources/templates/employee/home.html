@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
           integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css" type="text/css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/css/homeEmployee.css">
 
     <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
@@ -29,31 +30,39 @@
 <button class="custom-btn btn-4">
     <span>
         <i class="bi bi-plus-circle-fill">
-            <a th:href="@{/create-employee}">Add New </a></i>
+            <a th:href="@{/employee/create-employee}">Add New </a></i>
     </span>
 </button>
 
-<div style="float: right">
+<div class="mx-auto">
     <form action="" th:action="@{/employee}" method="get">
         <label>
             <input type="text" name="name" placeholder=" Search Name Customer :">
             <input type="text" name="address" placeholder="  Search Address  :">
-            <input  type="text" name="phone" placeholder=" Search Phone   :">
+            <input type="text" name="phone" placeholder=" Search Phone   :">
+            <label for="exampleDataList" class="form-label">Datalist example</label>
+            <input  class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to Division search...">
+            <datalist id="datalistOptions"  name="idDivision">
+                <option th:each="dividiont : ${division}"
+                        th:value="${dividiont.divisionId}"
+                        th:text="${dividiont.divisionName}">
+                </option>
+            </datalist>
         </label>
         <button class="btn btn-outline-info" type="submit"> Tìm</button>
     </form>
 </div>
 
-<div class="col-7 w-auto" style="float:right;">
+<div class="col-7 w-auto">
     <form th:action="@{/employee}">
         <div class="row px-auto">
             <div class="col-3">
             </div>
             <div class="col-3 ">
                 <select id="search" class=" form-control" name="sort" style="width: 190px;">
-                    <option value="employeeId"> ID Employee</option>
-                    <option value="employeeCode"> Code Employee</option>
-                    <option value="employeeSalary"> Salary</option>
+                    <option value="employee_id"> ID Employee</option>
+                    <option value="employee_code"> Code Employee</option>
+                    <option value="employee_salary"> Salary</option>
                 </select>
             </div>
             <div class="col-3 ">
@@ -88,7 +97,7 @@
                     </div>
                     <div>
                         <button class="btn btn-outline-warning"><a
-                                th:href="@{/{id}/edit-employee(id=${item.getEmployeeId()})}">
+                                th:href="@{/employee/{id}/edit-employee(id=${item.getEmployeeId()})}">
                             <i class="bi bi-gear-fill"></i>
 
                             </i> </a></button>
@@ -280,7 +289,7 @@
 </div>
 
 <div>
-    <form th:action="@{/delete}" method="get">
+    <form th:action="@{/employee/delete}" method="get">
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">

@@ -8,15 +8,23 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.validation.constraints.NotNull;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class ContractDto implements Validator {
 
+    private static final String DATE_TIME_REGEX = "\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$";
+
     private Long contractId;
     @NotNull(message = "not null !! ")
     private String contractStartDay;
+    @NotNull(message = "not null !! ")
     private String contractEndDay;
+    @NotNull(message = "not null !! ")
     private Double contractDeposit;
+    @NotNull(message = "not null !! ")
     private Double contractToTalMoney;
     List<ContractDetail> contractDetails;
     @NotNull(message = "not null !! ")
@@ -28,6 +36,10 @@ public class ContractDto implements Validator {
 
 
     public ContractDto() {
+    }
+
+    public static String getDateTimeRegex() {
+        return DATE_TIME_REGEX;
     }
 
     public Long getContractId() {
@@ -109,9 +121,56 @@ public class ContractDto implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+
         ContractDto contractDto = (ContractDto) target;
-        if (contractDto.getIdCustomer()== null){
-            errors.rejectValue("idCustomer", "err.err", "errors");
+        try {
+
+
+            if ("".equals(contractDto.contractStartDay)) {
+                errors.rejectValue("contractStartDate", "blank.error", "System Error");
+            } else if (!contractDto.contractStartDay.matches(DATE_TIME_REGEX)) {
+                errors.rejectValue("contractStartDate", "day.error", "System Error");
+            } else {
+                SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = null;
+                Date current = new Date();
+                try {
+                    date = fmt.parse(contractDto.contractStartDay);
+//                 KIEM TRA NGAY CO TRONG QUA KHU KHONG
+                    if (date != null && date.compareTo(new Date()) < 0) {
+                        errors.rejectValue("contractStartDay", "", "Start date don't in the past");
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    errors.rejectValue("contractStartDay", "day.error", "System Error");
+                }
+            }
+            if ("".matches(contractDto.contractEndDay)) {
+                errors.rejectValue("contractEndDate", "blank.error", "System Error");
+            } else if (!contractDto.contractEndDay.matches(DATE_TIME_REGEX)) {
+                errors.rejectValue("contractEndDate", "day.error", "System Error");
+            } else {
+                SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+                Date startDate = null;
+                Date endDate = null;
+                Date current = new Date();
+                try {
+                    endDate = fmt.parse(contractDto.contractEndDay);
+                    startDate = fmt.parse(contractDto.contractStartDay);
+//                 KIEM TRA NGAY CO TRONG QUA KHU KHONG
+                    if (endDate != null && endDate.compareTo(startDate) < 0) {
+                        errors.rejectValue("contractEndDay", "", "End date must be after Start date");
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    errors.rejectValue("contractEndDay", "day.error", "System Error");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            errors.rejectValue("contractEndDay", "day.error", "System Error");
+
         }
     }
+
 }

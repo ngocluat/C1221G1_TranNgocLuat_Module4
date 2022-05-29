@@ -13,7 +13,7 @@
 <th:block th:replace="~{template :: Header}"></th:block>
 <div class="container">
 
-    <form class="well form-horizontal" th:action="@{/update-employee}" th:object="${employee}" method="post"
+    <form class="well form-horizontal" th:action="@{/employee/update-employee}" th:object="${employee}" method="post"
           id="contact_form">
 
         <legend>Employee Us Today!</legend>
@@ -135,6 +135,47 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Chức Vụ
+
+                <label>
+                    <select th:field="*{idPositon}" class="custom-dropdown big">
+                        <option th:each="pst : ${position}"
+                                th:value="${pst.positionId}"
+                                th:text="${pst.positionName}">
+                        </option>
+                    </select>
+                </label>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Bộ Phận
+                <label>
+                    <select th:field="*{idDivision}" class="custom-dropdown big">
+                        <option th:each="dvs : ${division}"
+                                th:value="${dvs.divisionId}"
+                                th:text="${dvs.divisionName}">
+                        </option>
+                    </select>
+                </label>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"> Băng Cấp
+                <label>
+                    <select th:field="*{idEducationDegree}" class="custom-dropdown big">
+                        <option th:each="edct : ${education}"
+                                th:value="${edct.educationDegreeId}"
+                                th:text="${edct.educationDegreeName}">
+                        </option>
+                    </select>
+                </label>
+            </label>
+        </div>
+
 
         <div class="form-group">
             <label class="col-md-4 control-label"></label>

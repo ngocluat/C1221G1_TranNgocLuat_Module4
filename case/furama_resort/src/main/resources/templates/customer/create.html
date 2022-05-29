@@ -10,7 +10,7 @@
 <th:block th:replace="~{template :: Header}"></th:block>
 <div class="mx-auto" style=" width: 40%;">
 
-<form th:action="@{/create-customer}" method="post" th:object="${customerDto}">
+<form th:action="@{/customer/create-customer}" method="post" th:object="${customerDto}">
     <input type="hidden" th:field="*{customerId}">
     <div class="row mb-4">
         <div class="col">

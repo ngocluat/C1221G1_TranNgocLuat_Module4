@@ -1,7 +1,5 @@
 package com.furama.controller;
 
-import com.furama.service.ICustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +14,13 @@ public class FuramaController {
         return "home-furama";
     }
 
+    @GetMapping("/tranluat.94")
+    public String goHomeAuthor() {
+        return "tranluat";
+    }
+
     @ExceptionHandler(Exception.class)
     public String errors() {
-        return "errors";
+        return "templates/errorsPage.html";
     }
 }

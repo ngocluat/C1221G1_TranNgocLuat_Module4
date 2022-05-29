@@ -41,6 +41,7 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void update(Customer customer) {
+        customer.setFlag(1);
         iCustomerRepository.save(customer);
     }
 

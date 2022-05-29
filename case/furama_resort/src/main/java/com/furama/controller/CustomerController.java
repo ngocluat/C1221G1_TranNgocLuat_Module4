@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
+
+@RequestMapping("/customer")
 public class CustomerController {
 
     @Autowired
@@ -30,7 +31,7 @@ public class CustomerController {
     @Autowired
     private ICustomerTypeService iCustomerTypeService;
 
-    @GetMapping("/customer")
+    @GetMapping("")
     public ModelAndView goListCusstomer(
             Model model,
             @RequestParam Optional<String> nameCustomerSeach,
@@ -41,12 +42,14 @@ public class CustomerController {
             @RequestParam Optional<String> sort,
             @RequestParam Optional<String> dir
     ) {
+
         Pageable pageable;
         String name = nameCustomerSeach.orElse("");
         String email = emailCustomerSearch.orElse("");
         String type = typeCustomer.orElse("%");
         String sortVal = sort.orElse("");
         String dirVal = dir.orElse("");
+
         if ("".equals(sortVal)) {
             pageable = PageRequest.of(page, pageSize);
         } else {
@@ -60,10 +63,8 @@ public class CustomerController {
         ModelAndView modelAndView = new ModelAndView("customer/home");
         Page<Customer> customer = iCustomerService.findAllAndSearch(name, email, type, pageable);
         modelAndView.addObject("customer", customer);
-        modelAndView.addObject("name", name);
         modelAndView.addObject("sort", sortVal);
         modelAndView.addObject("dir", dirVal);
-
         return modelAndView;
     }
 
@@ -101,21 +102,39 @@ public class CustomerController {
 
     @GetMapping("/{id}/edit")
     public String goEditCustomer(@PathVariable Long id, Model model) {
-        model.addAttribute("customerEdit", iCustomerService.findById(id));
+        Customer customer = iCustomerService.findById(id);
+        CustomerDto customerDto = new CustomerDto();
+        BeanUtils.copyProperties(customer, customerDto);
+
+        model.addAttribute("customerDto", customerDto);
+
+
         return "customer/edit";
     }
 
+
     @PostMapping("/update-customer")
-    public String editCustomer(@ModelAttribute Customer customer, RedirectAttributes redirectAttributes) {
-        iCustomerService.update(customer);
-        redirectAttributes.addFlashAttribute("message", "chỉnh sửa thành công");
-        return "redirect:/customer";
+    public String editCustomer(@Validated @ModelAttribute CustomerDto customerDto,
+                               BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes, Model model) {
+
+        if (bindingResult.hasFieldErrors()) {
+//            model.addAttribute("customerDto", customerDto);
+            model.addAttribute("customerType", iCustomerTypeService.findAll());
+            return "customer/edit";
+        } else {
+            Customer customer = new Customer();
+            BeanUtils.copyProperties(customerDto, customer);
+            iCustomerService.update(customer);
+            redirectAttributes.addFlashAttribute("message", "chỉnh sửa thành công");
+            return "redirect:/customer";
+        }
+
     }
 
     @PostMapping("/delete-customer")
     public String deleteCustomer(@RequestParam Long id, RedirectAttributes redirectAttributes) {
         Customer customerDelete = iCustomerService.findById(id);
-
         iCustomerService.remove(id);
         redirectAttributes.addFlashAttribute("message", "Delete successfully");
         return "redirect:/customer";

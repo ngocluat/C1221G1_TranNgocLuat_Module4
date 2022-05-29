@@ -105,6 +105,130 @@
 
         }
 
+        .custom-select-wrapper {
+            position: relative;
+            display: inline-block;
+            user-select: none;
+        }
+
+        .custom-select-wrapper select {
+            display: none;
+        }
+
+        .custom-select {
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-select-trigger {
+            position: relative;
+            display: block;
+            width: 130px;
+            padding: 0 84px 0 22px;
+            font-size: 22px;
+            font-weight: 300;
+            color: #fff;
+            line-height: 60px;
+            background: #5c9cd8;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .custom-select-trigger:after {
+            position: absolute;
+            display: block;
+            content: '';
+            width: 10px;
+            height: 10px;
+            top: 50%;
+            right: 25px;
+            margin-top: -3px;
+            border-bottom: 1px solid #fff;
+            border-right: 1px solid #fff;
+            transform: rotate(45deg) translateY(-50%);
+            transition: all .4s ease-in-out;
+            transform-origin: 50% 0;
+        }
+
+        .custom-select.opened .custom-select-trigger:after {
+            margin-top: 3px;
+            transform: rotate(-135deg) translateY(-50%);
+        }
+
+        .custom-options {
+            position: absolute;
+            display: block;
+            top: 100%;
+            left: 0;
+            right: 0;
+            min-width: 100%;
+            margin: 15px 0;
+            border: 1px solid #b5b5b5;
+            border-radius: 4px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 1px rgba(0, 0, 0, .07);
+            background: #fff;
+            transition: all .4s ease-in-out;
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-15px);
+        }
+
+        .custom-select.opened .custom-options {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+
+        .custom-options:before {
+            position: absolute;
+            display: block;
+            content: '';
+            bottom: 100%;
+            right: 25px;
+            width: 7px;
+            height: 7px;
+            margin-bottom: -4px;
+            border-top: 1px solid #b5b5b5;
+            border-left: 1px solid #b5b5b5;
+            background: #fff;
+            transform: rotate(45deg);
+            transition: all .4s ease-in-out;
+        }
+
+        .option-hover:before {
+            background: #f9f9f9;
+        }
+
+        .custom-option {
+            position: relative;
+            display: block;
+            padding: 0 22px;
+            border-bottom: 1px solid #b5b5b5;
+            font-size: 18px;
+            font-weight: 600;
+            color: #b5b5b5;
+            line-height: 47px;
+            cursor: pointer;
+            transition: all .4s ease-in-out;
+        }
+
+        .custom-option:first-of-type {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .custom-option:last-of-type {
+            border-bottom: 0;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .custom-option:hover,
+        .custom-option.selection {
+            background: #f9f9f9;
+        }
 
     </style>
 </head>
@@ -114,28 +238,27 @@
 
 <!-- Body of Form starts -->
 <div class="container">
-    <form method="post" th:object="${contract}" th:action="@{/create-contract}">
+    <form method="post" th:object="${contractDto}" th:action="@{/contract/create-contract}">
 
         <div class="box">
             <label class="fl fontLabel"> Money deposit : </label>
-            <div class="new iconBox">
-                <i class="fa fa-user" aria-hidden="true"></i>
-            </div>
             <div class="fr">
                 <label>
-                    <input type="text" name="" placeholder="Tiền Đặt Trước"
-                           th:field="*{contractDeposit}" class="textBox" autofocus="on" required>
+                    <p style="color: red" th:if="${#fields.hasErrors('contractDeposit')}"
+                       th:errors="*{contractDeposit}"></p>
+                    <input type="text" placeholder="Tiền Đặt Trước"
+                           th:field="*{contractDeposit}" class="textBox">
                 </label>
             </div>
             <div class="clr"></div>
         </div>
         <div class="box">
             <label class="fl fontLabel">Day Start : </label>
-            <div class="fl iconBox"><i class="fa fa-user" aria-hidden="true"></i></div>
+
             <div class="fr">
                 <p style="color: red" th:if="${#fields.hasErrors('contractStartDay')}"
                    th:errors="*{contractStartDay}"></p>
-                <input type="date" required name="secondName"
+                <input type="date" name="secondName"
                        th:field="*{contractStartDay}" placeholder="Day Start Contract" class="textBox">
             </div>
             <div class="clr"></div>
@@ -143,10 +266,12 @@
 
         <div class="box">
             <label class="fl fontLabel"> Day End : </label>
-            <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+
             <div class="fr">
+                <p style="color: red" th:if="${#fields.hasErrors('contractEndDay')}"
+                   th:errors="*{contractEndDay}"></p>
                 <label>
-                    <input type="date" required name="phoneNo" maxlength="10"
+                    <input type="date" name="phoneNo" maxlength="10"
                            th:field="*{contractEndDay}" placeholder="Day End Contract: ." class="textBox">
                 </label>
             </div>
@@ -154,9 +279,9 @@
         </div>
         <div class="box">
             <label class="fl fontLabel"> Total Money </label>
-            <div class="fl iconBox"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+
             <div class="fr">
-                <input type="text" required name="tt" placeholder="Toltal Money"
+                <input type="text" name="tt" placeholder="Toltal Money"
                        th:field="*{contractToTalMoney}" class="textBox" pattern="[0-9]{20}}">
             </div>
             <div class="clr"></div>
@@ -164,12 +289,12 @@
 
         <div class="box">
             <label class="fl fontLabel">Customer: </label>
-            <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+
             <div class="fr">
                 <p style="color: red" th:if="${#fields.hasErrors('idCustomer')}"
                    th:errors="*{idCustomer}"></p>
-                <select th:field="*{idCustomer}">
-                    <option value="">-- CHưa Có Khách Hàng --</option>
+                <select th:field="*{idCustomer}" name="sources" id="sources" class="custom-select sources">
+                    <!--                    <option value="">&#45;&#45; CHưa Có Khách Hàng &#45;&#45;</option>-->
                     <option th:each="ct: ${customer}"
                             th:value="${ct.customerId}"
                             th:text="${ct.customerName}"
@@ -180,13 +305,13 @@
         </div>
         <div class="box">
             <label class="fl fontLabel"> Emlpoyee: </label>
-            <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+
             <div class="fr">
                 <p style="color: red" th:if="${#fields.hasErrors('idEmployee')}"
                    th:errors="*{idEmployee}"></p>
 
-                <select th:field="*{idEmployee}">
-                    <option value="">-- CHưa Có Nhân Viên --</option>
+                <select th:field="*{idEmployee}" name="sources" id="sources1" class="custom-select sources">
+                    <!--                    <option value="">&#45;&#45; CHưa Có Nhân Viên &#45;&#45;</option>-->
                     <option th:each="em: ${employee}"
                             th:value="${em.employeeId}"
                             th:text="${em.employeeName}"
@@ -197,12 +322,12 @@
         </div>
         <div class="box">
             <label class="fl fontLabel"> Service: </label>
-            <div class="fl iconBox"><i class="fa fa-phone-square" aria-hidden="true"></i></div>
+
             <div class="fr">
                 <p style="color: red" th:if="${#fields.hasErrors('idService')}"
                    th:errors="*{idService}"></p>
-                <select th:field="*{idService}">
-                    <option value="">-- CHưa Có Dịch Vụ --</option>
+                <select th:field="*{idService}" name="sources" id="sources2" class="custom-select sources">
+                    <!--                    <option value="">&#45;&#45; CHưa Có Dịch Vụ &#45;&#45;</option>-->
                     <option th:each="sv: ${service}"
                             th:value="${sv.serviceId}"
                             th:text="${sv.serviceName}"
@@ -210,11 +335,6 @@
                 </select>
             </div>
             <div class="clr"></div>
-        </div>
-        <div class="box radio">
-            <label class="fl fontLabel"> Tác Giả : </label>
-            <input type="radio" name="Gender" value="Male"> Trần Ngọc &nbsp; &nbsp; &nbsp; &nbsp;
-            <input type="radio" name="Gender" value="Female"> Luật
         </div>
 
         <div class="box" style="background: #2d3e3f">

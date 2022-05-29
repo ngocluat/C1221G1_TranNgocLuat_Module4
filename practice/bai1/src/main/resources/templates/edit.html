@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+
+</head>
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+
+<div class="mx-auto" style="width: 40%;">
+    <form th:action="@{/update-product}" method="post" th:object="${oderProduct}">
+
+        <input type="hidden" th:field="*{oderCode}">
+
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="form6Example1" class="form-control" th:field="*{quantity}"/>
+                    <label class="form-label" for="form6Example1">Customer Type Id </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="form6Example2" class="form-control" th:field="*{dayBuy}"/>
+                    <label class="form-label" for="form6Example2">Customer Code </label>
+                </div>
+            </div>
+        </div>
+
+         Text input
+        <div class="form-outline mb-4">
+            <input type="text" id="form6Example3" class="form-control" th:field="*{productCode.productName}"/>
+            <label class="form-label" for="form6Example3">Tên Sản Phẩm  </label>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="form6Example4" class="form-control" th:field="*{productCode.productPrice}"/>
+            <label class="form-label" for="form6Example4">Giá </label>
+        </div>
+
+
+
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="form6Example6" class="form-control" th:field="*{productCode.productStatus}"/>
+            <label class="form-label" for="form6Example6"> Trạng Thái  </label>
+        </div>
+
+        <div class="form-outline mb-4">
+            Loại Sản Phẩm :
+<!--            <select th:field="*{productCode.typeProduct}">-->
+<!--                <option th:each="item :${productcode.typeProduct}"-->
+<!--                        th:value="${item.productcode.typeProduct.idTypeProduct}"-->
+<!--                        th:text="${item.productCode.typeProduct.nameTypeProduct}"-->
+
+<!--                > </option>-->
+<!--            </select>-->
+
+        </div>
+        <!-- Text input -->
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+
+
+    </form>
+</div>
+
+<th:block th:replace="~{template :: Footer}"></th:block>
+</body>
+</html>

@@ -8,6 +8,7 @@ import org.springframework.validation.Validator;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 public class EmployeeDto implements Validator {
 
@@ -186,7 +187,18 @@ public class EmployeeDto implements Validator {
         nameValidid(errors, employeeDto);
         employeeCodeValidid(errors, employeeDto);
         cmndValidid(errors, employeeDto);
+        check18Year(errors, employeeDto);
 
+    }
+
+    private void check18Year(Errors errors, EmployeeDto employeeDto) {
+        String BirthDay = employeeDto.employeeBirthDay;
+        if (!"".equals(BirthDay)) {
+            LocalDate localDate = LocalDate.parse(BirthDay);
+            if (LocalDate.now().minusYears(18).isBefore(localDate)) {
+                errors.rejectValue("employeeBirthDay", "day.before", "errors system");
+            }
+        }
     }
 
 

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequestMapping("/contract")
 public class ContractController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class ContractController {
 
 
 
-    @GetMapping("/contract")
+    @GetMapping("")
     public String goHomeContract(Model model) {
         model.addAttribute("contract", iContractService.listContract());
         return "contract/home";
@@ -41,12 +42,14 @@ public class ContractController {
 
     @RequestMapping(value = "/create-contract", method = RequestMethod.GET)
     public String goCreateContract(Model model, Pageable pageable) {
-        model.addAttribute("contract", new ContractDto());
+        model.addAttribute("contractDto", new ContractDto());
         model.addAttribute("service",iServiceService.listService(pageable));
         model.addAttribute("customer",iCustomerService.findAllCustomer(pageable) );
         model.addAttribute("employee",iEmployeeService.findEmployees(pageable) );
         return "contract/create";
     }
+
+
 
     @RequestMapping(value = "/create-contract", method = RequestMethod.POST)
     public String createContract(@Validated @ModelAttribute ContractDto contractDto,
@@ -55,6 +58,7 @@ public class ContractController {
                                  Pageable pageable,
                                  RedirectAttributes redirectAttributes) {
         new ContractDto().validate(contractDto, bindingResult);
+
         if (bindingResult.hasFieldErrors()) {
             model.addAttribute("service", iServiceService.listService(pageable));
             model.addAttribute("customer", iCustomerService.findAllCustomer(pageable));
@@ -69,10 +73,10 @@ public class ContractController {
         }
     }
 
-    @GetMapping("/vip-customer")
-    public String goVipCustomer(Model model) {
-        model.addAttribute("vipCustomer", iContractService.getCustomerVip());
-        return "contract/vip";
-    }
+//    @GetMapping("/vip-customer")
+//    public String goVipCustomer(Model model) {
+//        model.addAttribute("vipCustomer", iContractService.getCustomerVip());
+//        return "contract/vip";
+//    }
 
 }

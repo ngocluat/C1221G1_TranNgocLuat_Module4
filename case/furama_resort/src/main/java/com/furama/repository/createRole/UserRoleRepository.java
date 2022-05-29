@@ -1,4 +1,4 @@
-package com.furama.repository;
+package com.furama.repository.createRole;
 
 
 

@@ -24,7 +24,7 @@
 <div style="float: left">
     <p style="color: #07d89d" th:text="${message}"></p>
     <button class="btn " style="background-color: #60a7c5">
-        <a th:href="@{/create-customer}">
+        <a th:href="@{/customer/create-customer}">
             <i class="bi bi-folder-plus" style="color: white"></i>
             Thêm Mới
         </a>
@@ -80,7 +80,7 @@
 </div>
 
 
-<form th:action="@{/deleteMany}" method="get" th:object="${customer}">
+<form th:action="@{/customer/deleteMany}" method="get" th:object="${customer}">
     <table class="table table-striped table-dark " style="clear: both">
         <tr STYLE="background-color: #4671c5">
             <th>Customer Id</th>
@@ -124,14 +124,16 @@
         <td th:text="${item.customerEmail}"></td>
         <td th:text="${item.customerAddress}"></td>
         <td>
-            <button class="btn btn-warning"><a th:href="@{/{id}/edit(id=${item.getCustomerId()})}">
+            <!--            <button class="btn btn-warning"><a th:href="@{/customer/{id}/edit(id=${item.getCustomerId()})}">-->
+            <!--                <i style="color: white" class="bi bi-hammer"></i></a></button>-->
+            <button type="button" class="btn btn-warning"><a
+                    th:href="@{/customer/{id}/edit(id=${item.getCustomerId()})}">
                 <i style="color: white" class="bi bi-hammer"></i></a></button>
         </td>
 
         <td>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"
-                    th:attr="onclick=|deleteCustomer(${item.customerId},'${item.customerName}')|"
-            >
+                    th:attr="onclick=|deleteCustomer(${item.customerId},'${item.customerName}')|">
                 <i class="bi bi-x-lg"></i>
             </button>
         </td>
@@ -146,7 +148,7 @@
 </form>
 
 <div>
-    <form th:action="@{/delete-customer}" method="post">
+    <form th:action="@{/customer/delete-customer}" method="post">
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">

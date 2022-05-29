@@ -18,4 +18,15 @@ public interface IEmployeeRepository extends JpaRepository<Employee, Long> {
     @Query(value = " UPDATE employee SET flag = 0 WHERE employee_id= :id", nativeQuery = true)
     void deleteEmployee(@Param("id") Long id);
 
+
+    @Query(value = "select  * from employee where employee_name like :name and employee_address like :address and  employee_phone like :phone and id_division_division_id like :idDivision and flag=1 ",
+            countQuery = "select  * from employee where employee_name like :name and employee_address like :address and  employee_phone like :phone and id_division_division_id like :idDivision and flag=1 ",
+            nativeQuery = true)
+    Page<Employee> findByAllAndSearch(
+            @Param("name") String nameE,
+            @Param("address") String addressE,
+            @Param("phone") String phoneE,
+            @Param("idDivision") String idDivisionE,
+            Pageable pageable
+    );
 }

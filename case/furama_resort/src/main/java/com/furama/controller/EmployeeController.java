@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
@@ -32,30 +33,36 @@ public class EmployeeController {
     @Autowired
     private IEducattionService iEducattionService;
 
-    @GetMapping("/employee")
+    @GetMapping("")
     public String goHoneEmployee(Model model,
                                  @RequestParam Optional<String> name,
                                  @RequestParam Optional<String> address,
                                  @RequestParam Optional<String> phone,
+                                 @RequestParam Optional<String> idDivision,
                                  @RequestParam(defaultValue = "0") Integer page,
                                  @RequestParam(defaultValue = "6") Integer pageSize,
-                                 @RequestParam(defaultValue = "employeeId") String sort,
-                                 @RequestParam(defaultValue = "asc") String dir
+                                 @RequestParam Optional<String> sort,
+                                 @RequestParam Optional<String> dir
     ) {
         Pageable pageable;
-        if (dir.equals("asc")) {
-            pageable = PageRequest.of(page, pageSize, Sort.by(sort).ascending());
-        } else {
-            pageable = PageRequest.of(page, pageSize, Sort.by(sort).descending());
-        }
-
         String key1 = name.orElse("");
         String key2 = address.orElse("");
         String key3 = phone.orElse("");
+        String key4 = idDivision.orElse("%");
+        String sortVal = sort.orElse("");
+        String dirVal = dir.orElse("");
 
-        model.addAttribute("employee", iEmployeeService.findAllEmployees(key1, key2, key3, pageable));
-        model.addAttribute("sort", sort);
-        model.addAttribute("dir", dir);
+        if ("".equals(sortVal)) {
+            pageable = PageRequest.of(page, pageSize);
+        } else if (dir.equals("asc")) {
+            pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).ascending());
+        } else {
+            pageable = PageRequest.of(page, pageSize, Sort.by(sortVal).descending());
+        }
+        model.addAttribute("division", divisionService.listDivisions());
+        model.addAttribute("employee", iEmployeeService.findAllAndSerchEmployees(key1, key2, key3, key4, pageable));
+        model.addAttribute("sort", sortVal);
+        model.addAttribute("dir", dirVal);
         return "employee/home";
     }
 
@@ -65,7 +72,6 @@ public class EmployeeController {
         model.addAttribute("position", iPositionService.listPositons());
         model.addAttribute("education", iEducattionService.lisEducationDegree());
         model.addAttribute("division", divisionService.listDivisions());
-
         model.addAttribute("employeeDto", new EmployeeDto());
         return "employee/create";
     }
@@ -86,6 +92,7 @@ public class EmployeeController {
             Employee employee = new Employee();
             BeanUtils.copyProperties(employeeDto, employee);
             employee.setFlag(1);
+
             iEmployeeService.save(employee);
             return "redirect:/employee";
         }
@@ -93,23 +100,28 @@ public class EmployeeController {
 
     @GetMapping("/delete")
     public String deleteEmployee(Model model, @RequestParam Long id, RedirectAttributes redirectAttributes) {
-        Employee employee = iEmployeeService.findById(id);
+//        Employee employee = iEmployeeService.findById(id);
         iEmployeeService.remove(id);
         redirectAttributes.addFlashAttribute("message", "remove one employee success ");
         return "redirect:/employee";
     }
 
     @GetMapping("/{id}/edit-employee")
-
     public String editEmployee(@PathVariable Long id, Model model) {
+
         Employee employee = iEmployeeService.findById(id);
+        model.addAttribute("position", iPositionService.listPositons());
+        model.addAttribute("education", iEducattionService.lisEducationDegree());
+        model.addAttribute("division", divisionService.listDivisions());
         model.addAttribute("employee", employee);
         return "employee/edit";
     }
 
 
     @PostMapping("/update-employee")
-    public String edit(@ModelAttribute Employee employee, Model model, RedirectAttributes redirectAttributes) {
+    public String edit(@ModelAttribute Employee employee,
+                       Model model,
+                       RedirectAttributes redirectAttributes) {
         iEmployeeService.update(employee);
         redirectAttributes.addFlashAttribute("message", "update success 🤣 ");
         return "redirect:/employee";

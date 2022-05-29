@@ -8,6 +8,7 @@ import org.springframework.validation.Validator;
 import javax.persistence.Column;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 import java.util.List;
 
 public class CustomerDto implements Validator {
@@ -176,6 +177,13 @@ public class CustomerDto implements Validator {
         }
         if (customerDto.getListEmail().contains(customerDto.getCustomerEmail())) {
             errors.rejectValue("customerEmail", "mail.note.duplicate", "Duplicate Customer  Phone");
+        }
+        String BirthDay = customerDto.customerBirthDay;
+        if (!"".equals(BirthDay)) {
+            LocalDate localDate = LocalDate.parse(BirthDay);
+            if (LocalDate.now().minusYears(18).isBefore(localDate)) {
+                errors.rejectValue("customerBirthDay", "day.before", "errors system");
+            }
         }
     }
 }

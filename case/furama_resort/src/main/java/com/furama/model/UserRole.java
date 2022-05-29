@@ -7,8 +7,9 @@ import javax.persistence.*;
         uniqueConstraints = {
                 @UniqueConstraint(name = "USER_ROLE_UK", columnNames = {"User_Id", "Role_Id"})})
 public class UserRole {
-    @GeneratedValue
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @ManyToOne
@@ -33,5 +34,13 @@ public class UserRole {
 
     public void setAppRole(AppRole appRole) {
         this.appRole = appRole;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
