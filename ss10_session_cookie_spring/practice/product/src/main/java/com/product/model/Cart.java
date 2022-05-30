@@ -1,12 +1,12 @@
 package com.product.model;
 
-import com.product.repository.IProductRepository;
+
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Cart {
-    IProductRepository iProductRepository;
+
 
     private Map<Product, Integer> products = new HashMap<>();
 

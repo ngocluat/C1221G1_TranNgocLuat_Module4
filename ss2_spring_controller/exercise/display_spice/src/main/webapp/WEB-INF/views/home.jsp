@@ -25,8 +25,6 @@
     </label>
     <input type="submit" value="save">
 </form>
-<c:forEach var="item" items="${spice}">
-    ${item}
-</c:forEach>
+
 </body>
 </html>

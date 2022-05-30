@@ -33,26 +33,7 @@
 <button>Click me</button>
 
 
-<script>
-    $(document).ready(function(){
-        $("button").click(function(){
-            $("p").hide();
-        });
-    });
 
-    $("#p1").mouseenter(function() {
-        alert("Bạn đã đưa con trỏ vào p1!");
-    });
-
-    $("#p1").mouseleave(function() {
-        alert("Tạm biệt! Bạn đã rời khỏi p1!");
-    });
-    $("#p1").mouseup(function() {
-        alert("Chuột được thả ra trên p1!");
-    });
-
-
-</script>
 <h1>
     <a href="/shopping-cart">
         <i class="bi bi-bag-dash-fill"> Your cart</i>
@@ -71,13 +52,16 @@
                     <a class="card-link" th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a>
                 </button>
 
-                <button class="btn btn-outline-info" >
+                <button class="btn btn-outline-info">
                     <a th:href="@{/buy/{id}(id=${product.id})}"> Mua Ngay </a>
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+
+
 <th:block th:replace="~{template :: Footer}"></th:block>
 
 </body>

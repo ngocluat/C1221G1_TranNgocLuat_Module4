@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
-
-
     <link rel="stylesheet" href="../static/cssHomeFurama/home.css">
-
-
 </head>
 <body>
 <th:block th:replace="~{template :: Header}"></th:block>
+
+
 <div class="section">
     <div class="moving-image"></div>
 
@@ -28,13 +26,13 @@
         <li class="case-study-name">
             <a th:href="@{/service}" class="hover-target">Service</a>
         </li>
+
     </ul>
 
     <ul class="case-study-images">
         <li>
-            <img src="https://i.pinimg.com/564x/ef/51/08/ef5108a26d694b302a5ac3b43e93820a.jpg"
-                 alt="">
-            <p>suite tanya</p>
+            <img src="https://ivang-design.com/svg-load/hotel/room2.jpg" alt="">
+            <p th:text="${'the number of times you visit the main page :' + counter.count}">suite tanya</p>
             <div class="info">
                 <img src="https://ivang-design.com/svg-load/hotel/1.svg" alt="">
                 <img src="https://ivang-design.com/svg-load/hotel/2.svg" alt="">

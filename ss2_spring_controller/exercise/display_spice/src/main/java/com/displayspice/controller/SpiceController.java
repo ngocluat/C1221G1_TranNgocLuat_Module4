@@ -17,14 +17,13 @@ public class SpiceController {
     }
 
     @GetMapping("/spice")
-                                        // defauleValue= "khong có gì "
     public String save(@RequestParam(value = "condiment") Optional<String[]> condiment, Model model) {
         if (condiment.isPresent()) {
             model.addAttribute("spice", condiment);
         } else {
             model.addAttribute("spice", "không có gì ");
         }
-        return "home";
+        return "/spice";
 
     }
 }

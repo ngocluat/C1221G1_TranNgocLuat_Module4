@@ -59,14 +59,16 @@ public class EmployeeSerrvice implements IEmployeeService {
 
     @Override
     public void update(Employee employee) {
+        if (employee.getEmployeeId() == null) {
+            AppUser employeeUser = new AppUser();
+            this.userRoleService.saveUser(employee, employeeUser);
+            // create role
+            // -- retriev all role;
+            AppRole userRole = this.userRoleService.findAppRole(2);
+            AppRole adminRole = this.userRoleService.findAppRole(1);
+            this.userRoleService.saveUserRole(employee, employeeUser, userRole, adminRole);
 
-        AppUser employeeUser = new AppUser();
-        this.userRoleService.saveUser(employee, employeeUser);
-        // create role
-        // -- retriev all role;
-        AppRole userRole = this.userRoleService.findAppRole(2);
-        AppRole adminRole = this.userRoleService.findAppRole(1);
-        this.userRoleService.saveUserRole(employee, employeeUser, userRole, adminRole);
+        }
 
         employee.setFlag(1);
         iEmployeeRepository.save(employee);

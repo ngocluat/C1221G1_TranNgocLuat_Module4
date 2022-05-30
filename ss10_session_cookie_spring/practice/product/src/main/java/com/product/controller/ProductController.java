@@ -48,10 +48,9 @@ public class ProductController {
         if (!productOptional.isPresent()) {
             return "detail";
         }
-
         if (action.equals("show")) {
             cart.addProduct(productOptional.get());
-                    return "redirect:/shopping-cart";
+            return "redirect:/shopping-cart";
         }
         cart.addProduct(productOptional.get());
         return "redirect:/shop";

@@ -14,6 +14,7 @@
         body {
             background-color: #3f404c;
         }
+
     </style>
 </head>
 <body>
@@ -59,7 +60,6 @@
         </div>
     </form>
 </div>
-
 
 <!--tìm kiếm -->
 <div style="float: right">
@@ -124,8 +124,6 @@
         <td th:text="${item.customerEmail}"></td>
         <td th:text="${item.customerAddress}"></td>
         <td>
-            <!--            <button class="btn btn-warning"><a th:href="@{/customer/{id}/edit(id=${item.getCustomerId()})}">-->
-            <!--                <i style="color: white" class="bi bi-hammer"></i></a></button>-->
             <button type="button" class="btn btn-warning"><a
                     th:href="@{/customer/{id}/edit(id=${item.getCustomerId()})}">
                 <i style="color: white" class="bi bi-hammer"></i></a></button>
@@ -143,6 +141,7 @@
                 <span class="checkmark"></span>
             </label>
         </td>
+
     </tr>
     </table>
 </form>

@@ -1,16 +1,25 @@
 package com.furama.controller;
 
+import com.furama.model.Counter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 @Controller
+@SessionAttributes("counter")
 public class FuramaController {
 
+    @ModelAttribute("counter")
+    public Counter setUpCounter() {
+        return new Counter();
+    }
 
     @GetMapping({"/", "/furama/luat.tran94"})
-    public String goHomeFurama() {
+    public String goHomeFurama(@ModelAttribute("counter") Counter counter) {
+        counter.increment();
         return "home-furama";
     }
 
@@ -21,6 +30,6 @@ public class FuramaController {
 
     @ExceptionHandler(Exception.class)
     public String errors() {
-        return "templates/errorsPage.html";
+        return "errorsPage";
     }
 }

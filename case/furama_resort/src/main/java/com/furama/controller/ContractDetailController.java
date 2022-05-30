@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 @RequestMapping("/detail")
 public class ContractDetailController {
@@ -28,7 +31,14 @@ public class ContractDetailController {
     private IContractDetailService iContractDetailService;
 
     @GetMapping("/contract-detail")
-    public String goHomeContractDetail(Model model, Pageable pageable) {
+    public String goHomeContractDetail(Model model,
+                                       Pageable pageable,
+                                       HttpServletResponse httpServletResponse) {
+        Cookie cookie= new Cookie("counter", "dfghooyu");
+        cookie.setMaxAge(60*60*60);
+        cookie.setPath("/");
+        httpServletResponse.addCookie(cookie);
+
         model.addAttribute("contractDetail", iContractDetailService.lisContractDetails(pageable));
         return "contract/contractDetail";
     }
@@ -44,11 +54,9 @@ public class ContractDetailController {
 
     @PostMapping("/create-contract-detail")
     public String createContractDetail(@ModelAttribute ContractDetailDto contractDetailDto) {
-
         ContractDetail contractDetail = new ContractDetail();
         BeanUtils.copyProperties(contractDetailDto, contractDetail);
         iContractDetailService.saveContractDetail(contractDetail);
-        return "contract/contractDetail";
+        return "redirect:/detail/contract-detail";
     }
-
 }
