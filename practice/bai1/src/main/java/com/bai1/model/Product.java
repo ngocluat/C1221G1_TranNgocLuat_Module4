@@ -1,18 +1,24 @@
 package com.bai1.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
 
     @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String productName;
     Double productPrice;
     String productStatus;
+
     @ManyToOne
+    @JoinColumn(name = "type_product_id", referencedColumnName = "idTypeProduct")
     TypeProduct typeProduct;
+
+    @OneToMany(mappedBy = "product")
+    List<OderProduct> oderProductList;
 
     public Product() {
     }
@@ -55,5 +61,13 @@ public class Product {
 
     public void setTypeProduct(TypeProduct typeProduct) {
         this.typeProduct = typeProduct;
+    }
+
+    public List<OderProduct> getOderProductList() {
+        return oderProductList;
+    }
+
+    public void setOderProductList(List<OderProduct> oderProductList) {
+        this.oderProductList = oderProductList;
     }
 }

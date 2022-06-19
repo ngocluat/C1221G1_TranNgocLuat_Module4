@@ -5,8 +5,7 @@ import java.util.List;
 
 @Entity
 public class RentType {
-    @OneToMany(mappedBy = "rentTypeService")
-    List<Service> rentTypeIdServiceList;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

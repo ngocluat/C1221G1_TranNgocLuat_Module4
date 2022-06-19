@@ -2,6 +2,7 @@ package com.furama.controller;
 
 import com.furama.dto.ContractDetailDto;
 import com.furama.model.ContractDetail;
+import com.furama.model.CountDetail;
 import com.furama.service.IAttachSrevice;
 import com.furama.service.IContractDetailService;
 import com.furama.service.IContractService;
@@ -10,35 +11,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/detail")
+@SessionAttributes("detail")
 public class ContractDetailController {
+
+
+    @Autowired
+    private IAttachSrevice iAttachSrevice;
+
 
     @Autowired
     private IContractService iContractService;
-    @Autowired
-    private   IAttachSrevice iAttachSrevice;
+
+    @ModelAttribute("detail")
+    public CountDetail getCounterDetail() {
+        return new CountDetail();
+    }
+
     @Autowired
     private IContractDetailService iContractDetailService;
 
     @GetMapping("/contract-detail")
     public String goHomeContractDetail(Model model,
                                        Pageable pageable,
+                                       @ModelAttribute("detail") CountDetail countDetail,
                                        HttpServletResponse httpServletResponse) {
-        Cookie cookie= new Cookie("counter", "dfghooyu");
-        cookie.setMaxAge(60*60*60);
+        Cookie cookie = new Cookie("detail", "dfghooyu");
+        cookie.setMaxAge(60 * 60 * 60);
         cookie.setPath("/");
         httpServletResponse.addCookie(cookie);
-
+        countDetail.getCountDeatil();
         model.addAttribute("contractDetail", iContractDetailService.lisContractDetails(pageable));
         return "contract/contractDetail";
     }

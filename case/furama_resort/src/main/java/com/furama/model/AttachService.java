@@ -5,8 +5,6 @@ import java.util.List;
 
 @Entity
 public class AttachService {
-    @OneToMany(mappedBy = "idAttachService")
-    List<ContractDetail> idContractDetails;
 
 
     @Id

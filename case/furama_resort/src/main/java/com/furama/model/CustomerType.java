@@ -5,9 +5,6 @@ import java.util.List;
 
 @Entity
 public class CustomerType {
-    @OneToMany(mappedBy = "customerType")
-    List<Customer> customerList;
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,13 +19,6 @@ public class CustomerType {
         this.customerTypeName = customerTypeName;
     }
 
-    public List<Customer> getCustomerList() {
-        return customerList;
-    }
-
-    public void setCustomerList(List<Customer> customerList) {
-        this.customerList = customerList;
-    }
 
     public Long getCustomerTypeId() {
         return customerTypeId;
@@ -45,4 +35,6 @@ public class CustomerType {
     public void setCustomerTypeName(String customerTypeName) {
         this.customerTypeName = customerTypeName;
     }
+
+
 }

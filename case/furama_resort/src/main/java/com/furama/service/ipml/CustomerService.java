@@ -46,8 +46,8 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void remove(Long id) {
-        iCustomerRepository.deteCustomer(id);
+    public void remove(Customer customer) {
+        iCustomerRepository.delete(customer);
     }
 
     @Override
@@ -73,6 +73,11 @@ public class CustomerService implements ICustomerService {
     @Override
     public void deleteByIdIn(Integer[] integers) {
         iCustomerRepository.deleteByIdIn(Arrays.asList(integers));
+    }
+
+    @Override
+    public List<Customer> findAll() {
+        return iCustomerRepository.findAll();
     }
 
 

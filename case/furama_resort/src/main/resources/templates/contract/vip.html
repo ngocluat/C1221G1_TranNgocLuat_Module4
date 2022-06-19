@@ -21,6 +21,19 @@
     <i class="bi bi-journal-medical"></i>
     Contract detail
 </a>
+<div>
+    <form th:action="@{/vip-customer}" method="get">
+        ngày bắt dầu
+        <label>
+            <input type="date" name="contract_start_day">
+        </label>
+        ngày kết thúc
+        <label>
+            <input type="date" name="contract_end_day">
+        </label>
+        <button type="submit"> tìm</button>
+    </form>
+</div>
 
 <table class="table table-striped">
     <tr>

@@ -1,4 +1,4 @@
-package com.furama.common;
+package com.example.common;
 import org.springframework.validation.Errors;
 
 import java.time.LocalDate;

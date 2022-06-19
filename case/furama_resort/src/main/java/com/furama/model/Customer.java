@@ -12,11 +12,7 @@ public class Customer {
     @ManyToOne
     @Cascade(value = {org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
     @JoinColumn(name = "idCustomerType", referencedColumnName = "customerTypeId")
-
-    CustomerType customerType;
-    @OneToMany(mappedBy = "idCustomer", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    List<Contract> idContracts;
-
+    private CustomerType customerType;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -129,13 +125,6 @@ public class Customer {
         this.customerType = customerType;
     }
 
-    public List<Contract> getIdContracts() {
-        return idContracts;
-    }
-
-    public void setIdContracts(List<Contract> idContracts) {
-        this.idContracts = idContracts;
-    }
 
     public Integer getFlag() {
         return flag;

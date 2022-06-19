@@ -63,21 +63,7 @@
                             <a class="nav-link" th:href="@{/service}">Service</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/contract}">Contract</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/vip-customer}"> Customer Contract</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/login}">Login </a>
-                        </li> <li class="nav-item">
-                            <a class="nav-link" th:href="@{/tranluat.94}">Trần Ngọc Luật  </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"  th:href="@{/logout}"><i class="bi bi-door-closed-fill">logout</i></a>
-                        </li>
-                        <li class="nav-item">
-
+                            <a class="nav-link" href="https://www.facebook.com">Trần Ngọc Luật  </a>
                         </li>
                     </ul>
                 </div>
@@ -86,9 +72,7 @@
                     <a class="text-reset me-3" href="#">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
-                    <p  th:if="${#request.userPrincipal}">Welcome :
-                        <span th:utext="${#request.userPrincipal.name}"></span>
-                    </p>
+
                     <div class="dropdown">
                         <a
                                 class="text-reset me-3 dropdown-toggle hidden-arrow"
@@ -363,7 +347,6 @@
         console.log('%cTruy cập https://www.facebook.com/luat.tranngoc.94 để biết thêm chi tiết .', 'color: #444; font-size: 25px; font-family: sans-serif;');
     </script>
 </th:block>
-
 <th:block th:fragment="Script">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

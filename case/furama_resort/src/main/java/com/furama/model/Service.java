@@ -8,14 +8,12 @@ public class Service {
 
     @JoinColumn(name = "rentType", referencedColumnName = "serviceTypeId")
     @ManyToOne
-    ServiceType serviceType;
+    private ServiceType serviceType;
 
-    @JoinColumn( referencedColumnName = "rentTypeId")
+    @JoinColumn(referencedColumnName = "rentTypeId")
     @ManyToOne
-    RentType rentTypeService;
+    private RentType rentTypeService;
 
-    @OneToMany(mappedBy = "idService")
-    List<Contract> idContracts;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +28,7 @@ public class Service {
     private String descriptionOtherConvernience;
     private Double poolArea;
     private Integer numberOffFloors;
-String serviceFree;
+    private String serviceFree;
 
     public Service() {
     }
@@ -38,7 +36,6 @@ String serviceFree;
     public Service(ServiceType serviceType, RentType rentTypeService, List<Contract> idContracts, Long serviceId, String serviceName, Integer serviceArea, Double serviceCost, String serviceMaxPeople, String standardRoom, String descriptionOtherConvernience, Double poolArea) {
         this.serviceType = serviceType;
         this.rentTypeService = rentTypeService;
-        this.idContracts = idContracts;
         this.serviceId = serviceId;
         this.serviceName = serviceName;
         this.serviceArea = serviceArea;
@@ -65,13 +62,6 @@ String serviceFree;
         this.rentTypeService = rentTypeService;
     }
 
-    public List<Contract> getIdContracts() {
-        return idContracts;
-    }
-
-    public void setIdContracts(List<Contract> idContracts) {
-        this.idContracts = idContracts;
-    }
 
     public Long getServiceId() {
         return serviceId;

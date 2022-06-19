@@ -19,8 +19,6 @@ public class Employee {
     @JoinColumn(referencedColumnName = "divisionId")
     Division idDivision;
 
-    @OneToMany(mappedBy = "idEmployee")
-    List<Contract> idContractList;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -142,15 +140,7 @@ public class Employee {
     }
 
 
-    public List<Contract> getIdContractList() {
-        return idContractList;
-    }
-
-    public void setIdContractList(List<Contract> idContractList) {
-        this.idContractList = idContractList;
-    }
-
-    public String getEmployeeCode() {
+      public String getEmployeeCode() {
         return employeeCode;
     }
 

@@ -9,8 +9,15 @@ import org.springframework.data.repository.query.Param;
 
 public interface IOderRepository extends JpaRepository<OderProduct, Long> {
 
+    @Query(value = "select * from oder_product where day_buy between :dayStart and :dayEnd",
+            countQuery = "select * from oder_product where day_buy between :dayStart and :dayEnd",
+            nativeQuery = true
+    )
+    Page<OderProduct> findAllByDayBuyQuery(@Param("dayStart") String dayStart, @Param("dayEnd") String dayEnd, Pageable pageable);
 
-    Page<OderProduct> findAllByDayBuyContaining(String day, Pageable pageable);
 
+    @Query(value = "select o.* from oder_product o join product p  on o.product_id = p.id    join type_product tp  on p.type_product_id = tp.id_type_product order by quantity * product_price desc",
+            countQuery = "select o.* from oder_product o join product p  on o.product_id = p.id    join type_product tp  on p.type_product_id = tp.id_type_product order by quantity * product_price desc", nativeQuery = true)
+    Page<OderProduct> findAllTop(Pageable pageable);
 
 }

@@ -1,9 +1,7 @@
 package com.bai1.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class TypeProduct {
@@ -11,6 +9,10 @@ public class TypeProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idTypeProduct;
     String nameTypeProduct;
+
+
+    @OneToMany(mappedBy = "typeProduct")
+    List<Product> productList;
 
     public Long getIdTypeProduct() {
         return idTypeProduct;
@@ -26,5 +28,13 @@ public class TypeProduct {
 
     public void setNameTypeProduct(String nameTypeProduct) {
         this.nameTypeProduct = nameTypeProduct;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }

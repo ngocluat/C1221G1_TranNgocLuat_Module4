@@ -7,10 +7,15 @@ public class OderProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @Column(columnDefinition = "DATE")
     String dayBuy;
+
     Integer quantity;
+
     @ManyToOne
-    Product productCode;
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    Product product;
 
     public OderProduct() {
     }
@@ -39,13 +44,11 @@ public class OderProduct {
         this.quantity = quantity;
     }
 
-    public Product getProductCode() {
-        return productCode;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductCode(Product productCode) {
-        this.productCode = productCode;
+    public void setProduct(Product product) {
+        this.product = product;
     }
-
-
 }

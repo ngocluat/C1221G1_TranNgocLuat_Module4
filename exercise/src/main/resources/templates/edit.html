@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{template :: link_boostrap_js_jquery_icon_head}"></th:block>
+
+</head>
+<body>
+<th:block th:replace="~{template :: Header}"></th:block>
+
+<div class="mx-auto" style="width: 40%;">
+    <form th:action="@{/update-product}" method="post" th:object="${oderProductDto}">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <p style=" color: red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></p>
+                    <input type="text" id="form6Example1" class="form-control" th:field="*{quantity}"/>
+                    <label class="form-label" for="form6Example1">Số Lượng </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <p style=" color: red" th:if="${#fields.hasErrors('dayBuy')}" th:errors="*{dayBuy}"></p>
+                    <input type="date" id="form6Example2" class="form-control" th:field="*{dayBuy}"/>
+                    <label class="form-label" for="form6Example2">Ngày Mua </label>
+                </div>
+            </div>
+        </div>
+        Sản Phẩm
+        <div class="form-outline mb-4">
+            <p style=" color: red" th:if="${#fields.hasErrors('product')}" th:errors="*{product}"></p>
+            <select th:field="*{product}">
+                <option th:each="item : ${product}"
+                        th:value="${item.id}"
+                        th:text="${item.productName}"
+                ></option>
+            </select>
+        </div>
+
+        <div class="form-outline mb-4">
+            Loại Sản Phẩm :
+            <select class="dropdown" th:field="*{product.typeProduct}">
+                <option th:each="item :${typeProduct}"
+                        th:value="${item.idTypeProduct}"
+                        th:text="${item.nameTypeProduct}"
+                ></option>
+            </select>
+
+        </div>
+        <!-- Text input -->
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Place order</button>
+
+
+    </form>
+</div>
+<th:block th:replace="~{template :: Footer}"></th:block>
+</body>
+</html>

@@ -6,15 +6,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 <body>
-<button type="button" class="btn btn-outline-success"><a th:href="@{/detail/add-new-contract-detail}">Add new Contract Detail</a> </button>
+<button type="button" class="btn btn-outline-success"><a th:href="@{/detail/add-new-contract-detail}">Add new Contract
+    Detail</a></button>
+<h1 th:text="${detail.count}"> </h1>
 <table class="table table-striped">
     <tr>
-        <th>ID </th>
+        <th>ID</th>
         <th> Quantity</th>
-        <th> Contract </th>
+        <th> Contract</th>
         <th> Attach Service</th>
     </tr>
-    <tr th:each="item:${contractDetail}" >
+    <tr th:each="item:${contractDetail}">
         <td th:text="${item.contractDetailId}"></td>
         <td th:text="${item.quantity}"></td>
         <td th:text="${item.contract.toString()}"></td>

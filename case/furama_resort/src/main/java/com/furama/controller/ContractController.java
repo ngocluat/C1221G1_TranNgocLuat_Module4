@@ -13,10 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -30,8 +27,7 @@ public class ContractController {
     @Autowired
     private IEmployeeService iEmployeeService;
     @Autowired
-    private  IServiceService iServiceService;
-
+    private IServiceService iServiceService;
 
 
     @GetMapping("")
@@ -40,11 +36,13 @@ public class ContractController {
         return "contract/home";
     }
 
+
+
     @RequestMapping(value = "/create-contract", method = RequestMethod.GET)
     public String goCreateContract(Model model, Pageable pageable) {
         model.addAttribute("contractDto", new ContractDto());
-        model.addAttribute("service",iServiceService.listService(pageable));
-        model.addAttribute("customer",iCustomerService.findAllCustomer(pageable) );
+        model.addAttribute("service", iServiceService.listService(pageable));
+        model.addAttribute("customer", iCustomerService.findAllCustomer(pageable));
         model.addAttribute("employee",iEmployeeService.findEmployees(pageable) );
         return "contract/create";
     }

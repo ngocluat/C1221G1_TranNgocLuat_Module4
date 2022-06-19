@@ -119,58 +119,101 @@ public class ContractDto implements Validator {
         return false;
     }
 
+    // check ngày sau và trước trong pakage tets :))
+    public static void compareDates(String d1, String d2) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date date1 = sdf.parse(d1);
+            Date date2 = sdf.parse(d2);
+
+            System.out.println("Date1" + sdf.format(date1));
+            System.out.println("Date2" + sdf.format(date2));
+            System.out.println();
+            if (date1.after(date2)) {
+
+//                System.out.println("Date1 is after Date2");
+            }
+            if (date1.before(date2)) {
+                System.out.println("Date1 is before Date2");
+            }
+            if (date1.equals(date2)) {
+                System.out.println("Date1 is equal Date2");
+            }
+            System.out.println();
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     @Override
     public void validate(Object target, Errors errors) {
 
         ContractDto contractDto = (ContractDto) target;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
+            Date date1 = sdf.parse(contractDto.getContractStartDay());
+            Date date2 = sdf.parse(contractDto.getContractEndDay());
 
-
-            if ("".equals(contractDto.contractStartDay)) {
-                errors.rejectValue("contractStartDate", "blank.error", "System Error");
-            } else if (!contractDto.contractStartDay.matches(DATE_TIME_REGEX)) {
-                errors.rejectValue("contractStartDate", "day.error", "System Error");
-            } else {
-                SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-                Date date = null;
-                Date current = new Date();
-                try {
-                    date = fmt.parse(contractDto.contractStartDay);
-//                 KIEM TRA NGAY CO TRONG QUA KHU KHONG
-                    if (date != null && date.compareTo(new Date()) < 0) {
-                        errors.rejectValue("contractStartDay", "", "Start date don't in the past");
-                    }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    errors.rejectValue("contractStartDay", "day.error", "System Error");
-                }
+            System.out.println("Date1" + sdf.format(date1));
+            System.out.println("Date2" + sdf.format(date2));
+            System.out.println();
+            if (date1.after(date2)) {
+                errors.rejectValue("contractEndDay", "day.errors", "errors !! ");
             }
-            if ("".matches(contractDto.contractEndDay)) {
-                errors.rejectValue("contractEndDate", "blank.error", "System Error");
-            } else if (!contractDto.contractEndDay.matches(DATE_TIME_REGEX)) {
-                errors.rejectValue("contractEndDate", "day.error", "System Error");
-            } else {
-                SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
-                Date startDate = null;
-                Date endDate = null;
-                Date current = new Date();
-                try {
-                    endDate = fmt.parse(contractDto.contractEndDay);
-                    startDate = fmt.parse(contractDto.contractStartDay);
-//                 KIEM TRA NGAY CO TRONG QUA KHU KHONG
-                    if (endDate != null && endDate.compareTo(startDate) < 0) {
-                        errors.rejectValue("contractEndDay", "", "End date must be after Start date");
-                    }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    errors.rejectValue("contractEndDay", "day.error", "System Error");
-                }
+            if (date1.equals(date2)) {
+                errors.rejectValue("contractEndDay", "day.equal", "errors !! ");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            errors.rejectValue("contractEndDay", "day.error", "System Error");
-
+        } catch (ParseException ex) {
+            ex.printStackTrace();
         }
     }
 
+//        try {
+//            if ("".equals(contractDto.contractStartDay)) {
+//                errors.rejectValue("contractStartDate", "blank.error", "System Error");
+//            } else if (!contractDto.contractStartDay.matches(DATE_TIME_REGEX)) {
+//                errors.rejectValue("contractStartDate", "day.error", "System Error");
+//            } else {
+//                SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+//                Date date = null;
+//                Date current = new Date();
+//                try {
+//                    date = fmt.parse(contractDto.contractStartDay);
+////                 KIEM TRA NGAY CO TRONG QUA KHU KHONG
+//                    if (date != null && date.compareTo(new Date()) < 0) {
+//                        errors.rejectValue("contractStartDay", "", "Start date don't in the past");
+//                    }
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                    errors.rejectValue("contractStartDay", "day.error", "System Error");
+//                }
+//            }
+//            if ("".matches(contractDto.contractEndDay)) {
+//                errors.rejectValue("contractEndDate", "blank.error", "System Error");
+//            } else if (!contractDto.contractEndDay.matches(DATE_TIME_REGEX)) {
+//                errors.rejectValue("contractEndDate", "day.error", "System Error");
+//            } else {
+//                SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+//                Date startDate = null;
+//                Date endDate = null;
+//                Date current = new Date();
+//                try {
+//                    endDate = fmt.parse(contractDto.contractEndDay);
+//                    startDate = fmt.parse(contractDto.contractStartDay);
+////                 KIEM TRA NGAY CO TRONG QUA KHU KHONG
+//                    if (endDate != null && endDate.compareTo(startDate) < 0) {
+//                        errors.rejectValue("contractEndDay", "", "End date must be after Start date");
+//                    }
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                    errors.rejectValue("contractEndDay", "day.error", "System Error");
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            errors.rejectValue("contractEndDay", "day.error", "System Error");
+//
+//        }
 }
+

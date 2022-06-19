@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +19,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.io.IOException;
+import java.util.Date;
 import java.util.Optional;
+import java.util.Properties;
 
 @Controller
 @RequestMapping("/employee")
@@ -117,7 +123,6 @@ public class EmployeeController {
         return "employee/edit";
     }
 
-
     @PostMapping("/update-employee")
     public String edit(@ModelAttribute Employee employee,
                        Model model,
@@ -126,6 +131,5 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("message", "update success 🤣 ");
         return "redirect:/employee";
     }
-
 
 }

@@ -26,6 +26,8 @@ public class ProductController {
     }
 
 
+
+
     @GetMapping({"/", "/shop"})
     public ModelAndView showShop(Model model,
                                  @CookieValue(value = "idProduct", defaultValue = "-1") Long idProduct) {
@@ -39,10 +41,13 @@ public class ProductController {
     }
 
 
+
+
     @GetMapping("/add/{id}")
     public String addToCart(@PathVariable Long id,
                             @ModelAttribute Cart cart,
                             @RequestParam("action") String action) {
+
         Optional<Product> productOptional = productService.findById(id);
 
         if (!productOptional.isPresent()) {
@@ -71,6 +76,7 @@ public class ProductController {
     }
 
 
+
     @GetMapping("/{id}/detail")
     public String detail(@PathVariable Long id,
                          Model model,
@@ -79,9 +85,7 @@ public class ProductController {
         cookie.setMaxAge(60 * 60 * 2);
         cookie.setPath("/");
         httpServletResponse.addCookie(cookie);
-
         Optional<Product> productOptional = productService.findById(id);
-
         model.addAttribute("product", productOptional.get());
         return "detail";
     }

@@ -19,7 +19,7 @@ public interface ICustomerService {
 
     void update(Customer customer);
 
-    void remove(Long customer);
+    void remove(Customer customer);
 
     Page<Customer> seachingCustomer(String name, String description, Pageable pageable);
 
@@ -31,6 +31,8 @@ public interface ICustomerService {
 
     void deleteByIdIn(Integer[] integers);
 
+
+    List<Customer> findAll();
 }
 
 

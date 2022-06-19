@@ -1,4 +1,10 @@
 package com.example.service;
 
-public class IProductService {
+
+import com.example.model.Product;
+
+import java.util.List;
+
+public interface IProductService {
+    List<Product> listProducts();
 }

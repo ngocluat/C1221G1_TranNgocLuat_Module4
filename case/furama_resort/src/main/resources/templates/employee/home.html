@@ -40,14 +40,12 @@
             <input type="text" name="name" placeholder=" Search Name Customer :">
             <input type="text" name="address" placeholder="  Search Address  :">
             <input type="text" name="phone" placeholder=" Search Phone   :">
-            <label for="exampleDataList" class="form-label">Datalist example</label>
-            <input  class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to Division search...">
-            <datalist id="datalistOptions"  name="idDivision">
+              <select name="idDivision">
                 <option th:each="dividiont : ${division}"
                         th:value="${dividiont.divisionId}"
                         th:text="${dividiont.divisionName}">
                 </option>
-            </datalist>
+            </select>
         </label>
         <button class="btn btn-outline-info" type="submit"> Tìm</button>
     </form>

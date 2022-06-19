@@ -21,6 +21,9 @@ public class Cart {
         return products;
     }
 
+
+ //    Phương thức checkIntemInCart() để kiểm tra xem
+ //    sản phẩm đó đã có trong giỏ hàng hay chưa
     private boolean checkItemInCart(Product product) {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             if (entry.getKey().getId().equals(product.getId())) {
@@ -30,7 +33,9 @@ public class Cart {
         return false;
     }
 
-    private Map.Entry<Product, Integer> selectItemInCart(Product product) {
+
+    // kiểm tra có bab nhiêu id trùng
+        private Map.Entry<Product, Integer> selectItemInCart(Product product) {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             if (entry.getKey().getId().equals(product.getId())) {
                 return entry;
@@ -38,7 +43,8 @@ public class Cart {
         }
         return null;
     }
-
+// cộng thêm 1 nếu product chư có trong giỏ hàng
+    // con có rôid thì + thêm vô
     public void addProduct(Product product) {
         if (!checkItemInCart(product)) {
             products.put(product, 1);
@@ -57,7 +63,6 @@ public class Cart {
             Integer newQuantity = itemEntry.getValue() - 1;
             if (newQuantity == 0) {
                 products.remove(itemEntry.getKey());
-
             }
             products.replace(itemEntry.getKey(), newQuantity);
         }

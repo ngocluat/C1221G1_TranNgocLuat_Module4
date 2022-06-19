@@ -7,19 +7,14 @@ import java.util.List;
 public class Contract {
     @ManyToOne
     @JoinColumn(referencedColumnName = "employeeId")
-    Employee idEmployee;
+    private Employee idEmployee;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(referencedColumnName = "customerId")
-    Customer idCustomer;
-
+    private Customer idCustomer;
     @ManyToOne
     @JoinColumn(referencedColumnName = "serviceId")
-    Service idService;
-
-    @OneToMany(mappedBy = "contract")
-    List<ContractDetail> contractDetails;
-
+    private Service idService;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long contractId;
@@ -36,7 +31,6 @@ public class Contract {
         this.idEmployee = idEmployee;
         this.idCustomer = idCustomer;
         this.idService = idService;
-        this.contractDetails = contractDetails;
         this.contractId = contractId;
         this.contractStartDay = contractStartDay;
         this.contractEndDay = contractEndDay;
@@ -108,13 +102,6 @@ public class Contract {
         this.idService = idService;
     }
 
-    public List<ContractDetail> getContractDetails() {
-        return contractDetails;
-    }
-
-    public void setContractDetails(List<ContractDetail> contractDetails) {
-        this.contractDetails = contractDetails;
-    }
 
     @Override
     public String toString() {

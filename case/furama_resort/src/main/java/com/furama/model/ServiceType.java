@@ -6,8 +6,6 @@ import java.util.List;
 @Entity
 public class ServiceType {
 
-    @OneToMany(mappedBy = "serviceType")
-    List<Service> listServiceType;
 
 
     @Id

@@ -5,8 +5,6 @@ import java.util.List;
 
 @Entity
 public class Positon {
-    @OneToMany(mappedBy = "idPositon")
-    List<Employee> idEmployees;
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)

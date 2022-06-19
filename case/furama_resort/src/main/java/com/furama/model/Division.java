@@ -5,8 +5,7 @@ import java.util.List;
 
 @Entity
 public class Division {
-    @OneToMany(mappedBy = "idDivision")
-    List<Employee> idEmployees;
+
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
