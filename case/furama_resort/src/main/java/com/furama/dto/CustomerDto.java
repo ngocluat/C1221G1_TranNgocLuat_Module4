@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CustomerDto implements Validator {
 
-    private Long customerId;
+    private String customerId;
 
     private CustomerType customerType;
 
@@ -55,11 +55,11 @@ public class CustomerDto implements Validator {
     }
 
 
-    public Long getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 

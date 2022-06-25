@@ -10,7 +10,7 @@ public interface IOderService {
 
     Page<OderProduct> listOderProducts(String dayStart, String dayEnd, Pageable pageable);
 
-    Optional<OderProduct> findByOderCode(Long oderCode);
+    Optional<OderProduct> findByOderCode(String oderCode);
 
     void update(OderProduct oderProduct);
 

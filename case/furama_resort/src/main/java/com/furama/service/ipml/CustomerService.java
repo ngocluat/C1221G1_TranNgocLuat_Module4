@@ -35,7 +35,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public Customer findById(Long id) {
+    public Customer findById(String id) {
         return iCustomerRepository.getById(id);
     }
 

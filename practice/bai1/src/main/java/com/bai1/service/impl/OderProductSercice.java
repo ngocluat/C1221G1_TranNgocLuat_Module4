@@ -35,7 +35,7 @@ public class OderProductSercice implements IOderService {
     }
 
     @Override
-    public Optional<OderProduct> findByOderCode(Long oderCode) {
+    public Optional<OderProduct> findByOderCode(String oderCode) {
         return iOderRepository.findById(oderCode);
     }
 

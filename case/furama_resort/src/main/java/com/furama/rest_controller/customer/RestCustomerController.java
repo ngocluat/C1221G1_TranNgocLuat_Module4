@@ -39,7 +39,7 @@ public class RestCustomerController {
 
 
     @GetMapping("customer/{customerId}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable Long customerId) {
+    public ResponseEntity<Customer> getCustomer(@PathVariable String customerId) {
         Optional<Customer> categoryOptional = Optional.ofNullable(iCustomerService.findById(customerId));
         return categoryOptional.map(category -> new ResponseEntity<>(category, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -49,24 +49,21 @@ public class RestCustomerController {
     @PostMapping("/save-customer")
     public ResponseEntity<?> saveCustomer(@Validated @RequestBody CustomerDto customerDto,
                                                  BindingResult bindingResult) {
-        Customer customer = new Customer();
-        BeanUtils.copyProperties(customerDto, customer);
-        customer.setFlag(1);
+
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } else {
-            Customer customerVlue = new Customer();
+            Customer customer = new Customer();
             BeanUtils.copyProperties(customerDto, customer);
             customer.setFlag(1);
             iCustomerService.save(customer);
             return new ResponseEntity<>(customer, HttpStatus.OK);
-
         }
     }
 
-
+    // dinhs khóa nợia
     @DeleteMapping("/deleteCustomer/{customerID}")
-    public ResponseEntity<?> deleteCustomer(@PathVariable("customerID") Long id) {
+    public ResponseEntity<?> deleteCustomer(@PathVariable("customerID") String id) {
         try {
             Customer customer = this.iCustomerService.findById(id);
             this.iCustomerService.remove(customer);

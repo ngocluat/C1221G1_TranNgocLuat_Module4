@@ -101,7 +101,7 @@ public class CustomerController {
 
 
     @GetMapping("/{id}/edit")
-    public String goEditCustomer(@PathVariable Long id, Model model) {
+    public String goEditCustomer(@PathVariable String id, Model model) {
         Customer customer = iCustomerService.findById(id);
         CustomerDto customerDto = new CustomerDto();
         BeanUtils.copyProperties(customer, customerDto);
@@ -133,9 +133,9 @@ public class CustomerController {
     }
 
     @PostMapping("/delete-customer")
-    public String deleteCustomer(@RequestParam Long id, RedirectAttributes redirectAttributes) {
+    public String deleteCustomer(@RequestParam String id, RedirectAttributes redirectAttributes) {
         Customer customerDelete = iCustomerService.findById(id);
-        iCustomerService.remove(id);
+        iCustomerService.remove(customerDelete);
         redirectAttributes.addFlashAttribute("message", "Delete successfully");
         return "redirect:/customer";
     }

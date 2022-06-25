@@ -1,17 +1,27 @@
 package com.bai1.model;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import javax.persistence.*;
 
 @Entity
 public class OderProduct {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @GeneratedValue(generator = "prod-generator")
+    @GenericGenerator(name = "prod-generator",
+            parameters = @Parameter(name = "prefix", value = "CS"),
+            strategy = "com.bai1.utils.IdentityCodeGenerator")
+    String id;
 
     @Column(columnDefinition = "DATE")
     String dayBuy;
 
+
+    @Column(name = "quantity", columnDefinition = "BIGINT")
     Integer quantity;
+
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
@@ -20,13 +30,14 @@ public class OderProduct {
     public OderProduct() {
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
+
 
     public String getDayBuy() {
         return dayBuy;

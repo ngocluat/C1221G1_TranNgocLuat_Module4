@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface IOderRepository extends JpaRepository<OderProduct, Long> {
+public interface IOderRepository extends JpaRepository<OderProduct, String> {
 
     @Query(value = "select * from oder_product where day_buy between :dayStart and :dayEnd",
             countQuery = "select * from oder_product where day_buy between :dayStart and :dayEnd",

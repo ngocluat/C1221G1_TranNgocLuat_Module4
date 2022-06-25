@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface ICustomerRepository extends JpaRepository<Customer, Long> {
+public interface ICustomerRepository extends JpaRepository<Customer, String> {
 
 
     Page<Customer> findAllByCustomerNameContainingAndCustomerAddressContainingAndCustomerCodeContaining(String name, String address, String customerCode, Pageable pageable);

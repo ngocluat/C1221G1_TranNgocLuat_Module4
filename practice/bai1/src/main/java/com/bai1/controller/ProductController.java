@@ -55,7 +55,7 @@ public class ProductController {
 
 
     @GetMapping("/{oderCode}/edit")
-    public String goEdit(@PathVariable Long oderCode,
+    public String goEdit(@PathVariable String oderCode,
                          Model model, Pageable pageable) {
         OderProduct oderProduct = iOderService.findByOderCode(oderCode).orElse(null);
 

@@ -37,17 +37,17 @@ insert into customer_type(customer_type_name) values
 ("Member");
 
 
-insert into customer (customer_code,customer_name,customer_birth_day,customer_gender,customercmdd,customer_phone,customer_email,customer_address, id_customer_type)
- value("KH9999","Nguyễn Thị Hào","1970-11-07",b'0',"643431213","0945423362","thihao07@gmail.com","23 Nguyễn Hoàng,Đà Nẵng",5),
-("KH9999","Phạm Xuân Diệu","1992-08-08",b'1',"865342123","0954333333","xuandieu92@gmail.com","K77/22 Thái Phiên, Quảng Trị",3),
-("KH9999","Trương Đình Nghệ","1990-02-27",b'1',"488645199","0373213122","nghenhan2702@gmail.com","K323/12 Ông Ích Khiêm, Vinh",1),
-("KH9999","Dương Văn Quan","1981-07-08",b'1',"543432111","0490039241","duongquan@gmail.com","K453/12 Lê Lợi, Đà Nẵng",1),
-("KH9999","Hoàng Trần Nhi Nhi","1995-12-09",b'0',"795453345","0312345678","nhinhi123@gmail.com","224 Lý Thái Tổ, Gia Lai",4),
-("KH9999","Tôn Nữ Mộc Châu","2005-12-06",b'0',"732434215","0988888844","tonnuchau@gmail.com","37 Yên Thế, Đà Nẵng",4),
-("KH9999","Nguyễn Mỹ Kim","1984-04-08",b'0',"856453123","0912345698","kimcuong84@gmail.com","K123/45 Lê Lợi, Hồ Chí Minh",1),
-("KH9999","Nguyễn Thị Hào","1999-04-08",b'0',"965656433","0763212345","haohao99@gmail.com","55 Nguyễn Văn Linh, Kon Tum",3),
-("KH9999","Trần Đại Danh","1994-07-01",b'1',"432341235","0643343433","danhhai99@gmail.com","24 Lý Thường Kiệt, Quảng Ngãi",1),
-("KH9999","Nguyễn Tâm Đắc","1989-07-01",b'1',"344343432","0987654321","tdactam@gmail.com","22 Ngô Quyền, Đà Nẵng",2);
+insert into customer (customer_id,customer_code,customer_name,customer_birth_day,customer_gender,customercmdd,customer_phone,customer_email,customer_address, id_customer_type)
+ value("CS-6766","KH9999","Nguyễn Thị Hào","1970-11-07",b'0',"643431213","0945423362","thihao07@gmail.com","23 Nguyễn Hoàng,Đà Nẵng",5),
+("CS-6767","KH9999","Phạm Xuân Diệu","1992-08-08",b'1',"865342123","0954333333","xuandieu92@gmail.com","K77/22 Thái Phiên, Quảng Trị",3),
+("CS-6768","KH9999","Trương Đình Nghệ","1990-02-27",b'1',"488645199","0373213122","nghenhan2702@gmail.com","K323/12 Ông Ích Khiêm, Vinh",1),
+("CS-6769","KH9999","Dương Văn Quan","1981-07-08",b'1',"543432111","0490039241","duongquan@gmail.com","K453/12 Lê Lợi, Đà Nẵng",1),
+("CS-6770","KH9999","Hoàng Trần Nhi Nhi","1995-12-09",b'0',"795453345","0312345678","nhinhi123@gmail.com","224 Lý Thái Tổ, Gia Lai",4),
+("CS-6771","KH9999","Tôn Nữ Mộc Châu","2005-12-06",b'0',"732434215","0988888844","tonnuchau@gmail.com","37 Yên Thế, Đà Nẵng",4),
+("CS-6772","KH9999","Nguyễn Mỹ Kim","1984-04-08",b'0',"856453123","0912345698","kimcuong84@gmail.com","K123/45 Lê Lợi, Hồ Chí Minh",1),
+("CS-6773","KH9999","Nguyễn Thị Hào","1999-04-08",b'0',"965656433","0763212345","haohao99@gmail.com","55 Nguyễn Văn Linh, Kon Tum",3),
+("CS-6774","KH9999","Trần Đại Danh","1994-07-01",b'1',"432341235","0643343433","danhhai99@gmail.com","24 Lý Thường Kiệt, Quảng Ngãi",1),
+("CS-6775","KH9999","Nguyễn Tâm Đắc","1989-07-01",b'1',"344343432","0987654321","tdactam@gmail.com","22 Ngô Quyền, Đà Nẵng",2);
 
 
 insert into rent_type(rent_type_id, rent_type_name) values
@@ -76,18 +76,18 @@ insert into service(service_name, service_area, service_cost, service_max_people
 
 
 insert into contract(contract_id, contract_start_day, contract_end_day ,contract_to_tal_money,id_employee_employee_id,id_customer_customer_id,id_service_service_id)
-value (1,"2020-12-08","2020-12-08",0,3,1,3),
-(2,"2020-07-14","2020-07-21",200000,7,3,1),
-(3,"2021-03-15","2021-03-17",50000,7,3,1),
-(4,"2021-01-14","2021-01-18",100000,7,5,5),
-(5,"2021-01-14","2021-01-15",0,7,2,6),
-(6,"2021-06-01","2021-06-03",0,7,7,6),
-(7,"2021-06-01","2021-06-05",100000,7,4,4),
-(8,"2021-06-17","2021-06-18",150000,3,4,1),
-(9,"2020-11-19","2020-11-19",0,3,4,3),
-(10,"2021-04-12","2021-04-14",0,10,3,5),
-(11,"2021-04-25","2021-04-25",0,2,2,1),
-(12,"2021-05-25","2021-05-25",0,7,10,1);
+value (1,"2020-12-08","2020-12-08",0,3,"CS-6770",3),
+(2,"2020-07-14","2020-07-21",200000,7,"CS-6771",1),
+(3,"2021-03-15","2021-03-17",50000,7,"CS-6771",1),
+(4,"2021-01-14","2021-01-18",100000,7,"CS-6772",5),
+(5,"2021-01-14","2021-01-15",0,7,"CS-6767",6),
+(6,"2021-06-01","2021-06-03",0,7,"CS-6774",6),
+(7,"2021-06-01","2021-06-05",100000,7,"CS-6767",4),
+(8,"2021-06-17","2021-06-18",150000,3,"CS-6767",1),
+(9,"2020-11-19","2020-11-19",0,3,"CS-6767",3),
+(10,"2021-04-12","2021-04-14",0,10,"CS-6769",5),
+(11,"2021-04-25","2021-04-25",0,2,"CS-6767",1),
+(12,"2021-05-25","2021-05-25",0,7,"CS-6768",1);
 
 
 insert into attach_service(attach_service_id,attach_service_name,attach_service_cost, attach_service_unit,attach_service_status)

@@ -2,6 +2,7 @@ package com.furama.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,8 +16,11 @@ public class Customer {
     private CustomerType customerType;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
+    @GeneratedValue(generator = "prod-generator")
+    @GenericGenerator(name = "prod-generator",
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "CS"),
+            strategy = "com.furama.util.IdentityCodeGenerator")
+    private String customerId;
     private String customerCode;
 
     private String customerName;
@@ -45,11 +49,11 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
-    public Long getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
